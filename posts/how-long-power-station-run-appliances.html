@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How Long Will a Power Station Run My Appliances? — Runtime Guide — Battery Backup Guide</title>
+<meta name="description" content="Wondering how long a portable power station can run your fridge, TV, laptop, or CPAP? Use our runtime guide with real-world estimates, formulas, and efficiency loss factors.">
+<meta property="og:title" content="How Long Will a Power Station Run My Appliances? — Runtime Guide">
+<meta property="og:description" content="Wondering how long a portable power station can run your fridge, TV, laptop, or CPAP? Use our runtime guide with real-world estimates, formulas, and efficiency loss factors.">
+<meta property="og:url" content="https://batterybackupguide.com/posts/how-long-power-station-run-appliances">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Battery Backup Guide">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://batterybackupguide.com/posts/how-long-power-station-run-appliances">
+<style>
+:root { --primary: #2563eb; --primary-dark: #1d4ed8; --accent: #f59e0b; --bg: #f8fafc; --card: #ffffff; --text: #1e293b; --text-light: #64748b; --border: #e2e8f0; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+.container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+.nav { background: white; border-bottom: 1px solid var(--border); padding: 12px 0; position: sticky; top: 0; z-index: 100; }
+.nav .container { display: flex; gap: 24px; align-items: center; }
+.nav a { color: var(--text-light); text-decoration: none; font-size: 0.9rem; font-weight: 500; }
+.nav a:hover { color: var(--primary); }
+.nav .logo { font-weight: 700; color: var(--text); font-size: 1rem; margin-right: auto; }
+.post-content { padding: 40px 0; }
+.post-content h1 { font-size: 2rem; margin-bottom: 10px; }
+.post-content .post-meta { color: var(--text-light); font-size: 0.9rem; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+.post-content h2 { font-size: 1.5rem; margin: 30px 0 12px; }
+.post-content h3 { font-size: 1.2rem; margin: 24px 0 10px; }
+.post-content p { margin-bottom: 16px; }
+.post-content ul, .post-content ol { margin: 0 0 16px 20px; }
+.post-content li { margin-bottom: 8px; }
+.post-content .product-box { background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 10px; padding: 20px; margin: 20px 0; }
+.post-content .product-box h3 { margin-top: 0; }
+.post-content .pros-cons { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+.post-content .pros, .post-content .cons { padding: 16px; border-radius: 8px; }
+.post-content .pros { background: #f0fdf4; border: 1px solid #bbf7d0; }
+.post-content .cons { background: #fef2f2; border: 1px solid #fecaca; }
+.post-content table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+.post-content th, .post-content td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+.post-content th { background: #f1f5f9; font-weight: 600; }
+.footer { background: #1e293b; color: #94a3b8; padding: 30px 0; text-align: center; font-size: 0.85rem; }
+.footer .aff-disclosure { margin-top: 10px; font-size: 0.8rem; }
+@media (max-width: 640px) { .post-content .pros-cons { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<nav class="nav"><div class="container"><span class="logo">⚡ BatteryBackupGuide</span>
+<a href="/">Home</a><a href="/about">About</a></div></nav>
+<main class="container post-content">
+<h1>How Long Will a Power Station Run My Appliances? — Runtime Guide</h1>
+<div class="post-meta">Updated May 2026 &bull; 10 min read &bull; Category: Guide</div>
+<h2>The #1 Question About Portable Power Stations</h2>
+<p>You've bought or are considering a portable power station for apartment backup. You know the capacity in watt-hours (Wh). But the real question is: <strong>"How long will it actually run my stuff?"</strong></p>
+<p>The honest answer is: <em>it depends</em> — on the appliance's power draw, the station's capacity, inverter losses, and how you use it. In this guide, we'll give you realistic runtime estimates for common household appliances across different power station sizes, plus the formula so you can calculate any scenario yourself.</p>
+
+<h2>The Basic Runtime Formula</h2>
+<p>Here's the simple formula to estimate runtime:</p>
+<p style="background:#f5f5f5;padding:15px;border-radius:8px;font-size:1.1em;text-align:center;">
+<strong>Runtime (hours)</strong> = (Power Station Capacity in Wh × Efficiency Factor) ÷ Appliance Power Draw in Watts
+</p>
+<p>Where:</p>
+<ul>
+<li><strong>Power Station Capacity (Wh)</strong> — The total energy storage of the station (e.g., 500Wh, 1000Wh, 2000Wh)</li>
+<li><strong>Efficiency Factor</strong> — Real-world loss from the inverter and battery discharge (typically <strong>0.80 to 0.92</strong>)</li>
+<li><strong>Appliance Power Draw (W)</strong> — How many watts the appliance uses while running</li>
+</ul>
+
+<p><strong>Example:</strong> A 1000Wh power station running a 60W fridge with 85% efficiency:<br>
+(1000 × 0.85) ÷ 60 = <strong>~14.2 hours</strong></p>
+
+<h2>Runtime Reference Table: Common Appliances</h2>
+<p>Below are estimated runtimes for common apartment devices across popular power station sizes. Assumes ~85% overall efficiency (inverter + battery discharge). Actual results may vary — see the <a href="#real-world-factors">real-world factors section</a> below.</p>
+
+<table style="width:100%;border-collapse:collapse;margin:20px 0;">
+<thead>
+<tr style="background:#2c3e50;color:white;">
+<th style="padding:10px;border:1px solid #ddd;text-align:left;">Appliance</th>
+<th style="padding:10px;border:1px solid #ddd;text-align:center;">Typical Wattage</th>
+<th style="padding:10px;border:1px solid #ddd;text-align:center;">300Wh Station</th>
+<th style="padding:10px;border:1px solid #ddd;text-align:center;">500Wh Station</th>
+<th style="padding:10px;border:1px solid #ddd;text-align:center;">1000Wh Station</th>
+<th style="padding:10px;border:1px solid #ddd;text-align:center;">1500Wh Station</th>
+<th style="padding:10px;border:1px solid #ddd;text-align:center;">2000Wh Station</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background:#f9f9f9;">
+<td style="padding:8px;border:1px solid #ddd;"><strong>LED TV (32-43")</strong></td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">50-80W</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">3-5 hrs</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">5-9 hrs</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">10-17 hrs</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">16-26 hrs</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">21-34 hrs</td>
+</tr>
+<tr>
+<td style="padding:8px;border:1px solid #ddd;"><strong>Mini Fridge (3.2 cu ft)</strong></td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">55-70W (avg)</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">3-5 hrs</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">5-8 hrs</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">10-15 hrs</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">15-23 hrs</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">20-31 hrs</td>
+</tr>
+<tr style="background:#f9f9f9;">
+<td style="padding:8px;border:1px solid #ddd;"><strong>Full-Size Fridge (18-22 cu ft)</strong></td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">100-150W (avg)</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">1.5-2.5 hrs</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">2.5-4 hrs</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">5-8.5 hrs</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">8-13 hrs</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">10-17 hrs</td>
+</tr>
+<tr>
+<td style="padding:8px;border:1px solid #ddd;"><strong>Laptop (charging)</strong></td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">45-100W</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">2.5-6 hrs</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">4-9 hrs</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">8-17 hrs</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">12-26 hrs</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">17-34 hrs</td>
+</tr>
+<tr style="background:#f9f9f9;">
+<td style="padding:8px;border:1px solid #ddd;"><strong>WiFi Router + Modem</strong></td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">10-20W</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">13-26 hrs</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">21-43 hrs</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">43-85 hrs</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">64-128 hrs</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">85-170 hrs</td>
+</tr>
+<tr>
+<td style="padding:8px;border:1px solid #ddd;"><strong>CPAP Machine (heated humidifier)</strong></td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">30-60W</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">4-8 hrs</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">7-14 hrs</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">14-28 hrs</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">21-42 hrs</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">28-57 hrs</td>
+</tr>
+<tr style="background:#f9f9f9;">
+<td style="padding:8px;border:1px solid #ddd;"><strong>CPAP Machine (no humidifier)</strong></td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">10-15W</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">17-26 hrs</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">28-43 hrs</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">57-85 hrs</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">85-128 hrs</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">113-170 hrs</td>
+</tr>
+<tr>
+<td style="padding:8px;border:1px solid #ddd;"><strong>Microwave (compact)</strong></td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">700-1000W</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">15-30 min</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">25-50 min</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">50-85 min</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">1.3-2 hrs</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">1.7-2.5 hrs</td>
+</tr>
+<tr style="background:#f9f9f9;">
+<td style="padding:8px;border:1px solid #ddd;"><strong>Electric Kettle</strong></td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">1200-1500W</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">10-15 min</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">17-25 min</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">34-50 min</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">50-75 min</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">68-100 min</td>
+</tr>
+<tr>
+<td style="padding:8px;border:1px solid #ddd;"><strong>LED Desk Lamp</strong></td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">5-10W</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">25-51 hrs</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">43-85 hrs</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">85-170 hrs</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">128-255 hrs</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">170-340 hrs</td>
+</tr>
+<tr style="background:#f9f9f9;">
+<td style="padding:8px;border:1px solid #ddd;"><strong>Phone Charger</strong></td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">5-15W</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">17-51 hrs</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">28-85 hrs</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">57-170 hrs</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">85-255 hrs</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">113-340 hrs</td>
+</tr>
+<tr>
+<td style="padding:8px;border:1px solid #ddd;"><strong>Fan (box/tower)</strong></td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">30-70W</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">3.5-8 hrs</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">6-14 hrs</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">12-28 hrs</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">18-42 hrs</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">24-57 hrs</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="real-world-factors">Real-World Factors That Affect Runtime</h2>
+<p>The table above is a guideline. Your actual runtime will differ due to several factors:</p>
+
+<h3>1. Inverter Efficiency (The Biggest Loss)</h3>
+<p>Portable power stations convert DC battery power to AC household power using an inverter. This conversion loses <strong>5-15%</strong> of energy as heat. Pure sine wave inverters (which most quality stations use) are slightly less efficient than modified sine wave but are safer for sensitive electronics.</p>
+<p><strong>Tip:</strong> Use DC (USB-C, 12V car port) outlets when possible — they skip the inverter conversion and give you <strong>10-15% more runtime</strong> for compatible devices like phones, tablets, and some laptops.</p>
+
+<h3>2. Battery Discharge Efficiency</h3>
+<p>No battery delivers 100% of its rated capacity. Depending on chemistry:</p>
+<ul>
+<li><strong>LiFePO₄ (Lithium Iron Phosphate):</strong> ~95-98% discharge efficiency — the gold standard. Also lasts 3000-6000+ cycles.</li>
+<li><strong>NMC (Lithium Nickel Manganese Cobalt):</strong> ~95-98% efficiency, similar to LiFePO₄, but ~500-1000 cycles.</li>
+<li><strong>Lead-Acid (older/cheaper stations):</strong> Only ~70-80% usable capacity — you lose 20-30% before you even start. Avoid for serious backup needs.</li>
+</ul>
+
+<h3>3. Power Factor & Startup Surge</h3>
+<p>Some appliances draw more power at startup than during normal operation:</p>
+<ul>
+<li><strong>Fridge compressors:</strong> Can draw 3-5× rated power for 1-3 seconds when starting up</li>
+<li><strong>CPAP heated humidifiers:</strong> Higher draw when heating water initially, then drop to steady-state</li>
+<li><strong>Microwaves:</strong> Immediate full-power draw</li>
+</ul>
+<p>Make sure your power station's <strong>peak/surge output rating</strong> can handle these momentary spikes. Your station needs at least 2× the appliance's rated wattage for motor-driven devices like fridges.</p>
+
+<h3>4. Temperature Effects</h3>
+<p>Battery chemistry is temperature-sensitive:</p>
+<ul>
+<li><strong>Cold (below 50°F / 10°C):</strong> Available capacity drops 15-30%. LiFePO₄ batteries are particularly affected — some stations have built-in battery heaters to mitigate this.</li>
+<li><strong>Hot (above 95°F / 35°C):</strong> Efficiency drops and the BMS (Battery Management System) may throttle output or shut down to protect the battery.</li>
+</ul>
+<p>For apartment use, this matters most if your power station lives on an unheated balcony or near a radiator.</p>
+
+<h3>5. Depth of Discharge (DoD) Limits</h3>
+<p>Most portable power stations automatically stop discharging when the battery reaches a minimum voltage (typically 5-20% remaining) to protect battery health. This means you can't use the <em>full</em> rated capacity. For example, a 1000Wh station with 10% DoD reserve only gives you ~900Wh of usable energy.</p>
+
+<h2>Putting It All Together: Combined Efficiency</h2>
+<p>When you stack all these factors together, here's what a typical real-world efficiency looks like:</p>
+
+<table style="width:100%;border-collapse:collapse;margin:20px 0;">
+<thead>
+<tr style="background:#2c3e50;color:white;">
+<th style="padding:10px;border:1px solid #ddd;text-align:left;">Factor</th>
+<th style="padding:10px;border:1px solid #ddd;text-align:center;">Loss</th>
+<th style="padding:10px;border:1px solid #ddd;text-align:center;">Remaining</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding:8px;border:1px solid #ddd;">Rated Capacity (1000Wh)</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">—</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">1000Wh</td>
+</tr>
+<tr style="background:#f9f9f9;">
+<td style="padding:8px;border:1px solid #ddd;">Battery Discharge Efficiency (96%)</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">-40Wh</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">960Wh</td>
+</tr>
+<tr>
+<td style="padding:8px;border:1px solid #ddd;">DoD Reserve (5%)</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">-48Wh</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">912Wh</td>
+</tr>
+<tr style="background:#f9f9f9;">
+<td style="padding:8px;border:1px solid #ddd;">Inverter Efficiency (90%)</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;	d">-91Wh</td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;">821Wh</td>
+</tr>
+<tr>
+<td style="padding:8px;border:1px solid #ddd;"><strong>Usable Energy for AC Devices</strong></td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;"><strong>~82% of rated</strong></td>
+<td style="padding:8px;border:1px solid #ddd;text-align:center;"><strong>~820Wh</strong></td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Bottom line:</strong> Assume you'll get <strong>75-85%</strong> of the rated capacity for practical runtime planning. A 1000Wh station will give you roughly <strong>800-850Wh</strong> of usable AC power.</p>
+
+<h2>Common Apartment Backup Scenarios</h2>
+
+<h3>Scenario A: 8-Hour Nighttime Outage (Sleep Mode)</h3>
+<p><em>Devices:</em> WiFi router (15W) + CPAP with heated humidifier (50W) + phone charging (10W)<br>
+<em>Total draw:</em> ~75W<br>
+<em>Minimum station needed:</em> (75W × 8 hrs) ÷ 0.82 efficiency = <strong>~732Wh</strong></p>
+<p><strong>Recommendation:</strong> A 768Wh or larger station (like the EcoFlow River 2 Pro or Jackery Explorer 700) will comfortably get you through the night, with enough margin for a few extra hours if the outage extends into the morning.</p>
+
+<h3>Scenario B: 24-Hour Grid Down — Essentials Only</h3>
+<p><em>Devices:</em> Mini fridge (60W avg, cycling) + LED TV (60W, 4 hrs) + WiFi (15W, 24 hrs) + LED lamp (8W, 6 hrs) + phone/laptop charging (20W, 4 hrs)<br>
+<em>Estimated daily energy:</em> Fridge ~720Wh + TV ~240Wh + WiFi ~360Wh + Lamp ~48Wh + Devices ~80Wh = ~<strong>1448Wh total</strong><br>
+<em>Station needed with 82% efficiency:</em> 1448 ÷ 0.82 = <strong>~1766Wh</strong></p>
+<p><strong>Recommendation:</strong> A 2000Wh station (like the Bluetti AC200 series or EcoFlow Delta 2) is the sweet spot. You'll have enough power for a full day of moderate use with some margin. Consider adding a solar panel to recharge during daylight for multi-day outages.</p>
+
+<h3>Scenario C: 4-Hour Workday Backup</h3>
+<p><em>Devices:</em> Laptop (65W) + 2nd monitor (30W) + WiFi (15W) + LED desk lamp (8W) + phone charging (10W)<br>
+<em>Total draw:</em> ~128W<br>
+<em>Station needed for 4 hours:</em> (128W × 4 hrs) ÷ 0.82 = <strong>~624Wh</strong></p>
+<p><strong>Recommendation:</strong> A 500-700Wh station gives you a comfortable workday. A 500Wh model will last ~3-3.5 hours at this load, so bump up to 700Wh+ if you want a full day's buffer. The Jackery Explorer 500 Plus or EcoFlow River 2 Pro both work well here.</p>
+
+<h3>Scenario D: Extended Outage — Fridge Priority</h3>
+<p><em>Devices:</em> Full-size fridge (120W avg) + nothing else during compressor cycles<br>
+<em>Goal:</em> Keep the fridge running for 24+ hours to save food</p>
+<p>A fridge cycles on and off — typically running ~30-40% of the time. So a 120W fridge actually averages ~36-48W draw over a full day.</p>
+<ul>
+<li><strong>500Wh station:</strong> ~8-12 hours fridge runtime (won't make 24h)</li>
+<li><strong>1000Wh station:</strong> ~16-24 hours — borderline for a full day</li>
+<li><strong>1500Wh+ station:</strong> Comfortable 24+ hours with room for phone/lights</li>
+</ul>
+
+<p><strong>Pro tip:</strong> Set your fridge to the coldest setting before the outage. Every degree colder buys more time when the power goes out. Also, minimize opening the door — a fridge keeps cold for 4+ hours if unopened.</p>
+
+<h2>How to Measure Your Actual Appliance Draw</h2>
+<p>Manufacturer wattage labels are often inaccurate. Here's how to get precise numbers:</p>
+<ol>
+<li><strong>Buy a Kill-A-Watt or smart plug</strong> ($15-30) — plug your appliance into it, and it displays real-time wattage and cumulative kWh usage.</li>
+<li><strong>Measure over 24 hours</strong> — important for cycling devices like fridges where peak vs. average draw differs significantly.</li>
+<li><strong>Note the startup surge</strong> — some meters have a "max" mode that captures the peak draw.</li>
+<li><strong>Use your measured numbers</strong> in the formula above for accurate runtime estimates.</li>
+</ol>
+
+<h2>Quick Cheat Sheet: Runtime at a Glance</h2>
+<p>If you only remember a few numbers, remember these:</p>
+<ul>
+<li>A <strong>300Wh station</strong> = 1 mini fridge for ~3-4 hours or CPAP for one night</li>
+<li>A <strong>500Wh station</strong> = ~8 hrs mini fridge + lights + phone charging, or CPAP for 1-2 nights</li>
+<li>A <strong>1000Wh station</strong> = Run a mini fridge for ~12-15 hrs + TV + WiFi all day, or CPAP for 3-4 nights</li>
+<li>A <strong>2000Wh station</strong> = Full day of essential apartment backup (fridge, TV, lights, devices, WiFi) with room to spare</li>
+</ul>
+
+<h2>Final Thoughts</h2>
+<p>Runtime calculations are simple math, but real-world results depend on your specific equipment and usage patterns. Always <strong>add 20-30% buffer</strong> to your calculated needs — power outages rarely end exactly when you expect them to, and running a battery to 0% regularly will shorten its lifespan.</p>
+<p>If you're choosing between two power stations, <strong>go bigger if your budget allows</strong>. Having extra capacity means you can run more devices, handle longer outages, and keep your battery healthier by avoiding deep discharges. It's the single best investment you can make in your apartment backup setup.</p>
+</main>
+<footer class="footer"><div class="container">
+<p>BatteryBackupGuide.com &mdash; Independent reviews and guides for home battery backup solutions.</p>
+<p class="aff-disclosure">We participate in the Amazon Services LLC Associates Program. As an Amazon Associate we earn from qualifying purchases.</p>
+<p>&copy; 2026 Battery Backup Guide. All rights reserved.</p>
+</div></footer>
+</body>
+</html>
