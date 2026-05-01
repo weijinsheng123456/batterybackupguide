@@ -128,6 +128,30 @@ body::before {
 }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 .product-box, .callout, .warning { animation: fadeUp 0.4s ease-out; }
+.toc-sidebar { background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 28px; overflow: hidden; }
+.toc-header { padding: 12px 16px; cursor: pointer; font-size: 0.82rem; font-weight: 600; display: flex; align-items: center; gap: 8px; color: var(--text); user-select: none; }
+.toc-header:hover { background: rgba(255,255,255,0.03); }
+.toc-toggle { font-size: 0.7rem; transition: transform 0.2s; color: var(--text-muted); }
+.toc-body { padding: 0 16px 12px; }
+.toc-body.collapsed { display: none; }
+.toc-body ol { margin: 0; padding: 0; list-style: none; }
+.toc-body li { margin-bottom: 4px; padding-left: 20px; position: relative; }
+.toc-body li::before { content: counter(toc-counter); counter-increment: toc-counter; color: var(--glow-blue); font-weight: 600; font-size: 0.72rem; position: absolute; left: 0; }
+.toc-body ol { counter-reset: toc-counter; }
+.toc-link { color: var(--text-secondary); text-decoration: none; font-size: 0.82rem; transition: color 0.2s; display: inline-block; padding: 3px 0; }
+.toc-link:hover { color: var(--glow-blue); }
+html { scroll-behavior: smooth; }
+.share-section { margin: 32px 0; padding-top: 24px; border-top: 1px solid var(--border); }
+.share-section h3 { font-size: 0.9rem; font-weight: 600; margin-bottom: 12px; }
+.share-buttons { display: flex; gap: 8px; flex-wrap: wrap; }
+.share-btn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 8px; font-size: 0.78rem; font-weight: 600; text-decoration: none; transition: all 0.2s; color: #e2e8f0; background: rgba(0,0,0,0.2); }
+.share-btn:hover { transform: translateY(-1px); }
+.share-twitter:hover { background: #1da1f2; color: #fff; }
+.share-facebook:hover { background: #1877f2; color: #fff; }
+.share-reddit:hover { background: #ff4500; color: #fff; }
+.share-email:hover { background: var(--glow-blue); color: #000; }
+@media print { .nav, .footer, .toc-sidebar, .share-section, .related-section, .back-top, .progress-bar { display: none !important; } body { background: #fff !important; color: #000 !important; } .container { max-width: 100%; } .post-content h1 { -webkit-text-fill-color: #000 !important; color: #000 !important; } }
+
 .related-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
 .related-section h2 { font-size: 1.1rem; font-weight: 700; margin-bottom: 16px; }
 .related-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
@@ -150,15 +174,16 @@ body::before {
 <a href="/">Home</a><a href="/about">About</a></div></nav>
 <main id="article-content" class="container post-content" role="main">
 <div class="breadcrumbs"><a href="/">Home</a> <span>&#x203a;</span> <span>Guide</span></div>
+<nav class="toc-sidebar" id="tocSidebar"><div class="toc-header" onclick="toggleTOC()">☰ On this page <span class="toc-toggle">▼</span></div><div class="toc-body" id="tocBody"><ol><li><a href="#why-cpap-users-in-apartments-need-a-plan" class="toc-link">Why CPAP Users in Apartments Need a Plan</a></li><li><a href="#how-much-power-does-a-cpap-machine-need" class="toc-link">How Much Power Does a CPAP Machine Need?</a></li><li><a href="#top-power-stations-for-cpap-in-apartment" class="toc-link">Top Power Stations for CPAP in Apartments</a></li><li><a href="#cpap-battery-backup-checklist" class="toc-link">CPAP Battery Backup Checklist</a></li><li><a href="#what-not-to-do" class="toc-link">What Not to Do</a></li><li><a href="#final-verdict" class="toc-link">Final Verdict</a></li></ol></div></nav>
 <h1>Battery Backup for CPAP in Apartment — 2026 Life-Saving Guide</h1>
 <div class="post-meta">Updated May 2026 &bull; 12 min read &bull; Category: Guide</div>
 
-<h2>Why CPAP Users in Apartments Need a Plan</h2>
+<h2 id="why-cpap-users-in-apartments-need-a-plan">Why CPAP Users in Apartments Need a Plan</h2>
 <p>For the 30 million Americans who use CPAP therapy, a power outage isn't an inconvenience — it's a medical emergency. Without treatment, sleep apnea symptoms return immediately: interrupted breathing, oxygen desaturation, and increased cardiovascular strain.</p>
 <p>Apartment dwellers face an extra challenge: gas generators are banned in most multi-unit buildings, and running one on a balcony can still let carbon monoxide seep into your unit — or your neighbor's. The CDC reports that CO poisoning from generators kills over 70 people annually, many in apartments.</p>
 <p>A portable power station is the only safe, practical solution for apartment CPAP users. Here's what you need to know.</p>
 
-<h2>How Much Power Does a CPAP Machine Need?</h2>
+<h2 id="how-much-power-does-a-cpap-machine-need">How Much Power Does a CPAP Machine Need?</h2>
 <table>
 <tr><th>CPAP Model</th><th>Watts (no humidifier)</th><th>Watts (with humidifier)</th><th>Nightly Wh (8 hrs, no hum.)</th><th>Nightly Wh (8 hrs, with hum.)</th></tr>
 <tr><td>ResMed AirSense 10</td><td>30-53 W</td><td>53-104 W</td><td>~320 Wh</td><td>~600 Wh</td></tr>
@@ -168,7 +193,7 @@ body::before {
 </table>
 <p>Key takeaway: Running CPAP without the humidifier cuts power consumption by nearly half. If you can tolerate it, your battery backup will last twice as long.</p>
 
-<h2>Top Power Stations for CPAP in Apartments</h2>
+<h2 id="top-power-stations-for-cpap-in-apartment">Top Power Stations for CPAP in Apartments</h2>
 
 <h3>1. Jackery Explorer 1000 v2 — Best for CPAP</h3>
 <div class="product-box"><h3>Jackery Explorer 1000 v2</h3><p>$999 · 1,070 Wh · 22 lbs · UPS mode (20ms)</p></div>
@@ -182,7 +207,7 @@ body::before {
 <div class="product-box"><h3>Bluetti AC180</h3><p>$899 · 1,152 Wh · 37 lbs</p></div>
 <p>The AC180's 1,152 Wh capacity provides 2 nights with humidifier or 3-4 nights without. If you live in an area prone to multi-day outages (hurricane zones, wildfire PSPS areas), this is the safest bet.</p>
 
-<h2>CPAP Battery Backup Checklist</h2>
+<h2 id="cpap-battery-backup-checklist">CPAP Battery Backup Checklist</h2>
 <ul>
 <li><strong>Check your machine's wattage:</strong> Look on the power brick or manual. Most CPAPs draw 30-60W without humidifier.</li>
 <li><strong>Skip the humidifier during outages:</strong> It doubles power draw. Use it only if medically necessary.</li>
@@ -191,16 +216,17 @@ body::before {
 <li><strong>Buy 1.5x your nightly needs:</strong> If your CPAP uses 300 Wh per night, get at least 450 Wh capacity. This gives you buffer for longer outages or higher pressure settings.</li>
 </ul>
 
-<h2>What Not to Do</h2>
+<h2 id="what-not-to-do">What Not to Do</h2>
 <ul>
 <li><strong>Don't use a car inverter + extension cord setup.</strong> It's unsafe and inefficient. The inverter drains your car battery and CO from idling in a garage is deadly.</li>
 <li><strong>Don't rely on USB power banks.</strong> Most CPAP machines need pure sine wave AC power. USB adapters won't work.</li>
 <li><strong>Don't wait until an outage to test your setup.</strong> Test it on a normal night first — make sure the power station's fan noise doesn't disturb your sleep, and verify the runtime matches your expectations.</li>
 </ul>
 
-<h2>Final Verdict</h2>
+<h2 id="final-verdict">Final Verdict</h2>
 <p>Your CPAP therapy is non-negotiable. For most apartment CPAP users, the <strong>Jackery Explorer 1000 v2</strong> is the optimal choice — it provides 2+ nights of backup, has instant UPS switchover, and is lightweight enough to move between rooms. If you're on a budget, the <strong>EcoFlow River 2 Pro</strong> covers one night with room to spare.</p>
 <div class="related-section"><h2>Related Guides</h2><div class="related-grid"><a href="/posts/apartment-power-outage-survival-guide" class="related-card"><div class="related-icon">⚡</div><div class="related-title">Apartment Power Outage Survival Guide (No Generato</div><div class="related-cat">Guide</div></a><a href="/posts/how-to-prepare-for-power-outages-home" class="related-card"><div class="related-icon">⚡</div><div class="related-title">How to Prepare for Power Outages at Home: Complete</div><div class="related-cat">Guide</div></a><a href="/posts/can-portable-power-station-power-whole-apartment" class="related-card"><div class="related-icon">⚡</div><div class="related-title">Can a Portable Power Station Power a Whole Apartme</div><div class="related-cat">Guide</div></a></div></div>
+<div class="share-section"><h3>Share this guide</h3><div class="share-buttons"><a href="https://twitter.com/intent/tweet?text=Battery Backup for CPAP in Apartment — 2026 Life-Saving Guide&url=https://batterybackupguide.com/posts/battery-backup-cpap-apartment" target="_blank" rel="noopener" class="share-btn share-twitter" aria-label="Share on Twitter">𝕏 Twitter</a><a href="https://www.facebook.com/sharer/sharer.php?u=https://batterybackupguide.com/posts/battery-backup-cpap-apartment" target="_blank" rel="noopener" class="share-btn share-facebook" aria-label="Share on Facebook">f Facebook</a><a href="https://www.reddit.com/submit?title=Battery Backup for CPAP in Apartment — 2026 Life-Saving Guide&url=https://batterybackupguide.com/posts/battery-backup-cpap-apartment" target="_blank" rel="noopener" class="share-btn share-reddit" aria-label="Share on Reddit">● Reddit</a><a href="mailto:?subject=Battery Backup for CPAP in Apartment — 2026 Life-Saving Guide&body=Check this out: https://batterybackupguide.com/posts/battery-backup-cpap-apartment" class="share-btn share-email" aria-label="Share via Email">✉ Email</a></div></div>
 </main>
 <button id="backTop" class="back-top" onclick="window.scrollTo({top:0,behavior:&apos;smooth&apos;})">↑</button>
 <script>window.addEventListener("scroll",function(){var b=document.getElementById("backTop");if(b){if(window.scrollY>400){b.classList.add("visible")}else{b.classList.remove("visible")}}});</script>

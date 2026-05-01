@@ -128,6 +128,30 @@ body::before {
 }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 .product-box, .callout, .warning { animation: fadeUp 0.4s ease-out; }
+.toc-sidebar { background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 28px; overflow: hidden; }
+.toc-header { padding: 12px 16px; cursor: pointer; font-size: 0.82rem; font-weight: 600; display: flex; align-items: center; gap: 8px; color: var(--text); user-select: none; }
+.toc-header:hover { background: rgba(255,255,255,0.03); }
+.toc-toggle { font-size: 0.7rem; transition: transform 0.2s; color: var(--text-muted); }
+.toc-body { padding: 0 16px 12px; }
+.toc-body.collapsed { display: none; }
+.toc-body ol { margin: 0; padding: 0; list-style: none; }
+.toc-body li { margin-bottom: 4px; padding-left: 20px; position: relative; }
+.toc-body li::before { content: counter(toc-counter); counter-increment: toc-counter; color: var(--glow-blue); font-weight: 600; font-size: 0.72rem; position: absolute; left: 0; }
+.toc-body ol { counter-reset: toc-counter; }
+.toc-link { color: var(--text-secondary); text-decoration: none; font-size: 0.82rem; transition: color 0.2s; display: inline-block; padding: 3px 0; }
+.toc-link:hover { color: var(--glow-blue); }
+html { scroll-behavior: smooth; }
+.share-section { margin: 32px 0; padding-top: 24px; border-top: 1px solid var(--border); }
+.share-section h3 { font-size: 0.9rem; font-weight: 600; margin-bottom: 12px; }
+.share-buttons { display: flex; gap: 8px; flex-wrap: wrap; }
+.share-btn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 8px; font-size: 0.78rem; font-weight: 600; text-decoration: none; transition: all 0.2s; color: #e2e8f0; background: rgba(0,0,0,0.2); }
+.share-btn:hover { transform: translateY(-1px); }
+.share-twitter:hover { background: #1da1f2; color: #fff; }
+.share-facebook:hover { background: #1877f2; color: #fff; }
+.share-reddit:hover { background: #ff4500; color: #fff; }
+.share-email:hover { background: var(--glow-blue); color: #000; }
+@media print { .nav, .footer, .toc-sidebar, .share-section, .related-section, .back-top, .progress-bar { display: none !important; } body { background: #fff !important; color: #000 !important; } .container { max-width: 100%; } .post-content h1 { -webkit-text-fill-color: #000 !important; color: #000 !important; } }
+
 .related-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
 .related-section h2 { font-size: 1.1rem; font-weight: 700; margin-bottom: 16px; }
 .related-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
@@ -150,13 +174,14 @@ body::before {
 <a href="/">Home</a><a href="/about">About</a></div></nav>
 <main id="article-content" class="container post-content" role="main">
 <div class="breadcrumbs"><a href="/">Home</a> <span>&#x203a;</span> <span>Guide</span></div>
+<nav class="toc-sidebar" id="tocSidebar"><div class="toc-header" onclick="toggleTOC()">☰ On this page <span class="toc-toggle">▼</span></div><div class="toc-body" id="tocBody"><ol><li><a href="#the-#1-question-about-portable-power-sta" class="toc-link">The #1 Question About Portable Power Stations</a></li><li><a href="#the-basic-runtime-formula" class="toc-link">The Basic Runtime Formula</a></li><li><a href="#runtime-reference-table:-common-applianc" class="toc-link">Runtime Reference Table: Common Appliances</a></li><li><a href="#putting-it-all-together:-combined-effici" class="toc-link">Putting It All Together: Combined Efficiency</a></li><li><a href="#common-apartment-backup-scenarios" class="toc-link">Common Apartment Backup Scenarios</a></li><li><a href="#how-to-measure-your-actual-appliance-dra" class="toc-link">How to Measure Your Actual Appliance Draw</a></li><li><a href="#quick-cheat-sheet:-runtime-at-a-glance" class="toc-link">Quick Cheat Sheet: Runtime at a Glance</a></li><li><a href="#final-thoughts" class="toc-link">Final Thoughts</a></li></ol></div></nav>
 <h1>How Long Will a Power Station Run My Appliances? — Runtime Guide</h1>
 <div class="post-meta">Updated May 2026 &bull; 10 min read &bull; Category: Guide</div>
-<h2>The #1 Question About Portable Power Stations</h2>
+<h2 id="the-#1-question-about-portable-power-sta">The #1 Question About Portable Power Stations</h2>
 <p>You've bought or are considering a portable power station for apartment backup. You know the capacity in watt-hours (Wh). But the real question is: <strong>"How long will it actually run my stuff?"</strong></p>
 <p>The honest answer is: <em>it depends</em> — on the appliance's power draw, the station's capacity, inverter losses, and how you use it. In this guide, we'll give you realistic runtime estimates for common household appliances across different power station sizes, plus the formula so you can calculate any scenario yourself.</p>
 
-<h2>The Basic Runtime Formula</h2>
+<h2 id="the-basic-runtime-formula">The Basic Runtime Formula</h2>
 <p>Here's the simple formula to estimate runtime:</p>
 <p style="background:#f5f5f5;padding:15px;border-radius:8px;font-size:1.1em;text-align:center;">
 <strong>Runtime (hours)</strong> = (Power Station Capacity in Wh × Efficiency Factor) ÷ Appliance Power Draw in Watts
@@ -171,7 +196,7 @@ body::before {
 <p><strong>Example:</strong> A 1000Wh power station running a 60W fridge with 85% efficiency:<br>
 (1000 × 0.85) ÷ 60 = <strong>~14.2 hours</strong></p>
 
-<h2>Runtime Reference Table: Common Appliances</h2>
+<h2 id="runtime-reference-table:-common-applianc">Runtime Reference Table: Common Appliances</h2>
 <p>Below are estimated runtimes for common apartment devices across popular power station sizes. Assumes ~85% overall efficiency (inverter + battery discharge). Actual results may vary — see the <a href="#real-world-factors">real-world factors section</a> below.</p>
 
 <table style="width:100%;border-collapse:collapse;margin:20px 0;">
@@ -333,7 +358,7 @@ body::before {
 <h3>5. Depth of Discharge (DoD) Limits</h3>
 <p>Most portable power stations automatically stop discharging when the battery reaches a minimum voltage (typically 5-20% remaining) to protect battery health. This means you can't use the <em>full</em> rated capacity. For example, a 1000Wh station with 10% DoD reserve only gives you ~900Wh of usable energy.</p>
 
-<h2>Putting It All Together: Combined Efficiency</h2>
+<h2 id="putting-it-all-together:-combined-effici">Putting It All Together: Combined Efficiency</h2>
 <p>When you stack all these factors together, here's what a typical real-world efficiency looks like:</p>
 
 <table style="width:100%;border-collapse:collapse;margin:20px 0;">
@@ -375,7 +400,7 @@ body::before {
 
 <p><strong>Bottom line:</strong> Assume you'll get <strong>75-85%</strong> of the rated capacity for practical runtime planning. A 1000Wh station will give you roughly <strong>800-850Wh</strong> of usable AC power.</p>
 
-<h2>Common Apartment Backup Scenarios</h2>
+<h2 id="common-apartment-backup-scenarios">Common Apartment Backup Scenarios</h2>
 
 <h3>Scenario A: 8-Hour Nighttime Outage (Sleep Mode)</h3>
 <p><em>Devices:</em> WiFi router (15W) + CPAP with heated humidifier (50W) + phone charging (10W)<br>
@@ -407,7 +432,7 @@ body::before {
 
 <p><strong>Pro tip:</strong> Set your fridge to the coldest setting before the outage. Every degree colder buys more time when the power goes out. Also, minimize opening the door — a fridge keeps cold for 4+ hours if unopened.</p>
 
-<h2>How to Measure Your Actual Appliance Draw</h2>
+<h2 id="how-to-measure-your-actual-appliance-dra">How to Measure Your Actual Appliance Draw</h2>
 <p>Manufacturer wattage labels are often inaccurate. Here's how to get precise numbers:</p>
 <ol>
 <li><strong>Buy a Kill-A-Watt or smart plug</strong> ($15-30) — plug your appliance into it, and it displays real-time wattage and cumulative kWh usage.</li>
@@ -416,7 +441,7 @@ body::before {
 <li><strong>Use your measured numbers</strong> in the formula above for accurate runtime estimates.</li>
 </ol>
 
-<h2>Quick Cheat Sheet: Runtime at a Glance</h2>
+<h2 id="quick-cheat-sheet:-runtime-at-a-glance">Quick Cheat Sheet: Runtime at a Glance</h2>
 <p>If you only remember a few numbers, remember these:</p>
 <ul>
 <li>A <strong>300Wh station</strong> = 1 mini fridge for ~3-4 hours or CPAP for one night</li>
@@ -425,10 +450,11 @@ body::before {
 <li>A <strong>2000Wh station</strong> = Full day of essential apartment backup (fridge, TV, lights, devices, WiFi) with room to spare</li>
 </ul>
 
-<h2>Final Thoughts</h2>
+<h2 id="final-thoughts">Final Thoughts</h2>
 <p>Runtime calculations are simple math, but real-world results depend on your specific equipment and usage patterns. Always <strong>add 20-30% buffer</strong> to your calculated needs — power outages rarely end exactly when you expect them to, and running a battery to 0% regularly will shorten its lifespan.</p>
 <p>If you're choosing between two power stations, <strong>go bigger if your budget allows</strong>. Having extra capacity means you can run more devices, handle longer outages, and keep your battery healthier by avoiding deep discharges. It's the single best investment you can make in your apartment backup setup.</p>
 <div class="related-section"><h2>Related Guides</h2><div class="related-grid"><a href="/posts/apartment-power-outage-survival-guide" class="related-card"><div class="related-icon">⚡</div><div class="related-title">Apartment Power Outage Survival Guide (No Generato</div><div class="related-cat">Guide</div></a><a href="/posts/how-to-prepare-for-power-outages-home" class="related-card"><div class="related-icon">⚡</div><div class="related-title">How to Prepare for Power Outages at Home: Complete</div><div class="related-cat">Guide</div></a><a href="/posts/battery-backup-cpap-apartment" class="related-card"><div class="related-icon">⚡</div><div class="related-title">Battery Backup for CPAP in Apartment — 2026 Life-S</div><div class="related-cat">Guide</div></a></div></div>
+<div class="share-section"><h3>Share this guide</h3><div class="share-buttons"><a href="https://twitter.com/intent/tweet?text=How Long Will a Power Station Run My Appliances? — Runtime Guide&url=https://batterybackupguide.com/posts/how-long-power-station-run-appliances" target="_blank" rel="noopener" class="share-btn share-twitter" aria-label="Share on Twitter">𝕏 Twitter</a><a href="https://www.facebook.com/sharer/sharer.php?u=https://batterybackupguide.com/posts/how-long-power-station-run-appliances" target="_blank" rel="noopener" class="share-btn share-facebook" aria-label="Share on Facebook">f Facebook</a><a href="https://www.reddit.com/submit?title=How Long Will a Power Station Run My Appliances? — Runtime Guide&url=https://batterybackupguide.com/posts/how-long-power-station-run-appliances" target="_blank" rel="noopener" class="share-btn share-reddit" aria-label="Share on Reddit">● Reddit</a><a href="mailto:?subject=How Long Will a Power Station Run My Appliances? — Runtime Guide&body=Check this out: https://batterybackupguide.com/posts/how-long-power-station-run-appliances" class="share-btn share-email" aria-label="Share via Email">✉ Email</a></div></div>
 </main>
 <button id="backTop" class="back-top" onclick="window.scrollTo({top:0,behavior:&apos;smooth&apos;})">↑</button>
 <script>window.addEventListener("scroll",function(){var b=document.getElementById("backTop");if(b){if(window.scrollY>400){b.classList.add("visible")}else{b.classList.remove("visible")}}});</script>

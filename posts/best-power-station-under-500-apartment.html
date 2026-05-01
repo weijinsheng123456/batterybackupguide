@@ -128,6 +128,30 @@ body::before {
 }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 .product-box, .callout, .warning { animation: fadeUp 0.4s ease-out; }
+.toc-sidebar { background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 28px; overflow: hidden; }
+.toc-header { padding: 12px 16px; cursor: pointer; font-size: 0.82rem; font-weight: 600; display: flex; align-items: center; gap: 8px; color: var(--text); user-select: none; }
+.toc-header:hover { background: rgba(255,255,255,0.03); }
+.toc-toggle { font-size: 0.7rem; transition: transform 0.2s; color: var(--text-muted); }
+.toc-body { padding: 0 16px 12px; }
+.toc-body.collapsed { display: none; }
+.toc-body ol { margin: 0; padding: 0; list-style: none; }
+.toc-body li { margin-bottom: 4px; padding-left: 20px; position: relative; }
+.toc-body li::before { content: counter(toc-counter); counter-increment: toc-counter; color: var(--glow-blue); font-weight: 600; font-size: 0.72rem; position: absolute; left: 0; }
+.toc-body ol { counter-reset: toc-counter; }
+.toc-link { color: var(--text-secondary); text-decoration: none; font-size: 0.82rem; transition: color 0.2s; display: inline-block; padding: 3px 0; }
+.toc-link:hover { color: var(--glow-blue); }
+html { scroll-behavior: smooth; }
+.share-section { margin: 32px 0; padding-top: 24px; border-top: 1px solid var(--border); }
+.share-section h3 { font-size: 0.9rem; font-weight: 600; margin-bottom: 12px; }
+.share-buttons { display: flex; gap: 8px; flex-wrap: wrap; }
+.share-btn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 8px; font-size: 0.78rem; font-weight: 600; text-decoration: none; transition: all 0.2s; color: #e2e8f0; background: rgba(0,0,0,0.2); }
+.share-btn:hover { transform: translateY(-1px); }
+.share-twitter:hover { background: #1da1f2; color: #fff; }
+.share-facebook:hover { background: #1877f2; color: #fff; }
+.share-reddit:hover { background: #ff4500; color: #fff; }
+.share-email:hover { background: var(--glow-blue); color: #000; }
+@media print { .nav, .footer, .toc-sidebar, .share-section, .related-section, .back-top, .progress-bar { display: none !important; } body { background: #fff !important; color: #000 !important; } .container { max-width: 100%; } .post-content h1 { -webkit-text-fill-color: #000 !important; color: #000 !important; } }
+
 .related-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
 .related-section h2 { font-size: 1.1rem; font-weight: 700; margin-bottom: 16px; }
 .related-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
@@ -150,15 +174,16 @@ body::before {
 <a href="/">Home</a><a href="/about">About</a></div></nav>
 <main id="article-content" class="container post-content" role="main">
 <div class="breadcrumbs"><a href="/">Home</a> <span>&#x203a;</span> <span>Buying Guide</span></div>
+<nav class="toc-sidebar" id="tocSidebar"><div class="toc-header" onclick="toggleTOC()">☰ On this page <span class="toc-toggle">▼</span></div><div class="toc-body" id="tocBody"><ol><li><a href="#why-go-under-$500-apartment-backup-on-a-" class="toc-link">Why Go Under $500? Apartment Backup on a Budget</a></li><li><a href="#the-5-best-power-stations-under-$500-for" class="toc-link">The 5 Best Power Stations Under $500 for Apartments</a></li><li><a href="#comparison-table:-top-5-power-stations-u" class="toc-link">Comparison Table: Top 5 Power Stations Under $500</a></li><li><a href="#what-can-you-power-with-$500-or-less" class="toc-link">What Can You Power With $500 or Less?</a></li><li><a href="#key-features-to-look-for-under-$500" class="toc-link">Key Features to Look For Under $500</a></li><li><a href="#final-verdict" class="toc-link">Final Verdict</a></li></ol></div></nav>
 <h1>Best Portable Power Station Under $500 for Apartments — 2026 Budget Guide</h1>
 <div class="post-meta">Updated May 2026 &bull; 12 min read &bull; Category: Buying Guide</div>
 
-<h2>Why Go Under $500? Apartment Backup on a Budget</h2>
+<h2 id="why-go-under-$500-apartment-backup-on-a-">Why Go Under $500? Apartment Backup on a Budget</h2>
 <p>Not every apartment dweller needs a 1,000Wh behemoth. In fact, most apartment outage scenarios — a 4–8 hour blackout — can be handled perfectly well by a power station under $500. These compact units are light enough to store in a closet, quiet enough to run in a bedroom, and powerful enough to keep your fridge cold, your WiFi online, and your devices charged.</p>
 <p>The sweet spot for apartment backup under $500 is 200–800 Wh of capacity. That's enough to power a mini-fridge for 6–8 hours, a CPAP machine all night, or keep a laptop and phone running for days. And at this price point, you're getting modern LiFePO₄ battery chemistry in most models — meaning 3,000+ charge cycles and a lifespan of 8–10 years.</p>
 <p>We reviewed 8 models priced under $500, evaluating them on real-world apartment performance, noise level, build quality, and value. Here are the 5 that made the cut.</p>
 
-<h2>The 5 Best Power Stations Under $500 for Apartments</h2>
+<h2 id="the-5-best-power-stations-under-$500-for">The 5 Best Power Stations Under $500 for Apartments</h2>
 
 <div class="product-box">
 <h3>1. Jackery Explorer 300 — Best Ultra-Portable</h3>
@@ -215,7 +240,7 @@ body::before {
 
 <div class="pros-cons"><div class="pros"><h4>✅ Pros</h4><ul><li>Ultra-portable (5.3 lbs) — most carry-friendly option</li><li>Premium Goal Zero build quality</li><li>60W USB-C PD for fast laptop charging</li><li>Efficient MPPT solar controller built-in</li></ul></div><div class="cons"><h4>❌ Cons</h4><ul><li>Only 187 Wh — limited to device charging only</li><li>NMC battery — ~500 cycle lifespan</li><li>Single AC outlet</li><li>Lowest overall capacity in this guide</li></ul></div></div>
 
-<h2>Comparison Table: Top 5 Power Stations Under $500</h2>
+<h2 id="comparison-table:-top-5-power-stations-u">Comparison Table: Top 5 Power Stations Under $500</h2>
 <table>
 <tr><th>Model</th><th>Price</th><th>Capacity</th><th>Output</th><th>Weight</th><th>Battery</th><th>AC Outlets</th></tr>
 <tr><td>Jackery Explorer 300</td><td>$269</td><td>293 Wh</td><td>300 W</td><td>7.1 lbs</td><td>NMC</td><td>1</td></tr>
@@ -225,7 +250,7 @@ body::before {
 <tr><td>Goal Zero Yeti 200X</td><td>$349</td><td>187 Wh</td><td>300 W</td><td>5.3 lbs</td><td>NMC</td><td>1</td></tr>
 </table>
 
-<h2>What Can You Power With $500 or Less?</h2>
+<h2 id="what-can-you-power-with-$500-or-less">What Can You Power With $500 or Less?</h2>
 <p>Here’s a realistic breakdown of what each capacity tier can handle in an apartment outage scenario:</p>
 <ul>
 <li><strong>Under 300 Wh (Jackery 300, EcoFlow River 2, Yeti 200X):</strong> Phone (8+ charges), laptop (3–4 charges), WiFi router (20+ hours), LED lamp (15+ hours), tablet (5+ charges). Great for a work-from-home survival kit.</li>
@@ -233,7 +258,7 @@ body::before {
 <li><strong>500+ Wh (Anker 535, Bluetti EB55):</strong> Everything above, plus a mini-fridge (4–5 hours), a full-size fridge (3–4 hours), a gaming console (5–6 hours), or a sound system. This is the sweet spot for 1-bedroom apartments.</li>
 </ul>
 
-<h2>Key Features to Look For Under $500</h2>
+<h2 id="key-features-to-look-for-under-$500">Key Features to Look For Under $500</h2>
 <ul>
 <li><strong>LiFePO₄ Battery:</strong> If you can get it at this price (EcoFlow River 2, Anker 535, Bluetti EB55), choose it. NMC batteries (Jackery 300, Yeti 200X) are fine but need replacement sooner.</li>
 <li><strong>Pure Sine Wave Inverter:</strong> Essential for sensitive electronics. All models on this list have it.</li>
@@ -243,12 +268,13 @@ body::before {
 <li><strong>Weight & Size:</strong> For apartments, under 15 lbs is ideal. Under 10 lbs is excellent for moving between rooms.</li>
 </ul>
 
-<h2>Final Verdict</h2>
+<h2 id="final-verdict">Final Verdict</h2>
 <p>If you want the best all-around value under $500 for an apartment, the <strong>Anker PowerHouse 535</strong> ($399) is our top pick. It offers 512 Wh of capacity, 3 AC outlets, LiFePO₄ battery longevity, and Anker’s legendary build quality — all at a price that leaves room in your budget for accessories.</p>
 <p>If capacity is your top priority and you can stretch to $499, the <strong>Bluetti EB55</strong> wins with 537 Wh, 700W output, 4 AC outlets, and wireless charging — the most capable station on this list by a clear margin.</p>
 <p>For studio apartments and tight spaces, the <strong>Jackery Explorer 300</strong> ($269) or <strong>EcoFlow River 2</strong> ($279) are both excellent choices. Go with the Jackery if portability is king, or the EcoFlow if you want LiFePO₄ battery chemistry and faster charging.</p>
 <p>Whichever you choose, any of these five stations will keep your apartment essentials running during the next blackout — without breaking the bank or violating building rules.</p>
 <div class="related-section"><h2>Related Guides</h2><div class="related-grid"><a href="/posts/best-home-battery-backup-2026" class="related-card"><div class="related-icon">⚡</div><div class="related-title">Best Home Battery Backup Systems 2026 — Top 7 Pick</div><div class="related-cat">Buying Guide</div></a><a href="/posts/best-generator-for-apartment-2026" class="related-card"><div class="related-icon">⚡</div><div class="related-title">Best Generator for Apartments (No Gas) — 2026 Guid</div><div class="related-cat">Buying Guide</div></a><a href="/posts/best-portable-power-station-apartment-dwellers" class="related-card"><div class="related-icon">⚡</div><div class="related-title">Best Portable Power Station for Apartment Dwellers</div><div class="related-cat">Buying Guide</div></a></div></div>
+<div class="share-section"><h3>Share this guide</h3><div class="share-buttons"><a href="https://twitter.com/intent/tweet?text=Best Portable Power Station Under $500 for Apartments — 2026 Budget Guide&url=https://batterybackupguide.com/posts/best-power-station-under-500-apartment" target="_blank" rel="noopener" class="share-btn share-twitter" aria-label="Share on Twitter">𝕏 Twitter</a><a href="https://www.facebook.com/sharer/sharer.php?u=https://batterybackupguide.com/posts/best-power-station-under-500-apartment" target="_blank" rel="noopener" class="share-btn share-facebook" aria-label="Share on Facebook">f Facebook</a><a href="https://www.reddit.com/submit?title=Best Portable Power Station Under $500 for Apartments — 2026 Budget Guide&url=https://batterybackupguide.com/posts/best-power-station-under-500-apartment" target="_blank" rel="noopener" class="share-btn share-reddit" aria-label="Share on Reddit">● Reddit</a><a href="mailto:?subject=Best Portable Power Station Under $500 for Apartments — 2026 Budget Guide&body=Check this out: https://batterybackupguide.com/posts/best-power-station-under-500-apartment" class="share-btn share-email" aria-label="Share via Email">✉ Email</a></div></div>
 </main>
 <button id="backTop" class="back-top" onclick="window.scrollTo({top:0,behavior:&apos;smooth&apos;})">↑</button>
 <script>window.addEventListener("scroll",function(){var b=document.getElementById("backTop");if(b){if(window.scrollY>400){b.classList.add("visible")}else{b.classList.remove("visible")}}});</script>

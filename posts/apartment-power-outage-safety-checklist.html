@@ -128,6 +128,30 @@ body::before {
 }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 .product-box, .callout, .warning { animation: fadeUp 0.4s ease-out; }
+.toc-sidebar { background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 28px; overflow: hidden; }
+.toc-header { padding: 12px 16px; cursor: pointer; font-size: 0.82rem; font-weight: 600; display: flex; align-items: center; gap: 8px; color: var(--text); user-select: none; }
+.toc-header:hover { background: rgba(255,255,255,0.03); }
+.toc-toggle { font-size: 0.7rem; transition: transform 0.2s; color: var(--text-muted); }
+.toc-body { padding: 0 16px 12px; }
+.toc-body.collapsed { display: none; }
+.toc-body ol { margin: 0; padding: 0; list-style: none; }
+.toc-body li { margin-bottom: 4px; padding-left: 20px; position: relative; }
+.toc-body li::before { content: counter(toc-counter); counter-increment: toc-counter; color: var(--glow-blue); font-weight: 600; font-size: 0.72rem; position: absolute; left: 0; }
+.toc-body ol { counter-reset: toc-counter; }
+.toc-link { color: var(--text-secondary); text-decoration: none; font-size: 0.82rem; transition: color 0.2s; display: inline-block; padding: 3px 0; }
+.toc-link:hover { color: var(--glow-blue); }
+html { scroll-behavior: smooth; }
+.share-section { margin: 32px 0; padding-top: 24px; border-top: 1px solid var(--border); }
+.share-section h3 { font-size: 0.9rem; font-weight: 600; margin-bottom: 12px; }
+.share-buttons { display: flex; gap: 8px; flex-wrap: wrap; }
+.share-btn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 8px; font-size: 0.78rem; font-weight: 600; text-decoration: none; transition: all 0.2s; color: #e2e8f0; background: rgba(0,0,0,0.2); }
+.share-btn:hover { transform: translateY(-1px); }
+.share-twitter:hover { background: #1da1f2; color: #fff; }
+.share-facebook:hover { background: #1877f2; color: #fff; }
+.share-reddit:hover { background: #ff4500; color: #fff; }
+.share-email:hover { background: var(--glow-blue); color: #000; }
+@media print { .nav, .footer, .toc-sidebar, .share-section, .related-section, .back-top, .progress-bar { display: none !important; } body { background: #fff !important; color: #000 !important; } .container { max-width: 100%; } .post-content h1 { -webkit-text-fill-color: #000 !important; color: #000 !important; } }
+
 .related-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
 .related-section h2 { font-size: 1.1rem; font-weight: 700; margin-bottom: 16px; }
 .related-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
@@ -150,13 +174,14 @@ body::before {
 <a href="/">Home</a><a href="/about">About</a></div></nav>
 <main id="article-content" class="container post-content" role="main">
 <div class="breadcrumbs"><a href="/">Home</a> <span>&#x203a;</span> <span>Guide</span></div>
+<nav class="toc-sidebar" id="tocSidebar"><div class="toc-header" onclick="toggleTOC()">☰ On this page <span class="toc-toggle">▼</span></div><div class="toc-body" id="tocBody"><ol><li><a href="#☐-before-the-outage:-pre-preparedness-ch" class="toc-link">☐ Before the Outage: Pre-Preparedness Checklist</a></li><li><a href="#☐-when-the-power-goes-out:-immediate-act" class="toc-link">☐ When the Power Goes Out: Immediate Actions</a></li><li><a href="#☐-carbon-monoxide-safety:-the-apartment-" class="toc-link">☐ Carbon Monoxide Safety: The Apartment Danger</a></li><li><a href="#☐-food-safety-during-the-outage" class="toc-link">☐ Food Safety During the Outage</a></li><li><a href="#☐-appliance-&-electronics-protection" class="toc-link">☐ Appliance & Electronics Protection</a></li><li><a href="#☐-medical-device-backup-plan" class="toc-link">☐ Medical Device Backup Plan</a></li><li><a href="#☐-when-to-evacuate" class="toc-link">☐ When to Evacuate</a></li><li><a href="#☐-after-power-returns:-safety-check" class="toc-link">☐ After Power Returns: Safety Check</a></li><li><a href="#final-word:-safety-over-convenience" class="toc-link">Final Word: Safety Over Convenience</a></li></ol></div></nav>
 <h1>Apartment Power Outage Safety Checklist — What Every Renter Needs</h1>
 <div class="post-meta">Updated May 2026 &bull; 8 min read &bull; Category: Guide</div>
 
 <p>Power outages in apartments are different from house outages. You share walls, floors, and ventilation with neighbors. You can't just fire up a gas generator on the balcony. Elevators stop working. Cooking becomes tricky. And carbon monoxide — the silent killer — becomes a real threat when people get creative with backup power.</p>
 <p>This checklist is built specifically for apartment renters. Print it, save it on your phone, or keep it taped inside a cabinet door. When the power goes out, you don't want to be figuring things out from scratch.</p>
 
-<h2>☐ Before the Outage: Pre-Preparedness Checklist</h2>
+<h2 id="☐-before-the-outage:-pre-preparedness-ch">☐ Before the Outage: Pre-Preparedness Checklist</h2>
 <p>Do these <strong>now</strong>, not when the lights flicker.</p>
 <ul class="checklist">
 <li><strong>☐ Sign up for outage alerts</strong> — Text your utility company or download their app. Many send proactive notifications about scheduled maintenance and major outages.</li>
@@ -183,7 +208,7 @@ body::before {
 <li>Spare house key (kept separately from your keychain)</li>
 </ul>
 
-<h2>☐ When the Power Goes Out: Immediate Actions</h2>
+<h2 id="☐-when-the-power-goes-out:-immediate-act">☐ When the Power Goes Out: Immediate Actions</h2>
 <p>The first 10 minutes matter. Stay calm and work through these steps in order.</p>
 <ul class="checklist">
 <li><strong>☐ Check if it's just your unit</strong> — Look out your window. Are the neighbors' lights on? Check the hallway. If only your unit is dark, check your breaker panel for a tripped switch before assuming a wider outage.</li>
@@ -195,7 +220,7 @@ body::before {
 <li><strong>☐ Report the outage</strong> — Call or text your utility company. Many have automated systems that track outage locations and estimated restoration times.</li>
 </ul>
 
-<h2>☐ Carbon Monoxide Safety: The Apartment Danger</h2>
+<h2 id="☐-carbon-monoxide-safety:-the-apartment-">☐ Carbon Monoxide Safety: The Apartment Danger</h2>
 <p>Carbon monoxide (CO) is colorless, odorless, and kills quickly. Apartment dwellers face unique risks because of shared ventilation and small spaces.</p>
 <ul class="checklist">
 <li><strong>☐ NEVER run a gas generator indoors</strong> — Not in your apartment. Not in the hallway. Not on your balcony. Not in the garage. Generator exhaust is DEADLY. Even with windows open, CO can reach lethal levels in minutes.</li>
@@ -206,7 +231,7 @@ body::before {
 <li><strong>☐ Be aware of neighbors' generators</strong> — If a neighbor runs a generator on their balcony or near a window, it can vent CO into your unit through shared air intakes, open windows, or wall gaps. If you feel symptoms, leave and report it.</li>
 </ul>
 
-<h2>☐ Food Safety During the Outage</h2>
+<h2 id="☐-food-safety-during-the-outage">☐ Food Safety During the Outage</h2>
 <p>Nobody wants to throw away a full refrigerator. Follow these guidelines to stay safe.</p>
 <ul class="checklist">
 <li><strong>☐ Keep it closed</strong> — A refrigerator stays cold for about 4 hours unopened. A freezer maintains temperature for 24-48 hours. Use a cooler with ice if you need frequent access.</li>
@@ -218,7 +243,7 @@ body::before {
 <li><strong>☐ Safe drinking water</strong> — If you lose water pressure (common in multi-story buildings during outages), use stored bottled water. Keep at least 1 gallon per person per day for 3 days. Fill your bathtub or large containers before an expected outage for toilet flushing and cleaning.</li>
 </ul>
 
-<h2>☐ Appliance & Electronics Protection</h2>
+<h2 id="☐-appliance-&-electronics-protection">☐ Appliance & Electronics Protection</h2>
 <p>Power returning after an outage can be just as damaging as losing it.</p>
 <ul class="checklist">
 <li><strong>☐ Keep everything unplugged during the outage</strong> — Computers, TVs, gaming consoles, microwaves, and any device with a digital clock or circuit board should remain disconnected until power stabilizes.</li>
@@ -229,7 +254,7 @@ body::before {
 <li><strong>☐ Reset your clocks and timers</strong> — Stove clocks, microwave timers, programmable thermostats, and security systems may need reconfiguration. Check them within the first hour of restoration.</li>
 </ul>
 
-<h2>☐ Medical Device Backup Plan</h2>
+<h2 id="☐-medical-device-backup-plan">☐ Medical Device Backup Plan</h2>
 <p>If you or someone in your home relies on powered medical equipment, an outage is a medical emergency.</p>
 <ul class="checklist">
 <li><strong>☐ Know your device's power requirements</strong> — Check the wattage and voltage on the device label. Most CPAP machines draw 30-90W. Nebulizers draw 100-200W. Powered wheelchairs may require 200-500W for charging.</li>
@@ -240,7 +265,7 @@ body::before {
 <li><strong>☐ Label your unit</strong> — Place a visible sticker or note near your doorbell indicating that someone with a medical device lives here. This helps first responders prioritize your unit in an emergency.</li>
 </ul>
 
-<h2>☐ When to Evacuate</h2>
+<h2 id="☐-when-to-evacuate">☐ When to Evacuate</h2>
 <p>Sometimes staying is not safe. Know the red lines.</p>
 <ul class="checklist">
 <li><strong>☐ Carbon monoxide alarm sounds</strong> — Evacuate immediately. Do not stop to gather belongings. Call 911 from outside.</li>
@@ -252,7 +277,7 @@ body::before {
 <li><strong>☐ Loss of medical device power</strong> — If your backup battery is depleted and power is not restored, evacuate to a hospital, friend's home, or emergency shelter.</li>
 </ul>
 
-<h2>☐ After Power Returns: Safety Check</h2>
+<h2 id="☐-after-power-returns:-safety-check">☐ After Power Returns: Safety Check</h2>
 <ul class="checklist">
 <li><strong>☐ Check refrigerated food</strong> — Discard any perishable food that was above 40°F for 2+ hours. When in doubt, throw it out.</li>
 <li><strong>☐ Reset smoke and CO detectors</strong> — Some detectors will chirp or show error codes after a power interruption. Test them to ensure they're working.</li>
@@ -261,10 +286,11 @@ body::before {
 <li><strong>☐ Check on neighbors again</strong> — Especially elderly or vulnerable neighbors. Make sure they're okay and have their essentials back in order.</li>
 </ul>
 
-<h2>Final Word: Safety Over Convenience</h2>
+<h2 id="final-word:-safety-over-convenience">Final Word: Safety Over Convenience</h2>
 <p>Every year, people die in apartments during power outages because of carbon monoxide from portable generators or grills used indoors. Don't become a statistic. Follow this checklist, prepare ahead of time, and remember: If you're unsure whether something is safe, it's not worth the risk. Your life and your neighbor's life are worth more than keeping your phone charged or your fridge running.</p>
 <p>Keep this checklist somewhere you can find it in the dark — physically printed, not just on your phone. When the power goes out, your phone battery won't last forever.</p>
 <div class="related-section"><h2>Related Guides</h2><div class="related-grid"><a href="/posts/apartment-power-outage-survival-guide" class="related-card"><div class="related-icon">⚡</div><div class="related-title">Apartment Power Outage Survival Guide (No Generato</div><div class="related-cat">Guide</div></a><a href="/posts/how-to-prepare-for-power-outages-home" class="related-card"><div class="related-icon">⚡</div><div class="related-title">How to Prepare for Power Outages at Home: Complete</div><div class="related-cat">Guide</div></a><a href="/posts/battery-backup-cpap-apartment" class="related-card"><div class="related-icon">⚡</div><div class="related-title">Battery Backup for CPAP in Apartment — 2026 Life-S</div><div class="related-cat">Guide</div></a></div></div>
+<div class="share-section"><h3>Share this guide</h3><div class="share-buttons"><a href="https://twitter.com/intent/tweet?text=Apartment Power Outage Safety Checklist — What Every Renter Needs&url=https://batterybackupguide.com/posts/apartment-power-outage-safety-checklist" target="_blank" rel="noopener" class="share-btn share-twitter" aria-label="Share on Twitter">𝕏 Twitter</a><a href="https://www.facebook.com/sharer/sharer.php?u=https://batterybackupguide.com/posts/apartment-power-outage-safety-checklist" target="_blank" rel="noopener" class="share-btn share-facebook" aria-label="Share on Facebook">f Facebook</a><a href="https://www.reddit.com/submit?title=Apartment Power Outage Safety Checklist — What Every Renter Needs&url=https://batterybackupguide.com/posts/apartment-power-outage-safety-checklist" target="_blank" rel="noopener" class="share-btn share-reddit" aria-label="Share on Reddit">● Reddit</a><a href="mailto:?subject=Apartment Power Outage Safety Checklist — What Every Renter Needs&body=Check this out: https://batterybackupguide.com/posts/apartment-power-outage-safety-checklist" class="share-btn share-email" aria-label="Share via Email">✉ Email</a></div></div>
 </main>
 <button id="backTop" class="back-top" onclick="window.scrollTo({top:0,behavior:&apos;smooth&apos;})">↑</button>
 <script>window.addEventListener("scroll",function(){var b=document.getElementById("backTop");if(b){if(window.scrollY>400){b.classList.add("visible")}else{b.classList.remove("visible")}}});</script>

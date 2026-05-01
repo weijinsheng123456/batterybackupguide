@@ -114,6 +114,30 @@ body::before {
 }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 .product-box, .callout, .warning { animation: fadeUp 0.4s ease-out; }
+.toc-sidebar { background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 28px; overflow: hidden; }
+.toc-header { padding: 12px 16px; cursor: pointer; font-size: 0.82rem; font-weight: 600; display: flex; align-items: center; gap: 8px; color: var(--text); user-select: none; }
+.toc-header:hover { background: rgba(255,255,255,0.03); }
+.toc-toggle { font-size: 0.7rem; transition: transform 0.2s; color: var(--text-muted); }
+.toc-body { padding: 0 16px 12px; }
+.toc-body.collapsed { display: none; }
+.toc-body ol { margin: 0; padding: 0; list-style: none; }
+.toc-body li { margin-bottom: 4px; padding-left: 20px; position: relative; }
+.toc-body li::before { content: counter(toc-counter); counter-increment: toc-counter; color: var(--glow-blue); font-weight: 600; font-size: 0.72rem; position: absolute; left: 0; }
+.toc-body ol { counter-reset: toc-counter; }
+.toc-link { color: var(--text-secondary); text-decoration: none; font-size: 0.82rem; transition: color 0.2s; display: inline-block; padding: 3px 0; }
+.toc-link:hover { color: var(--glow-blue); }
+html { scroll-behavior: smooth; }
+.share-section { margin: 32px 0; padding-top: 24px; border-top: 1px solid var(--border); }
+.share-section h3 { font-size: 0.9rem; font-weight: 600; margin-bottom: 12px; }
+.share-buttons { display: flex; gap: 8px; flex-wrap: wrap; }
+.share-btn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 8px; font-size: 0.78rem; font-weight: 600; text-decoration: none; transition: all 0.2s; color: #e2e8f0; background: rgba(0,0,0,0.2); }
+.share-btn:hover { transform: translateY(-1px); }
+.share-twitter:hover { background: #1da1f2; color: #fff; }
+.share-facebook:hover { background: #1877f2; color: #fff; }
+.share-reddit:hover { background: #ff4500; color: #fff; }
+.share-email:hover { background: var(--glow-blue); color: #000; }
+@media print { .nav, .footer, .toc-sidebar, .share-section, .related-section, .back-top, .progress-bar { display: none !important; } body { background: #fff !important; color: #000 !important; } .container { max-width: 100%; } .post-content h1 { -webkit-text-fill-color: #000 !important; color: #000 !important; } }
+
 .related-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
 .related-section h2 { font-size: 1.1rem; font-weight: 700; margin-bottom: 16px; }
 .related-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
@@ -153,6 +177,31 @@ def render_post_html(post, all_posts=None):
                 related_html += f'<a href="/posts/{r["slug"]}" class="related-card"><div class="related-icon">{icon}</div><div class="related-title">{r["title"][:50]}</div><div class="related-cat">{r["category"]}</div></a>'
             related_html += '</div></div>'
     
+    # Table of Contents
+    import re as _re
+    toc_items = [(m.group(1).strip().lower().replace(' ', '-').replace('?','').replace(',','').replace('—','-')[:40], m.group(1)) for m in _re.finditer(r'<h2>(.*?)</h2>', t.get('body', ''))]
+    toc_html = ''
+    if len(toc_items) >= 3:
+        items = ''.join('<li><a href="#' + h_id + '" class="toc-link">' + label + '</a></li>' for h_id, label in toc_items)
+        toc_html = '<nav class="toc-sidebar" id="tocSidebar"><div class="toc-header" onclick="toggleTOC()">\u2630 On this page <span class="toc-toggle">\u25BC</span></div><div class="toc-body" id="tocBody"><ol>' + items + '</ol></div></nav>'
+    
+    # Add id attributes to h2 tags
+    def add_h2_ids(m):
+        txt = m.group(1)
+        hid = txt.strip().lower().replace(' ', '-').replace('?','').replace(',','').replace('—','-')[:40]
+        return '<h2 id="' + hid + '">' + txt + '</h2>'
+    body_with_ids = _re.sub(r'<h2>(.*?)</h2>', add_h2_ids, t.get('body', ''))
+    
+    # Social sharing
+    surl = 'https://batterybackupguide.com/posts/' + t['slug']
+    stitle = t['title'].replace('"', '')
+    share_html = '<div class="share-section"><h3>Share this guide</h3><div class="share-buttons">'
+    share_html += '<a href="https://twitter.com/intent/tweet?text=' + stitle + '&url=' + surl + '" target="_blank" rel="noopener" class="share-btn share-twitter" aria-label="Share on Twitter">\U0001d54f Twitter</a>'
+    share_html += '<a href="https://www.facebook.com/sharer/sharer.php?u=' + surl + '" target="_blank" rel="noopener" class="share-btn share-facebook" aria-label="Share on Facebook">f Facebook</a>'
+    share_html += '<a href="https://www.reddit.com/submit?title=' + stitle + '&url=' + surl + '" target="_blank" rel="noopener" class="share-btn share-reddit" aria-label="Share on Reddit">\u25cf Reddit</a>'
+    share_html += '<a href="mailto:?subject=' + stitle + '&body=Check this out: ' + surl + '" class="share-btn share-email" aria-label="Share via Email">\u2709 Email</a>'
+    share_html += '</div></div>'
+    
     # Back to top button
     back_top = '<button id="backTop" class="back-top" onclick="window.scrollTo({top:0,behavior:&apos;smooth&apos;})">\u2191</button>'
     
@@ -189,8 +238,10 @@ def render_post_html(post, all_posts=None):
 <a href="/">Home</a><a href="/about">About</a></div></nav>
 <main id="article-content" class="container post-content" role="main">
 <div class="breadcrumbs"><a href="/">Home</a> <span>&#x203a;</span> <span>{t['category']}</span></div>
-{t['body']}
+{toc_html}
+{body_with_ids}
 {related_html}
+{share_html}
 </main>
 {back_top}
 {back_top_js}

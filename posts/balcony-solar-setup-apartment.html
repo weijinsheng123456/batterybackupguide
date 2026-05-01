@@ -128,6 +128,30 @@ body::before {
 }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 .product-box, .callout, .warning { animation: fadeUp 0.4s ease-out; }
+.toc-sidebar { background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 28px; overflow: hidden; }
+.toc-header { padding: 12px 16px; cursor: pointer; font-size: 0.82rem; font-weight: 600; display: flex; align-items: center; gap: 8px; color: var(--text); user-select: none; }
+.toc-header:hover { background: rgba(255,255,255,0.03); }
+.toc-toggle { font-size: 0.7rem; transition: transform 0.2s; color: var(--text-muted); }
+.toc-body { padding: 0 16px 12px; }
+.toc-body.collapsed { display: none; }
+.toc-body ol { margin: 0; padding: 0; list-style: none; }
+.toc-body li { margin-bottom: 4px; padding-left: 20px; position: relative; }
+.toc-body li::before { content: counter(toc-counter); counter-increment: toc-counter; color: var(--glow-blue); font-weight: 600; font-size: 0.72rem; position: absolute; left: 0; }
+.toc-body ol { counter-reset: toc-counter; }
+.toc-link { color: var(--text-secondary); text-decoration: none; font-size: 0.82rem; transition: color 0.2s; display: inline-block; padding: 3px 0; }
+.toc-link:hover { color: var(--glow-blue); }
+html { scroll-behavior: smooth; }
+.share-section { margin: 32px 0; padding-top: 24px; border-top: 1px solid var(--border); }
+.share-section h3 { font-size: 0.9rem; font-weight: 600; margin-bottom: 12px; }
+.share-buttons { display: flex; gap: 8px; flex-wrap: wrap; }
+.share-btn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 8px; font-size: 0.78rem; font-weight: 600; text-decoration: none; transition: all 0.2s; color: #e2e8f0; background: rgba(0,0,0,0.2); }
+.share-btn:hover { transform: translateY(-1px); }
+.share-twitter:hover { background: #1da1f2; color: #fff; }
+.share-facebook:hover { background: #1877f2; color: #fff; }
+.share-reddit:hover { background: #ff4500; color: #fff; }
+.share-email:hover { background: var(--glow-blue); color: #000; }
+@media print { .nav, .footer, .toc-sidebar, .share-section, .related-section, .back-top, .progress-bar { display: none !important; } body { background: #fff !important; color: #000 !important; } .container { max-width: 100%; } .post-content h1 { -webkit-text-fill-color: #000 !important; color: #000 !important; } }
+
 .related-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
 .related-section h2 { font-size: 1.1rem; font-weight: 700; margin-bottom: 16px; }
 .related-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
@@ -150,14 +174,15 @@ body::before {
 <a href="/">Home</a><a href="/about">About</a></div></nav>
 <main id="article-content" class="container post-content" role="main">
 <div class="breadcrumbs"><a href="/">Home</a> <span>&#x203a;</span> <span>Guide</span></div>
+<nav class="toc-sidebar" id="tocSidebar"><div class="toc-header" onclick="toggleTOC()">☰ On this page <span class="toc-toggle">▼</span></div><div class="toc-body" id="tocBody"><ol><li><a href="#can-you-really-use-solar-panels-on-an-ap" class="toc-link">Can You Really Use Solar Panels on an Apartment Balcony?</a></li><li><a href="#why-balcony-solar-makes-sense-for-apartm" class="toc-link">Why Balcony Solar Makes Sense for Apartments</a></li><li><a href="#choosing-the-right-solar-panel-for-balco" class="toc-link">Choosing the Right Solar Panel for Balcony Use</a></li><li><a href="#how-to-set-up-solar-panels-on-your-balco" class="toc-link">How to Set Up Solar Panels on Your Balcony</a></li><li><a href="#how-much-power-can-you-actually-generate" class="toc-link">How Much Power Can You Actually Generate?</a></li><li><a href="#important-considerations-for-renters" class="toc-link">Important Considerations for Renters</a></li><li><a href="#frequently-asked-questions" class="toc-link">Frequently Asked Questions</a></li><li><a href="#our-verdict:-is-balcony-solar-worth-it" class="toc-link">Our Verdict: Is Balcony Solar Worth It?</a></li></ol></div></nav>
 <h1>Balcony Solar Generator Setup for Apartments — Complete 2026 Guide</h1>
 <div class="post-meta">Updated May 2026 &bull; 11 min read &bull; Category: Guide</div>
 
-<h2>Can You Really Use Solar Panels on an Apartment Balcony?</h2>
+<h2 id="can-you-really-use-solar-panels-on-an-ap">Can You Really Use Solar Panels on an Apartment Balcony?</h2>
 <p>The short answer is <strong>yes</strong> — with the right setup, balcony solar is one of the most practical ways apartment dwellers can generate their own backup power. While you won't cover 100% of your usage like a rooftop system would, a well-placed 100W to 200W solar panel can keep your portable power station topped off indefinitely during an outage, stretch your runtime from hours to days, and even offset some daily electricity costs.</p>
 <p>This guide walks through everything you need to know: choosing the right panel, balcony placement strategies, connecting to a power station, real-world power generation numbers, and the lease/HOA pitfalls to watch out for.</p>
 
-<h2>Why Balcony Solar Makes Sense for Apartments</h2>
+<h2 id="why-balcony-solar-makes-sense-for-apartm">Why Balcony Solar Makes Sense for Apartments</h2>
 <p>Portable power stations are fantastic for apartment backup — but they have one limitation: they eventually run out of juice. Solar charging solves that. Instead of rationing power during a multi-day outage, you can recharge during the day and use at night, creating a nearly endless loop of backup power.</p>
 <p>Beyond outages, balcony solar lets you:</p>
 <ul>
@@ -167,7 +192,7 @@ body::before {
 <li><strong>Lower electricity bills slightly</strong> — every watt you generate is a watt you don't pay for</li>
 </ul>
 
-<h2>Choosing the Right Solar Panel for Balcony Use</h2>
+<h2 id="choosing-the-right-solar-panel-for-balco">Choosing the Right Solar Panel for Balcony Use</h2>
 <p>Not all solar panels are balcony-friendly. Here's what to look for:</p>
 
 <h3>Panel Type: Portable vs. Rigid</h3>
@@ -184,7 +209,7 @@ body::before {
 
 <div class="product-box"><h3>Bluetti PV200</h3><p>$349 · 200W · Monocrystalline · 23.4% efficiency · 16.1 lbs</p><p><strong>Best for:</strong> Bluetti power station owners and those who want the highest portable wattage available. The PV200 is the most efficient portable panel in its class, with a high 23.4% conversion rate that matters when balcony space is limited.</p><p><strong>Why it works on a balcony:</strong> The PV200's higher efficiency means more watts per square foot — critical when you only have a small railing or floor area to work with. The durable ETFE coating handles weather better than standard PET panels.</p></div>
 
-<h2>How to Set Up Solar Panels on Your Balcony</h2>
+<h2 id="how-to-set-up-solar-panels-on-your-balco">How to Set Up Solar Panels on Your Balcony</h2>
 
 <h3>Step 1: Assess Your Balcony's Solar Potential</h3>
 <p>Before buying anything, spend a few days observing your balcony. Key factors:</p>
@@ -212,7 +237,7 @@ body::before {
 <li>Adjust the panel angle every 2–3 hours to track the sun for maximum output</li>
 </ol>
 
-<h2>How Much Power Can You Actually Generate?</h2>
+<h2 id="how-much-power-can-you-actually-generate">How Much Power Can You Actually Generate?</h2>
 <p>Real-world numbers matter more than theoretical maximums. Here's what you can expect on an average apartment balcony:</p>
 
 <table>
@@ -238,7 +263,7 @@ body::before {
 <li>Keep a WiFi router (10 Wh) running 24/7</li>
 </ul>
 
-<h2>Important Considerations for Renters</h2>
+<h2 id="important-considerations-for-renters">Important Considerations for Renters</h2>
 
 <h3>Lease Agreements and HOA Rules</h3>
 <p>Before setting up any solar equipment, check:</p>
@@ -254,7 +279,7 @@ body::before {
 <h3>Extension Cords and Weatherproofing</h3>
 <p>If your power station is inside and the panel is on the balcony, you'll need to run the solar cable under a door or through a window. Use a flat extension cord designed for windows, or a door seal gap cover. Keep all connections dry — a simple plastic bag over the connector works in a pinch.</p>
 
-<h2>Frequently Asked Questions</h2>
+<h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
 
 <h3>Can I leave my solar panel on the balcony permanently?</h3>
 <p>Not recommended unless you have a weatherproof, rigid panel and landlord approval. Portable panels aren't designed for permanent outdoor exposure — rain, UV, and wind will degrade them faster. Bring them inside when not in use.</p>
@@ -268,13 +293,14 @@ body::before {
 <h3>Can I connect multiple panels?</h3>
 <p>Yes, if your power station supports it. Most stations have a maximum input voltage and wattage. For example, the Jackery Explorer 1000 v2 can accept up to 200W of solar input, so you could connect two SolarSaga 100W panels in parallel. Check your power station's specs before buying a second panel.</p>
 
-<h2>Our Verdict: Is Balcony Solar Worth It?</h2>
+<h2 id="our-verdict:-is-balcony-solar-worth-it">Our Verdict: Is Balcony Solar Worth It?</h2>
 <p>For apartment dwellers who already own a portable power station, adding a 100W–200W solar panel is one of the best upgrades you can make. It transforms your backup power from a finite resource (whatever charge you stored before the outage) into a renewable one that can sustain you for days or weeks.</p>
 <p>Even with the real-world limitations — partial shade, suboptimal angles, and the hassle of daily setup — a balcony solar setup will <strong>pay for itself during the first multi-day outage</strong> when your neighbors are rationing battery packs and you're running a fridge, lights, and WiFi on free solar energy.</p>
 <p><strong>Our top recommendation for most apartment dwellers:</strong> Start with a Jackery SolarSaga 100W panel paired with a Jackery Explorer power station — they're designed to work together seamlessly, and the 100W panel is light enough for daily balcony deployment. If your budget allows and your balcony gets good sun, step up to the EcoFlow 160W or Bluetti PV200 for significantly more daily energy generation.</p>
 <p>The sun shines on everyone — even apartment dwellers. With the right setup, you can capture some of that energy and keep your home running when the grid goes down.</p>
 
 <div class="related-section"><h2>Related Guides</h2><div class="related-grid"><a href="/posts/apartment-power-outage-survival-guide" class="related-card"><div class="related-icon">⚡</div><div class="related-title">Apartment Power Outage Survival Guide (No Generato</div><div class="related-cat">Guide</div></a><a href="/posts/how-to-prepare-for-power-outages-home" class="related-card"><div class="related-icon">⚡</div><div class="related-title">How to Prepare for Power Outages at Home: Complete</div><div class="related-cat">Guide</div></a><a href="/posts/battery-backup-cpap-apartment" class="related-card"><div class="related-icon">⚡</div><div class="related-title">Battery Backup for CPAP in Apartment — 2026 Life-S</div><div class="related-cat">Guide</div></a></div></div>
+<div class="share-section"><h3>Share this guide</h3><div class="share-buttons"><a href="https://twitter.com/intent/tweet?text=Balcony Solar Generator Setup for Apartments — Complete 2026 Guide&url=https://batterybackupguide.com/posts/balcony-solar-setup-apartment" target="_blank" rel="noopener" class="share-btn share-twitter" aria-label="Share on Twitter">𝕏 Twitter</a><a href="https://www.facebook.com/sharer/sharer.php?u=https://batterybackupguide.com/posts/balcony-solar-setup-apartment" target="_blank" rel="noopener" class="share-btn share-facebook" aria-label="Share on Facebook">f Facebook</a><a href="https://www.reddit.com/submit?title=Balcony Solar Generator Setup for Apartments — Complete 2026 Guide&url=https://batterybackupguide.com/posts/balcony-solar-setup-apartment" target="_blank" rel="noopener" class="share-btn share-reddit" aria-label="Share on Reddit">● Reddit</a><a href="mailto:?subject=Balcony Solar Generator Setup for Apartments — Complete 2026 Guide&body=Check this out: https://batterybackupguide.com/posts/balcony-solar-setup-apartment" class="share-btn share-email" aria-label="Share via Email">✉ Email</a></div></div>
 </main>
 <button id="backTop" class="back-top" onclick="window.scrollTo({top:0,behavior:&apos;smooth&apos;})">↑</button>
 <script>window.addEventListener("scroll",function(){var b=document.getElementById("backTop");if(b){if(window.scrollY>400){b.classList.add("visible")}else{b.classList.remove("visible")}}});</script>

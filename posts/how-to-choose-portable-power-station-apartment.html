@@ -128,6 +128,30 @@ body::before {
 }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 .product-box, .callout, .warning { animation: fadeUp 0.4s ease-out; }
+.toc-sidebar { background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 28px; overflow: hidden; }
+.toc-header { padding: 12px 16px; cursor: pointer; font-size: 0.82rem; font-weight: 600; display: flex; align-items: center; gap: 8px; color: var(--text); user-select: none; }
+.toc-header:hover { background: rgba(255,255,255,0.03); }
+.toc-toggle { font-size: 0.7rem; transition: transform 0.2s; color: var(--text-muted); }
+.toc-body { padding: 0 16px 12px; }
+.toc-body.collapsed { display: none; }
+.toc-body ol { margin: 0; padding: 0; list-style: none; }
+.toc-body li { margin-bottom: 4px; padding-left: 20px; position: relative; }
+.toc-body li::before { content: counter(toc-counter); counter-increment: toc-counter; color: var(--glow-blue); font-weight: 600; font-size: 0.72rem; position: absolute; left: 0; }
+.toc-body ol { counter-reset: toc-counter; }
+.toc-link { color: var(--text-secondary); text-decoration: none; font-size: 0.82rem; transition: color 0.2s; display: inline-block; padding: 3px 0; }
+.toc-link:hover { color: var(--glow-blue); }
+html { scroll-behavior: smooth; }
+.share-section { margin: 32px 0; padding-top: 24px; border-top: 1px solid var(--border); }
+.share-section h3 { font-size: 0.9rem; font-weight: 600; margin-bottom: 12px; }
+.share-buttons { display: flex; gap: 8px; flex-wrap: wrap; }
+.share-btn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 8px; font-size: 0.78rem; font-weight: 600; text-decoration: none; transition: all 0.2s; color: #e2e8f0; background: rgba(0,0,0,0.2); }
+.share-btn:hover { transform: translateY(-1px); }
+.share-twitter:hover { background: #1da1f2; color: #fff; }
+.share-facebook:hover { background: #1877f2; color: #fff; }
+.share-reddit:hover { background: #ff4500; color: #fff; }
+.share-email:hover { background: var(--glow-blue); color: #000; }
+@media print { .nav, .footer, .toc-sidebar, .share-section, .related-section, .back-top, .progress-bar { display: none !important; } body { background: #fff !important; color: #000 !important; } .container { max-width: 100%; } .post-content h1 { -webkit-text-fill-color: #000 !important; color: #000 !important; } }
+
 .related-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
 .related-section h2 { font-size: 1.1rem; font-weight: 700; margin-bottom: 16px; }
 .related-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
@@ -150,14 +174,15 @@ body::before {
 <a href="/">Home</a><a href="/about">About</a></div></nav>
 <main id="article-content" class="container post-content" role="main">
 <div class="breadcrumbs"><a href="/">Home</a> <span>&#x203a;</span> <span>Guide</span></div>
+<nav class="toc-sidebar" id="tocSidebar"><div class="toc-header" onclick="toggleTOC()">☰ On this page <span class="toc-toggle">▼</span></div><div class="toc-body" id="tocBody"><ol><li><a href="#why-you-need-a-portable-power-station-in" class="toc-link">Why You Need a Portable Power Station in Your Apartment</a></li><li><a href="#what-is-a-portable-power-station" class="toc-link">What Is a Portable Power Station?</a></li><li><a href="#key-spec-#1:-capacity---watt-hours-(wh)" class="toc-link">Key Spec #1: Capacity — Watt-Hours (Wh)</a></li><li><a href="#key-spec-#2:-output---watts-(w)" class="toc-link">Key Spec #2: Output — Watts (W)</a></li><li><a href="#key-spec-#3:-battery-type---lifepo₄-vs.-" class="toc-link">Key Spec #3: Battery Type — LiFePO₄ vs. NMC vs. Lead-Acid</a></li><li><a href="#key-spec-#4:-pure-sine-wave-inverter" class="toc-link">Key Spec #4: Pure Sine Wave Inverter</a></li><li><a href="#key-spec-#5:-charging-methods" class="toc-link">Key Spec #5: Charging Methods</a></li><li><a href="#what-to-look-for-as-an-apartment-dweller" class="toc-link">What to Look for as an Apartment Dweller</a></li><li><a href="#step-by-step:-how-to-choose-the-right-po" class="toc-link">Step-by-Step: How to Choose the Right Power Station</a></li><li><a href="#quick-example:-the-apartment-scenario" class="toc-link">Quick Example: The Apartment Scenario</a></li><li><a href="#common-mistakes-beginners-make" class="toc-link">Common Mistakes Beginners Make</a></li><li><a href="#final-thoughts" class="toc-link">Final Thoughts</a></li></ol></div></nav>
 <h1>How to Choose a Portable Power Station for Your Apartment — 2026 Buyer's Guide</h1>
 <div class="post-meta">Updated May 2026 &bull; 10 min read &bull; Category: Guide</div>
-<h2>Why You Need a Portable Power Station in Your Apartment</h2>
+<h2 id="why-you-need-a-portable-power-station-in">Why You Need a Portable Power Station in Your Apartment</h2>
 <p>If you live in an apartment, a traditional gas generator is out of the question. Most buildings ban them — the carbon monoxide risk alone makes them dangerous in shared spaces. But power outages don't care about your building's rules. Whether it's a summer storm, grid failure, or rolling blackout, being left in the dark is frustrating and can be costly if your fridge food spoils or your work laptop dies.</p>
 <p>A <strong>portable power station</strong> (sometimes called a solar generator or battery generator) solves this problem. It's essentially a large rechargeable battery with built-in outlets — silent, emission-free, and safe for indoor use. You plug your devices into it when the grid goes down, and charge it back up when power returns.</p>
 <p>This guide is written for absolute beginners. By the time you finish reading, you'll understand exactly what specs matter, what each number means, and how to choose the right power station for your apartment.</p>
 
-<h2>What Is a Portable Power Station?</h2>
+<h2 id="what-is-a-portable-power-station">What Is a Portable Power Station?</h2>
 <p>A portable power station is a device that stores electricity in a battery and delivers it through standard outlets (AC), USB ports, and 12V car ports. Think of it like a giant phone power bank — but powerful enough to run a refrigerator, TV, WiFi router, lights, and medical devices.</p>
 <p>Here's what makes them ideal for apartments:</p>
 <ul>
@@ -167,7 +192,7 @@ body::before {
 <li><strong>Plug-and-play</strong> — No installation, no wiring, no gas. Just charge it and use it.</li>
 </ul>
 
-<h2>Key Spec #1: Capacity — Watt-Hours (Wh)</h2>
+<h2 id="key-spec-#1:-capacity---watt-hours-(wh)">Key Spec #1: Capacity — Watt-Hours (Wh)</h2>
 <p><strong>Watt-hours (Wh)</strong> tell you the <em>total energy storage</em> — the size of the battery tank, so to speak. The higher the Wh, the longer your devices can run.</p>
 <div class="info-box"><strong>Simple analogy:</strong> Watt-hours are like the size of a water tank. A bigger tank holds more water (energy), so it can supply your devices for longer.</div>
 <p>Here's a quick reference for common apartment scenarios:</p>
@@ -179,7 +204,7 @@ body::before {
 </ul>
 <p><strong>Our recommendation for most apartment dwellers:</strong> Start with 1,000–1,500 Wh. It's enough capacity to handle a typical 4–12 hour outage without breaking your budget or your back carrying it.</p>
 
-<h2>Key Spec #2: Output — Watts (W)</h2>
+<h2 id="key-spec-#2:-output---watts-(w)">Key Spec #2: Output — Watts (W)</h2>
 <p>If watt-hours are the <em>size of the tank</em>, <strong>watts (W)</strong> are the <em>size of the pipe</em> — how much power can flow out at any given moment. This determines which devices you can run simultaneously.</p>
 <p>Every device has a wattage rating. Here are common examples:</p>
 <ul>
@@ -197,7 +222,7 @@ body::before {
 <div class="warning-box"><strong>Important:</strong> Many appliances have a <em>surge wattage</em> — a brief spike when they start up. A fridge might need 800 W for 2 seconds to start its compressor, then run at 150 W. Make sure your power station's surge rating can handle this.</div>
 <p>For apartment use, a power station with <strong>1,000–1,800 W continuous output</strong> and <strong>2,000+ W surge</strong> is ideal. This lets you run a fridge, TV, lights, and router all at once.</p>
 
-<h2>Key Spec #3: Battery Type — LiFePO₄ vs. NMC vs. Lead-Acid</h2>
+<h2 id="key-spec-#3:-battery-type---lifepo₄-vs.-">Key Spec #3: Battery Type — LiFePO₄ vs. NMC vs. Lead-Acid</h2>
 <p>The battery chemistry determines how long your power station lasts, how many times you can recharge it, and how safe it is.</p>
 
 <h3>Lithium Iron Phosphate (LiFePO₄) — Best for Apartments</h3>
@@ -216,7 +241,7 @@ body::before {
 <h3>Lead-Acid — Avoid for Apartments</h3>
 <p>Old-school lead-acid batteries are heavy, bulky, and have very short lifespans (200–300 cycles). Portable power stations using lead-acid are rare in 2026, but if you see one, skip it.</p>
 
-<h2>Key Spec #4: Pure Sine Wave Inverter</h2>
+<h2 id="key-spec-#4:-pure-sine-wave-inverter">Key Spec #4: Pure Sine Wave Inverter</h2>
 <p>Your power station needs an <strong>inverter</strong> to convert the battery's DC (direct current) electricity into AC (alternating current) — the type that comes from your wall outlets.</p>
 <p><strong>Pure sine wave</strong> inverters produce clean, smooth electricity that's identical to grid power. This is important because:</p>
 <ul>
@@ -226,7 +251,7 @@ body::before {
 </ul>
 <p><strong>Bottom line:</strong> Never buy a power station without pure sine wave output. Every reputable brand uses it, so this is easy to verify — if the listing doesn't mention it, move on.</p>
 
-<h2>Key Spec #5: Charging Methods</h2>
+<h2 id="key-spec-#5:-charging-methods">Key Spec #5: Charging Methods</h2>
 <p>How you recharge your power station matters — especially in an apartment where you may not have a garage or outdoor space.</p>
 
 <h3>AC Wall Charging</h3>
@@ -248,7 +273,7 @@ body::before {
 <h3>Car Charging</h3>
 <p>Most power stations also charge from a 12V car port (cigarette lighter). This is slow — typically 60–120 W input — but it's handy if you have a car and need emergency power on the go.</p>
 
-<h2>What to Look for as an Apartment Dweller</h2>
+<h2 id="what-to-look-for-as-an-apartment-dweller">What to Look for as an Apartment Dweller</h2>
 <p>Beyond the core specs, apartment living brings some specific considerations:</p>
 
 <h3>Size and Weight</h3>
@@ -276,7 +301,7 @@ body::before {
 <li><strong>12V car port:</strong> Great for car fridges, fans, or DC-powered devices.</li>
 </ul>
 
-<h2>Step-by-Step: How to Choose the Right Power Station</h2>
+<h2 id="step-by-step:-how-to-choose-the-right-po">Step-by-Step: How to Choose the Right Power Station</h2>
 <p>Follow these simple steps to find your perfect match:</p>
 <ol>
 <li><strong>List your essential devices.</strong> Write down everything you'd want to power during an outage — fridge, lights, router, phone, laptop, CPAP, etc.</li>
@@ -288,7 +313,7 @@ body::before {
 <li><strong>Read reviews.</strong> Look for feedback on noise, real-world runtime, and reliability.</li>
 </ol>
 
-<h2>Quick Example: The Apartment Scenario</h2>
+<h2 id="quick-example:-the-apartment-scenario">Quick Example: The Apartment Scenario</h2>
 <p>Let's say you want to power these essentials during an outage:</p>
 <ul>
 <li>Full-size fridge (150 W running × 8 hours = 1,200 Wh/day — fridges cycle on/off, so actual draw is about 1/3 of that)</li>
@@ -299,7 +324,7 @@ body::before {
 </ul>
 <p><strong>Daily need:</strong> Roughly 1,000 Wh. A <strong>1,200–1,500 Wh</strong> power station like the Jackery Explorer 1000 v2 or EcoFlow Delta 2 would give you a full day of backup with some buffer. With 1,500 Wh, you could even add a TV for entertainment.</p>
 
-<h2>Common Mistakes Beginners Make</h2>
+<h2 id="common-mistakes-beginners-make">Common Mistakes Beginners Make</h2>
 <ul>
 <li><strong>Buying too small.</strong> A 300 Wh station won't run your fridge. Start with at least 1,000 Wh.</li>
 <li><strong>Ignoring surge wattage.</strong> Your fridge's startup surge may be 5–8x its running wattage. Check the peak rating.</li>
@@ -308,7 +333,7 @@ body::before {
 <li><strong>Not checking outlet types.</strong> Some stations have only 2 AC outlets. Make sure it matches your needs.</li>
 </ul>
 
-<h2>Final Thoughts</h2>
+<h2 id="final-thoughts">Final Thoughts</h2>
 <p>Choosing a portable power station for your apartment doesn't have to be complicated. Focus on the four key specs — <strong>capacity (Wh), output (W), battery type (LiFePO₄), and pure sine wave inverter</strong> — and everything else falls into place.</p>
 <p>For most apartment dwellers in 2026, the ideal starter power station is:</p>
 <ul>
@@ -322,6 +347,7 @@ body::before {
 </ul>
 <p>Start with your needs, match them to these specs, and you'll find a power station that keeps your apartment running smoothly through any outage.</p>
 <div class="related-section"><h2>Related Guides</h2><div class="related-grid"><a href="/posts/apartment-power-outage-survival-guide" class="related-card"><div class="related-icon">⚡</div><div class="related-title">Apartment Power Outage Survival Guide (No Generato</div><div class="related-cat">Guide</div></a><a href="/posts/how-to-prepare-for-power-outages-home" class="related-card"><div class="related-icon">⚡</div><div class="related-title">How to Prepare for Power Outages at Home: Complete</div><div class="related-cat">Guide</div></a><a href="/posts/battery-backup-cpap-apartment" class="related-card"><div class="related-icon">⚡</div><div class="related-title">Battery Backup for CPAP in Apartment — 2026 Life-S</div><div class="related-cat">Guide</div></a></div></div>
+<div class="share-section"><h3>Share this guide</h3><div class="share-buttons"><a href="https://twitter.com/intent/tweet?text=How to Choose a Portable Power Station for Your Apartment — 2026 Buyer's Guide&url=https://batterybackupguide.com/posts/how-to-choose-portable-power-station-apartment" target="_blank" rel="noopener" class="share-btn share-twitter" aria-label="Share on Twitter">𝕏 Twitter</a><a href="https://www.facebook.com/sharer/sharer.php?u=https://batterybackupguide.com/posts/how-to-choose-portable-power-station-apartment" target="_blank" rel="noopener" class="share-btn share-facebook" aria-label="Share on Facebook">f Facebook</a><a href="https://www.reddit.com/submit?title=How to Choose a Portable Power Station for Your Apartment — 2026 Buyer's Guide&url=https://batterybackupguide.com/posts/how-to-choose-portable-power-station-apartment" target="_blank" rel="noopener" class="share-btn share-reddit" aria-label="Share on Reddit">● Reddit</a><a href="mailto:?subject=How to Choose a Portable Power Station for Your Apartment — 2026 Buyer's Guide&body=Check this out: https://batterybackupguide.com/posts/how-to-choose-portable-power-station-apartment" class="share-btn share-email" aria-label="Share via Email">✉ Email</a></div></div>
 </main>
 <button id="backTop" class="back-top" onclick="window.scrollTo({top:0,behavior:&apos;smooth&apos;})">↑</button>
 <script>window.addEventListener("scroll",function(){var b=document.getElementById("backTop");if(b){if(window.scrollY>400){b.classList.add("visible")}else{b.classList.remove("visible")}}});</script>

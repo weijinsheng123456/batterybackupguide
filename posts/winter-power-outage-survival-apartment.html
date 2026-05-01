@@ -128,6 +128,30 @@ body::before {
 }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 .product-box, .callout, .warning { animation: fadeUp 0.4s ease-out; }
+.toc-sidebar { background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 28px; overflow: hidden; }
+.toc-header { padding: 12px 16px; cursor: pointer; font-size: 0.82rem; font-weight: 600; display: flex; align-items: center; gap: 8px; color: var(--text); user-select: none; }
+.toc-header:hover { background: rgba(255,255,255,0.03); }
+.toc-toggle { font-size: 0.7rem; transition: transform 0.2s; color: var(--text-muted); }
+.toc-body { padding: 0 16px 12px; }
+.toc-body.collapsed { display: none; }
+.toc-body ol { margin: 0; padding: 0; list-style: none; }
+.toc-body li { margin-bottom: 4px; padding-left: 20px; position: relative; }
+.toc-body li::before { content: counter(toc-counter); counter-increment: toc-counter; color: var(--glow-blue); font-weight: 600; font-size: 0.72rem; position: absolute; left: 0; }
+.toc-body ol { counter-reset: toc-counter; }
+.toc-link { color: var(--text-secondary); text-decoration: none; font-size: 0.82rem; transition: color 0.2s; display: inline-block; padding: 3px 0; }
+.toc-link:hover { color: var(--glow-blue); }
+html { scroll-behavior: smooth; }
+.share-section { margin: 32px 0; padding-top: 24px; border-top: 1px solid var(--border); }
+.share-section h3 { font-size: 0.9rem; font-weight: 600; margin-bottom: 12px; }
+.share-buttons { display: flex; gap: 8px; flex-wrap: wrap; }
+.share-btn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 8px; font-size: 0.78rem; font-weight: 600; text-decoration: none; transition: all 0.2s; color: #e2e8f0; background: rgba(0,0,0,0.2); }
+.share-btn:hover { transform: translateY(-1px); }
+.share-twitter:hover { background: #1da1f2; color: #fff; }
+.share-facebook:hover { background: #1877f2; color: #fff; }
+.share-reddit:hover { background: #ff4500; color: #fff; }
+.share-email:hover { background: var(--glow-blue); color: #000; }
+@media print { .nav, .footer, .toc-sidebar, .share-section, .related-section, .back-top, .progress-bar { display: none !important; } body { background: #fff !important; color: #000 !important; } .container { max-width: 100%; } .post-content h1 { -webkit-text-fill-color: #000 !important; color: #000 !important; } }
+
 .related-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
 .related-section h2 { font-size: 1.1rem; font-weight: 700; margin-bottom: 16px; }
 .related-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
@@ -150,6 +174,7 @@ body::before {
 <a href="/">Home</a><a href="/about">About</a></div></nav>
 <main id="article-content" class="container post-content" role="main">
 <div class="breadcrumbs"><a href="/">Home</a> <span>&#x203a;</span> <span>Guide</span></div>
+<nav class="toc-sidebar" id="tocSidebar"><div class="toc-header" onclick="toggleTOC()">☰ On this page <span class="toc-toggle">▼</span></div><div class="toc-body" id="tocBody"><ol><li><a href="#how-to-stay-warm-without-gas-heat" class="toc-link">How to Stay Warm Without Gas Heat</a></li><li><a href="#electric-space-heaters-vs.-battery-power" class="toc-link">Electric Space Heaters vs. Battery Power Stations</a></li><li><a href="#protect-your-pipes-from-freezing" class="toc-link">Protect Your Pipes From Freezing</a></li><li><a href="#food-storage-&-cooking-in-a-winter-outag" class="toc-link">Food Storage & Cooking in a Winter Outage</a></li><li><a href="#emergency-supply-checklist-for-winter-ou" class="toc-link">Emergency Supply Checklist for Winter Outages</a></li><li><a href="#faq:-winter-apartment-outages" class="toc-link">FAQ: Winter Apartment Outages</a></li></ol></div></nav>
 <h1>Winter Power Outage Survival Guide for Apartments (2026)</h1>
 <div class="post-meta">Updated May 2026 &bull; 11 min read &bull; Category: Guide</div>
 
@@ -157,7 +182,7 @@ body::before {
 
 <div class="alert-box urgent"><strong>⚠️ Life-Safety Priority:</strong> If you rely on electric medical equipment (CPAP, oxygen concentrator, power wheelchair charger), a battery backup is not optional — it's a necessity. Plan for 72+ hours of runtime.</div>
 
-<h2>How to Stay Warm Without Gas Heat</h2>
+<h2 id="how-to-stay-warm-without-gas-heat">How to Stay Warm Without Gas Heat</h2>
 <p>When the power goes out in winter, your apartment's heat disappears within hours. Here are <strong>gas-free, apartment-safe</strong> warming strategies:</p>
 
 <h3>Layer Strategically (Best Bang for Zero Cost)</h3>
@@ -184,7 +209,7 @@ body::before {
 </ul>
 </div>
 
-<h2>Electric Space Heaters vs. Battery Power Stations</h2>
+<h2 id="electric-space-heaters-vs.-battery-power">Electric Space Heaters vs. Battery Power Stations</h2>
 <p>Can you run a space heater on a portable power station? Technically yes, but the math is brutal:</p>
 <table>
 <thead>
@@ -200,7 +225,7 @@ body::before {
 </table>
 <p><strong>Bottom line:</strong> Space heaters are impractical on battery backup for extended outages. Use them only if you have a large capacity station (2,000+ Wh) and only in short bursts. Focus on heated blankets and personal warming devices instead.</p>
 
-<h2>Protect Your Pipes From Freezing</h2>
+<h2 id="protect-your-pipes-from-freezing">Protect Your Pipes From Freezing</h2>
 <p>Frozen pipes are the #1 property damage risk during winter outages. Apartment pipes in exterior walls are especially vulnerable.</p>
 
 <h3>Preventive Steps (Before the Outage)</h3>
@@ -225,7 +250,7 @@ body::before {
 <li>Unusual smells from drains (due to trapped gases)</li>
 </ul>
 
-<h2>Food Storage & Cooking in a Winter Outage</h2>
+<h2 id="food-storage-&-cooking-in-a-winter-outag">Food Storage & Cooking in a Winter Outage</h2>
 <p>Winter outages are actually easier for food storage — you can use the outdoors as a refrigerator.</p>
 
 <h3>Use Your Balcony or Patio as a Cold Larder</h3>
@@ -252,7 +277,7 @@ body::before {
 <li><strong>Best option:</strong> Stock ready-to-eat foods — canned soups, protein bars, nuts, dried fruit, peanut butter — that need no cooking or refrigeration</li>
 </ul>
 
-<h2>Emergency Supply Checklist for Winter Outages</h2>
+<h2 id="emergency-supply-checklist-for-winter-ou">Emergency Supply Checklist for Winter Outages</h2>
 <p>Keep these items in a dedicated bin you can grab in the dark:</p>
 <ul>
 <li><strong>Power & Lighting:</strong> Portable power station (768-1,000 Wh minimum), solar panel if you have balcony exposure, headlamp + extra batteries, LED lantern, USB rechargeable candles</li>
@@ -263,7 +288,7 @@ body::before {
 <li><strong>Miscellaneous:</strong> First aid kit, prescription meds (7-day supply), cat litter/ice melt for walkways, multipurpose fire extinguisher, multi-tool</li>
 </ul>
 
-<h2>FAQ: Winter Apartment Outages</h2>
+<h2 id="faq:-winter-apartment-outages">FAQ: Winter Apartment Outages</h2>
 <h3>Should I fill my bathtub with water?</h3>
 <p>Yes. Fill it before the outage if freezing is forecast. This gives you 30-40 gallons for drinking, flushing toilets, and washing. If pipes freeze, you'll be glad you did.</p>
 
@@ -281,6 +306,7 @@ body::before {
 
 <div class="alert-box"><strong>Prepare now, not during the storm.</strong> Winter weather forecasts give you 24-72 hours of warning. Use that window to charge your power station, fill water containers, and check your emergency supplies. A little preparation turns a crisis into an inconvenience.</div>
 <div class="related-section"><h2>Related Guides</h2><div class="related-grid"><a href="/posts/apartment-power-outage-survival-guide" class="related-card"><div class="related-icon">⚡</div><div class="related-title">Apartment Power Outage Survival Guide (No Generato</div><div class="related-cat">Guide</div></a><a href="/posts/how-to-prepare-for-power-outages-home" class="related-card"><div class="related-icon">⚡</div><div class="related-title">How to Prepare for Power Outages at Home: Complete</div><div class="related-cat">Guide</div></a><a href="/posts/battery-backup-cpap-apartment" class="related-card"><div class="related-icon">⚡</div><div class="related-title">Battery Backup for CPAP in Apartment — 2026 Life-S</div><div class="related-cat">Guide</div></a></div></div>
+<div class="share-section"><h3>Share this guide</h3><div class="share-buttons"><a href="https://twitter.com/intent/tweet?text=Winter Power Outage Survival Guide for Apartments (2026)&url=https://batterybackupguide.com/posts/winter-power-outage-survival-apartment" target="_blank" rel="noopener" class="share-btn share-twitter" aria-label="Share on Twitter">𝕏 Twitter</a><a href="https://www.facebook.com/sharer/sharer.php?u=https://batterybackupguide.com/posts/winter-power-outage-survival-apartment" target="_blank" rel="noopener" class="share-btn share-facebook" aria-label="Share on Facebook">f Facebook</a><a href="https://www.reddit.com/submit?title=Winter Power Outage Survival Guide for Apartments (2026)&url=https://batterybackupguide.com/posts/winter-power-outage-survival-apartment" target="_blank" rel="noopener" class="share-btn share-reddit" aria-label="Share on Reddit">● Reddit</a><a href="mailto:?subject=Winter Power Outage Survival Guide for Apartments (2026)&body=Check this out: https://batterybackupguide.com/posts/winter-power-outage-survival-apartment" class="share-btn share-email" aria-label="Share via Email">✉ Email</a></div></div>
 </main>
 <button id="backTop" class="back-top" onclick="window.scrollTo({top:0,behavior:&apos;smooth&apos;})">↑</button>
 <script>window.addEventListener("scroll",function(){var b=document.getElementById("backTop");if(b){if(window.scrollY>400){b.classList.add("visible")}else{b.classList.remove("visible")}}});</script>

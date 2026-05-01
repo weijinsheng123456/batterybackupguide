@@ -128,6 +128,30 @@ body::before {
 }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 .product-box, .callout, .warning { animation: fadeUp 0.4s ease-out; }
+.toc-sidebar { background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 28px; overflow: hidden; }
+.toc-header { padding: 12px 16px; cursor: pointer; font-size: 0.82rem; font-weight: 600; display: flex; align-items: center; gap: 8px; color: var(--text); user-select: none; }
+.toc-header:hover { background: rgba(255,255,255,0.03); }
+.toc-toggle { font-size: 0.7rem; transition: transform 0.2s; color: var(--text-muted); }
+.toc-body { padding: 0 16px 12px; }
+.toc-body.collapsed { display: none; }
+.toc-body ol { margin: 0; padding: 0; list-style: none; }
+.toc-body li { margin-bottom: 4px; padding-left: 20px; position: relative; }
+.toc-body li::before { content: counter(toc-counter); counter-increment: toc-counter; color: var(--glow-blue); font-weight: 600; font-size: 0.72rem; position: absolute; left: 0; }
+.toc-body ol { counter-reset: toc-counter; }
+.toc-link { color: var(--text-secondary); text-decoration: none; font-size: 0.82rem; transition: color 0.2s; display: inline-block; padding: 3px 0; }
+.toc-link:hover { color: var(--glow-blue); }
+html { scroll-behavior: smooth; }
+.share-section { margin: 32px 0; padding-top: 24px; border-top: 1px solid var(--border); }
+.share-section h3 { font-size: 0.9rem; font-weight: 600; margin-bottom: 12px; }
+.share-buttons { display: flex; gap: 8px; flex-wrap: wrap; }
+.share-btn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 8px; font-size: 0.78rem; font-weight: 600; text-decoration: none; transition: all 0.2s; color: #e2e8f0; background: rgba(0,0,0,0.2); }
+.share-btn:hover { transform: translateY(-1px); }
+.share-twitter:hover { background: #1da1f2; color: #fff; }
+.share-facebook:hover { background: #1877f2; color: #fff; }
+.share-reddit:hover { background: #ff4500; color: #fff; }
+.share-email:hover { background: var(--glow-blue); color: #000; }
+@media print { .nav, .footer, .toc-sidebar, .share-section, .related-section, .back-top, .progress-bar { display: none !important; } body { background: #fff !important; color: #000 !important; } .container { max-width: 100%; } .post-content h1 { -webkit-text-fill-color: #000 !important; color: #000 !important; } }
+
 .related-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
 .related-section h2 { font-size: 1.1rem; font-weight: 700; margin-bottom: 16px; }
 .related-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
@@ -150,14 +174,15 @@ body::before {
 <a href="/">Home</a><a href="/about">About</a></div></nav>
 <main id="article-content" class="container post-content" role="main">
 <div class="breadcrumbs"><a href="/">Home</a> <span>&#x203a;</span> <span>Comparison</span></div>
+<nav class="toc-sidebar" id="tocSidebar"><div class="toc-header" onclick="toggleTOC()">☰ On this page <span class="toc-toggle">▼</span></div><div class="toc-body" id="tocBody"><ol><li><a href="#why-quiet-matters-in-apartments" class="toc-link">Why Quiet Matters in Apartments</a></li><li><a href="#noise-comparison:-battery-vs-gas-generat" class="toc-link">Noise Comparison: Battery vs Gas Generators</a></li><li><a href="#quietest-power-stations-tested" class="toc-link">Quietest Power Stations Tested</a></li><li><a href="#can-you-sleep-with-a-power-station-in-yo" class="toc-link">Can You Sleep with a Power Station in Your Bedroom?</a></li><li><a href="#gas-vs-battery:-the-apartment-noise-verd" class="toc-link">Gas vs Battery: The Apartment Noise Verdict</a></li><li><a href="#final-verdict" class="toc-link">Final Verdict</a></li></ol></div></nav>
 <h1>Best Quiet Backup Power Solutions for Apartments — 2026 Noise Comparison</h1>
 <div class="post-meta">Updated May 2026 &bull; 11 min read &bull; Category: Comparison</div>
 
-<h2>Why Quiet Matters in Apartments</h2>
+<h2 id="why-quiet-matters-in-apartments">Why Quiet Matters in Apartments</h2>
 <p>Apartment walls are thin. Your neighbor's TV, their dog, their footsteps — you hear it all. Now imagine a gas generator roaring on a balcony at 2 AM during a blackout. That's not just annoying; it's a noise violation and a safety hazard.</p>
 <p>Battery power stations solve this problem completely. They produce zero engine noise. The only sound is a cooling fan that kicks in during heavy loads — and even then, it's quieter than a refrigerator.</p>
 
-<h2>Noise Comparison: Battery vs Gas Generators</h2>
+<h2 id="noise-comparison:-battery-vs-gas-generat">Noise Comparison: Battery vs Gas Generators</h2>
 <table>
 <tr><th>Device</th><th>Noise Level (dB)</th><th>How Loud It Actually Sounds</th></tr>
 <tr><td>Gas generator (open frame)</td><td>70-80 dB</td><td>🚫 Vacuum cleaner — illegal in most apartments</td></tr>
@@ -167,7 +192,7 @@ body::before {
 </table>
 <p>For context: 30 dB is a whisper. 50 dB is light rainfall. 70 dB is a vacuum cleaner. Battery power stations operate well below the threshold that bothers neighbors or violates apartment noise policies.</p>
 
-<h2>Quietest Power Stations Tested</h2>
+<h2 id="quietest-power-stations-tested">Quietest Power Stations Tested</h2>
 
 <h3>1. Jackery Explorer 1000 v2 — Near Silent</h3>
 <div class="product-box"><h3>Jackery Explorer 1000 v2</h3><p>$999 · 1,070 Wh · 22 lbs · Noise: <strong>~18 dB idle, 28 dB under load</strong></p></div>
@@ -185,7 +210,7 @@ body::before {
 <div class="product-box"><h3>Bluetti AC180</h3><p>$899 · 1,152 Wh · 37 lbs · Noise: <strong>~25 dB idle, 35 dB under load</strong></p></div>
 <p>The AC180 is still very quiet by generator standards, but it's the loudest of the battery stations we reviewed. The larger capacity requires more aggressive cooling. At 35 dB under load, it's about as loud as a library — noticeable but not disruptive.</p>
 
-<h2>Can You Sleep with a Power Station in Your Bedroom?</h2>
+<h2 id="can-you-sleep-with-a-power-station-in-yo">Can You Sleep with a Power Station in Your Bedroom?</h2>
 <p>Yes — and we reviewed this. We set up three power stations (Jackery 1000 v2, EcoFlow Delta 2, and Bluetti AC180) in a bedroom and had test subjects sleep with them running a CPAP machine and fan.</p>
 <ul>
 <li><strong>Jackery 1000 v2:</strong> All subjects reported "didn't notice it" — zero sleep disruption</li>
@@ -193,13 +218,14 @@ body::before {
 <li><strong>Bluetti AC180:</strong> Two subjects noticed the fan when they were trying to fall asleep, but once asleep, no disruption</li>
 </ul>
 
-<h2>Gas vs Battery: The Apartment Noise Verdict</h2>
+<h2 id="gas-vs-battery:-the-apartment-noise-verd">Gas vs Battery: The Apartment Noise Verdict</h2>
 <div class="pros-cons"><div class="pros"><h4>✅ Battery Power Station</h4><ul><li>0-35 dB — quieter than a refrigerator</li><li>No neighbors will hear it</li><li>Legal in all apartments</li><li>Safe for indoor use</li></ul></div><div class="cons"><h4>❌ Gas Generator</h4><ul><li>55-80 dB — vacuum cleaner to leaf blower</li><li>Neighbors will complain</li><li>Banned in most buildings</li><li>CO poisoning risk — deadly indoors</li></ul></div></div>
 
-<h2>Final Verdict</h2>
+<h2 id="final-verdict">Final Verdict</h2>
 <p>If quiet operation is your top priority (and in an apartment, it should be), the <strong>Jackery Explorer 1000 v2</strong> is the clear winner. It's effectively silent for most use cases, and even under full load, it's quieter than ambient room noise. For a more affordable option, the <strong>Anker Solix C1000</strong> offers excellent noise control with the fastest recharge time on the market.</p>
 
 <div class="related-section"><h2>Related Guides</h2><div class="related-grid"><a href="/posts/jackery-vs-ecoflow-vs-bluetti-home-backup" class="related-card"><div class="related-icon">⚡</div><div class="related-title">Jackery vs EcoFlow vs Bluetti: Home Backup Compari</div><div class="related-cat">Comparison</div></a><a href="/posts/power-station-vs-ups-vs-generator-apartment" class="related-card"><div class="related-icon">⚡</div><div class="related-title">Power Station vs UPS vs Generator for Apartments —</div><div class="related-cat">Comparison</div></a><a href="/posts/anker-vs-ecoflow-vs-goal-zero-comparison" class="related-card"><div class="related-icon">⚡</div><div class="related-title">Anker Solix vs EcoFlow Delta vs Goal Zero Yeti — W</div><div class="related-cat">Comparison</div></a></div></div>
+<div class="share-section"><h3>Share this guide</h3><div class="share-buttons"><a href="https://twitter.com/intent/tweet?text=Best Quiet Backup Power Solutions for Apartments — 2026 Noise Comparison&url=https://batterybackupguide.com/posts/best-quiet-backup-power-solutions-apartments" target="_blank" rel="noopener" class="share-btn share-twitter" aria-label="Share on Twitter">𝕏 Twitter</a><a href="https://www.facebook.com/sharer/sharer.php?u=https://batterybackupguide.com/posts/best-quiet-backup-power-solutions-apartments" target="_blank" rel="noopener" class="share-btn share-facebook" aria-label="Share on Facebook">f Facebook</a><a href="https://www.reddit.com/submit?title=Best Quiet Backup Power Solutions for Apartments — 2026 Noise Comparison&url=https://batterybackupguide.com/posts/best-quiet-backup-power-solutions-apartments" target="_blank" rel="noopener" class="share-btn share-reddit" aria-label="Share on Reddit">● Reddit</a><a href="mailto:?subject=Best Quiet Backup Power Solutions for Apartments — 2026 Noise Comparison&body=Check this out: https://batterybackupguide.com/posts/best-quiet-backup-power-solutions-apartments" class="share-btn share-email" aria-label="Share via Email">✉ Email</a></div></div>
 </main>
 <button id="backTop" class="back-top" onclick="window.scrollTo({top:0,behavior:&apos;smooth&apos;})">↑</button>
 <script>window.addEventListener("scroll",function(){var b=document.getElementById("backTop");if(b){if(window.scrollY>400){b.classList.add("visible")}else{b.classList.remove("visible")}}});</script>

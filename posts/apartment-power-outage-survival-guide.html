@@ -128,6 +128,30 @@ body::before {
 }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 .product-box, .callout, .warning { animation: fadeUp 0.4s ease-out; }
+.toc-sidebar { background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 28px; overflow: hidden; }
+.toc-header { padding: 12px 16px; cursor: pointer; font-size: 0.82rem; font-weight: 600; display: flex; align-items: center; gap: 8px; color: var(--text); user-select: none; }
+.toc-header:hover { background: rgba(255,255,255,0.03); }
+.toc-toggle { font-size: 0.7rem; transition: transform 0.2s; color: var(--text-muted); }
+.toc-body { padding: 0 16px 12px; }
+.toc-body.collapsed { display: none; }
+.toc-body ol { margin: 0; padding: 0; list-style: none; }
+.toc-body li { margin-bottom: 4px; padding-left: 20px; position: relative; }
+.toc-body li::before { content: counter(toc-counter); counter-increment: toc-counter; color: var(--glow-blue); font-weight: 600; font-size: 0.72rem; position: absolute; left: 0; }
+.toc-body ol { counter-reset: toc-counter; }
+.toc-link { color: var(--text-secondary); text-decoration: none; font-size: 0.82rem; transition: color 0.2s; display: inline-block; padding: 3px 0; }
+.toc-link:hover { color: var(--glow-blue); }
+html { scroll-behavior: smooth; }
+.share-section { margin: 32px 0; padding-top: 24px; border-top: 1px solid var(--border); }
+.share-section h3 { font-size: 0.9rem; font-weight: 600; margin-bottom: 12px; }
+.share-buttons { display: flex; gap: 8px; flex-wrap: wrap; }
+.share-btn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 8px; font-size: 0.78rem; font-weight: 600; text-decoration: none; transition: all 0.2s; color: #e2e8f0; background: rgba(0,0,0,0.2); }
+.share-btn:hover { transform: translateY(-1px); }
+.share-twitter:hover { background: #1da1f2; color: #fff; }
+.share-facebook:hover { background: #1877f2; color: #fff; }
+.share-reddit:hover { background: #ff4500; color: #fff; }
+.share-email:hover { background: var(--glow-blue); color: #000; }
+@media print { .nav, .footer, .toc-sidebar, .share-section, .related-section, .back-top, .progress-bar { display: none !important; } body { background: #fff !important; color: #000 !important; } .container { max-width: 100%; } .post-content h1 { -webkit-text-fill-color: #000 !important; color: #000 !important; } }
+
 .related-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
 .related-section h2 { font-size: 1.1rem; font-weight: 700; margin-bottom: 16px; }
 .related-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
@@ -150,11 +174,12 @@ body::before {
 <a href="/">Home</a><a href="/about">About</a></div></nav>
 <main id="article-content" class="container post-content" role="main">
 <div class="breadcrumbs"><a href="/">Home</a> <span>&#x203a;</span> <span>Guide</span></div>
+<nav class="toc-sidebar" id="tocSidebar"><div class="toc-header" onclick="toggleTOC()">☰ On this page <span class="toc-toggle">▼</span></div><div class="toc-body" id="tocBody"><ol><li><a href="#step-1:-assess-your-power-needs" class="toc-link">Step 1: Assess Your Power Needs</a></li><li><a href="#step-2:-choose-your-backup-power" class="toc-link">Step 2: Choose Your Backup Power</a></li><li><a href="#step-3:-food-preservation-without-power" class="toc-link">Step 3: Food Preservation Without Power</a></li><li><a href="#step-4:-stay-connected" class="toc-link">Step 4: Stay Connected</a></li><li><a href="#step-5:-lighting-without-power" class="toc-link">Step 5: Lighting Without Power</a></li><li><a href="#emergency-checklist-for-apartment-dwelle" class="toc-link">Emergency Checklist for Apartment Dwellers</a></li></ol></div></nav>
 <h1>Apartment Power Outage Survival Guide (No Generator Needed)</h1>
 <div class="post-meta">Updated May 2026 &bull; 12 min read &bull; Category: Guide</div>
 
 
-<h2>Step 1: Assess Your Power Needs</h2>
+<h2 id="step-1:-assess-your-power-needs">Step 1: Assess Your Power Needs</h2>
 <p>Before an outage hits, know what you need to power. Walk through your apartment and make a list:</p>
 <ul>
 <li><strong>Critical:</strong> CPAP machine, medical devices, refrigerator, phone charging</li>
@@ -163,11 +188,11 @@ body::before {
 </ul>
 <p>Calculate total wattage. A typical apartment outage setup draws 200-500W max. A 1,000 Wh battery station covers 4-10 hours of critical needs.</p>
 
-<h2>Step 2: Choose Your Backup Power</h2>
+<h2 id="step-2:-choose-your-backup-power">Step 2: Choose Your Backup Power</h2>
 <p>Battery power stations are the best solution for apartment dwellers. We recommend the <strong>Jackery Explorer 1000 v2</strong> for most apartments — lightweight, affordable, and powerful enough for 24+ hours of essential coverage.</p>
 <p>One alternative: If you have a car, a power inverter ($30-50) connected to your car battery can charge phones and run a small device. But it's not a long-term solution.</p>
 
-<h2>Step 3: Food Preservation Without Power</h2>
+<h2 id="step-3:-food-preservation-without-power">Step 3: Food Preservation Without Power</h2>
 <p>A full freezer keeps food frozen for 24-48 hours if you don't open it. A refrigerator keeps food cold for 4-6 hours. Here's how to maximize that:</p>
 <ul>
 <li>Keep fridge/freezer doors CLOSED. Open only when absolutely necessary</li>
@@ -176,11 +201,11 @@ body::before {
 <li>Battery power: Run your fridge for 30 minutes every 2-3 hours. This keeps food cold while saving battery</li>
 </ul>
 
-<h2>Step 4: Stay Connected</h2>
+<h2 id="step-4:-stay-connected">Step 4: Stay Connected</h2>
 <p>Your WiFi router and modem draw only 10-30W combined. A 1,000 Wh battery can power them for 30-100 hours. Prioritize your router — it's your connection to weather updates, emergency services, and family.</p>
 <p>Pro tip: Have a battery pack for your phone. A 20,000 mAh power bank charges a phone 4-5 times and costs under $30.</p>
 
-<h2>Step 5: Lighting Without Power</h2>
+<h2 id="step-5:-lighting-without-power">Step 5: Lighting Without Power</h2>
 <p>Skip candles (fire risk in apartments). Use:</p>
 <ul>
 <li><strong>LED rechargeable lights</strong> — Under $20, last 10+ hours per charge</li>
@@ -189,7 +214,7 @@ body::before {
 </ul>
 <p>Your power station can also run LED lamps. Most draw under 10W — you'll barely notice the drain.</p>
 
-<h2>Emergency Checklist for Apartment Dwellers</h2>
+<h2 id="emergency-checklist-for-apartment-dwelle">Emergency Checklist for Apartment Dwellers</h2>
 <p>Print this checklist and store it with your emergency supplies:</p>
 <ul>
 <li>Power station charged and ready (check every 3 months)</li>
@@ -204,6 +229,7 @@ body::before {
 <li>Cash (ATMs don't work without power)</li>
 </ol>
 <div class="related-section"><h2>Related Guides</h2><div class="related-grid"><a href="/posts/how-to-prepare-for-power-outages-home" class="related-card"><div class="related-icon">⚡</div><div class="related-title">How to Prepare for Power Outages at Home: Complete</div><div class="related-cat">Guide</div></a><a href="/posts/battery-backup-cpap-apartment" class="related-card"><div class="related-icon">⚡</div><div class="related-title">Battery Backup for CPAP in Apartment — 2026 Life-S</div><div class="related-cat">Guide</div></a><a href="/posts/can-portable-power-station-power-whole-apartment" class="related-card"><div class="related-icon">⚡</div><div class="related-title">Can a Portable Power Station Power a Whole Apartme</div><div class="related-cat">Guide</div></a></div></div>
+<div class="share-section"><h3>Share this guide</h3><div class="share-buttons"><a href="https://twitter.com/intent/tweet?text=Apartment Power Outage Survival Guide (No Generator Needed)&url=https://batterybackupguide.com/posts/apartment-power-outage-survival-guide" target="_blank" rel="noopener" class="share-btn share-twitter" aria-label="Share on Twitter">𝕏 Twitter</a><a href="https://www.facebook.com/sharer/sharer.php?u=https://batterybackupguide.com/posts/apartment-power-outage-survival-guide" target="_blank" rel="noopener" class="share-btn share-facebook" aria-label="Share on Facebook">f Facebook</a><a href="https://www.reddit.com/submit?title=Apartment Power Outage Survival Guide (No Generator Needed)&url=https://batterybackupguide.com/posts/apartment-power-outage-survival-guide" target="_blank" rel="noopener" class="share-btn share-reddit" aria-label="Share on Reddit">● Reddit</a><a href="mailto:?subject=Apartment Power Outage Survival Guide (No Generator Needed)&body=Check this out: https://batterybackupguide.com/posts/apartment-power-outage-survival-guide" class="share-btn share-email" aria-label="Share via Email">✉ Email</a></div></div>
 </main>
 <button id="backTop" class="back-top" onclick="window.scrollTo({top:0,behavior:&apos;smooth&apos;})">↑</button>
 <script>window.addEventListener("scroll",function(){var b=document.getElementById("backTop");if(b){if(window.scrollY>400){b.classList.add("visible")}else{b.classList.remove("visible")}}});</script>

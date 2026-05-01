@@ -128,6 +128,30 @@ body::before {
 }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 .product-box, .callout, .warning { animation: fadeUp 0.4s ease-out; }
+.toc-sidebar { background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 28px; overflow: hidden; }
+.toc-header { padding: 12px 16px; cursor: pointer; font-size: 0.82rem; font-weight: 600; display: flex; align-items: center; gap: 8px; color: var(--text); user-select: none; }
+.toc-header:hover { background: rgba(255,255,255,0.03); }
+.toc-toggle { font-size: 0.7rem; transition: transform 0.2s; color: var(--text-muted); }
+.toc-body { padding: 0 16px 12px; }
+.toc-body.collapsed { display: none; }
+.toc-body ol { margin: 0; padding: 0; list-style: none; }
+.toc-body li { margin-bottom: 4px; padding-left: 20px; position: relative; }
+.toc-body li::before { content: counter(toc-counter); counter-increment: toc-counter; color: var(--glow-blue); font-weight: 600; font-size: 0.72rem; position: absolute; left: 0; }
+.toc-body ol { counter-reset: toc-counter; }
+.toc-link { color: var(--text-secondary); text-decoration: none; font-size: 0.82rem; transition: color 0.2s; display: inline-block; padding: 3px 0; }
+.toc-link:hover { color: var(--glow-blue); }
+html { scroll-behavior: smooth; }
+.share-section { margin: 32px 0; padding-top: 24px; border-top: 1px solid var(--border); }
+.share-section h3 { font-size: 0.9rem; font-weight: 600; margin-bottom: 12px; }
+.share-buttons { display: flex; gap: 8px; flex-wrap: wrap; }
+.share-btn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 8px; font-size: 0.78rem; font-weight: 600; text-decoration: none; transition: all 0.2s; color: #e2e8f0; background: rgba(0,0,0,0.2); }
+.share-btn:hover { transform: translateY(-1px); }
+.share-twitter:hover { background: #1da1f2; color: #fff; }
+.share-facebook:hover { background: #1877f2; color: #fff; }
+.share-reddit:hover { background: #ff4500; color: #fff; }
+.share-email:hover { background: var(--glow-blue); color: #000; }
+@media print { .nav, .footer, .toc-sidebar, .share-section, .related-section, .back-top, .progress-bar { display: none !important; } body { background: #fff !important; color: #000 !important; } .container { max-width: 100%; } .post-content h1 { -webkit-text-fill-color: #000 !important; color: #000 !important; } }
+
 .related-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
 .related-section h2 { font-size: 1.1rem; font-weight: 700; margin-bottom: 16px; }
 .related-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
@@ -150,11 +174,12 @@ body::before {
 <a href="/">Home</a><a href="/about">About</a></div></nav>
 <main id="article-content" class="container post-content" role="main">
 <div class="breadcrumbs"><a href="/">Home</a> <span>&#x203a;</span> <span>Comparison</span></div>
+<nav class="toc-sidebar" id="tocSidebar"><div class="toc-header" onclick="toggleTOC()">☰ On this page <span class="toc-toggle">▼</span></div><div class="toc-body" id="tocBody"><ol><li><a href="#the-three-contenders" class="toc-link">The Three Contenders</a></li><li><a href="#winner-by-category" class="toc-link">Winner by Category</a></li><li><a href="#recommendation-by-use-case" class="toc-link">Recommendation by Use Case</a></li><li><a href="#final-verdict" class="toc-link">Final Verdict</a></li></ol></div></nav>
 <h1>Jackery vs EcoFlow vs Bluetti: Home Backup Comparison 2026</h1>
 <div class="post-meta">Updated May 2026 &bull; 15 min read &bull; Category: Comparison</div>
 
 
-<h2>The Three Contenders</h2>
+<h2 id="the-three-contenders">The Three Contenders</h2>
 <table>
 <tr><th>Feature</th><th>Jackery 1000 v2</th><th>EcoFlow Delta 2</th><th>Bluetti AC180</th></tr>
 <tr><td>Price</td><td>$999</td><td>$1,099</td><td>$899</td></tr>
@@ -171,7 +196,7 @@ body::before {
 <tr><td>Warranty</td><td>2+1 years</td><td>5 years 🏆</td><td>2 years</td></tr>
 </table>
 
-<h2>Winner by Category</h2>
+<h2 id="winner-by-category">Winner by Category</h2>
 <h3>Best Value: Jackery Explorer 1000 v2</h3>
 <p>At $999 with 1,070 Wh capacity, Jackery offers the best price-per-capacity ratio among the top three. The 22 lbs weight is a major advantage if you need to move your power station around. The 4,000-cycle LiFePO4 battery means it'll last over a decade of weekly use.</p>
 
@@ -181,14 +206,15 @@ body::before {
 <h3>Best Capacity: Bluetti AC180</h3>
 <p>The Bluetti AC180 offers the most capacity under $1,000 at 1,152 Wh. It charges nearly as fast as the EcoFlow and features the longest-lasting battery (4,000+ cycles). The trade-off is weight — at 37 lbs, it's 15 lbs heavier than the Jackery.</p>
 
-<h2>Recommendation by Use Case</h2>
+<h2 id="recommendation-by-use-case">Recommendation by Use Case</h2>
 <p><strong>Apartment dwellers:</strong> Go with the <strong>Jackery 1000 v2</strong>. It's light enough to move from closet to living room, and its quieter fan makes it bedroom-friendly during overnight use.</p>
 <p><strong>Homeowners (small to medium home):</strong> The <strong>EcoFlow Delta 2</strong> is your best bet. Fast charging and expandability give you flexibility for longer outages.</p>
 <p><strong>Extended outages (2+ days):</strong> <strong>Bluetti AC180</strong> or <strong>EcoFlow Delta 2 + extra battery</strong>. The extra capacity makes a real difference when the power's out for days.</p>
 
-<h2>Final Verdict</h2>
+<h2 id="final-verdict">Final Verdict</h2>
 <p>There's no wrong choice here — all three are excellent. But if we had to pick one for most people, it's the <strong>EcoFlow Delta 2</strong>. It balances capacity, speed, expandability, and build quality better than any other option. The 5-year warranty is the cherry on top.</p>
 <div class="related-section"><h2>Related Guides</h2><div class="related-grid"><a href="/posts/best-quiet-backup-power-solutions-apartments" class="related-card"><div class="related-icon">⚡</div><div class="related-title">Best Quiet Backup Power Solutions for Apartments —</div><div class="related-cat">Comparison</div></a><a href="/posts/power-station-vs-ups-vs-generator-apartment" class="related-card"><div class="related-icon">⚡</div><div class="related-title">Power Station vs UPS vs Generator for Apartments —</div><div class="related-cat">Comparison</div></a><a href="/posts/anker-vs-ecoflow-vs-goal-zero-comparison" class="related-card"><div class="related-icon">⚡</div><div class="related-title">Anker Solix vs EcoFlow Delta vs Goal Zero Yeti — W</div><div class="related-cat">Comparison</div></a></div></div>
+<div class="share-section"><h3>Share this guide</h3><div class="share-buttons"><a href="https://twitter.com/intent/tweet?text=Jackery vs EcoFlow vs Bluetti: Home Backup Comparison 2026&url=https://batterybackupguide.com/posts/jackery-vs-ecoflow-vs-bluetti-home-backup" target="_blank" rel="noopener" class="share-btn share-twitter" aria-label="Share on Twitter">𝕏 Twitter</a><a href="https://www.facebook.com/sharer/sharer.php?u=https://batterybackupguide.com/posts/jackery-vs-ecoflow-vs-bluetti-home-backup" target="_blank" rel="noopener" class="share-btn share-facebook" aria-label="Share on Facebook">f Facebook</a><a href="https://www.reddit.com/submit?title=Jackery vs EcoFlow vs Bluetti: Home Backup Comparison 2026&url=https://batterybackupguide.com/posts/jackery-vs-ecoflow-vs-bluetti-home-backup" target="_blank" rel="noopener" class="share-btn share-reddit" aria-label="Share on Reddit">● Reddit</a><a href="mailto:?subject=Jackery vs EcoFlow vs Bluetti: Home Backup Comparison 2026&body=Check this out: https://batterybackupguide.com/posts/jackery-vs-ecoflow-vs-bluetti-home-backup" class="share-btn share-email" aria-label="Share via Email">✉ Email</a></div></div>
 </main>
 <button id="backTop" class="back-top" onclick="window.scrollTo({top:0,behavior:&apos;smooth&apos;})">↑</button>
 <script>window.addEventListener("scroll",function(){var b=document.getElementById("backTop");if(b){if(window.scrollY>400){b.classList.add("visible")}else{b.classList.remove("visible")}}});</script>
