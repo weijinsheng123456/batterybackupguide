@@ -128,6 +128,18 @@ body::before {
 }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 .product-box, .callout, .warning { animation: fadeUp 0.4s ease-out; }
+.related-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
+.related-section h2 { font-size: 1.1rem; font-weight: 700; margin-bottom: 16px; }
+.related-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+.related-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 16px; text-decoration: none; color: inherit; transition: all 0.2s; }
+.related-card:hover { background: var(--bg-card-hover); border-color: rgba(0,212,255,0.2); transform: translateY(-2px); }
+.related-icon { font-size: 1.3rem; margin-bottom: 6px; }
+.related-title { font-size: 0.82rem; font-weight: 600; line-height: 1.3; margin-bottom: 4px; }
+.related-cat { font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+.back-top { position: fixed; bottom: 30px; right: 30px; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--border); background: rgba(10,14,26,0.8); backdrop-filter: blur(8px); color: var(--text-secondary); font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: all 0.3s; z-index: 999; }
+.back-top.visible { opacity: 1; visibility: visible; }
+.back-top:hover { background: var(--glow-blue); color: #000; border-color: var(--glow-blue); transform: translateY(-2px); }
+@media (max-width: 640px) { .related-grid { grid-template-columns: 1fr; } }
 </style>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>&#x26a1;</text></svg>">
 </head>
@@ -236,7 +248,10 @@ body::before {
 <p>If capacity is your top priority and you can stretch to $499, the <strong>Bluetti EB55</strong> wins with 537 Wh, 700W output, 4 AC outlets, and wireless charging — the most capable station on this list by a clear margin.</p>
 <p>For studio apartments and tight spaces, the <strong>Jackery Explorer 300</strong> ($269) or <strong>EcoFlow River 2</strong> ($279) are both excellent choices. Go with the Jackery if portability is king, or the EcoFlow if you want LiFePO₄ battery chemistry and faster charging.</p>
 <p>Whichever you choose, any of these five stations will keep your apartment essentials running during the next blackout — without breaking the bank or violating building rules.</p>
+<div class="related-section"><h2>Related Guides</h2><div class="related-grid"><a href="/posts/best-home-battery-backup-2026" class="related-card"><div class="related-icon">⚡</div><div class="related-title">Best Home Battery Backup Systems 2026 — Top 7 Pick</div><div class="related-cat">Buying Guide</div></a><a href="/posts/best-generator-for-apartment-2026" class="related-card"><div class="related-icon">⚡</div><div class="related-title">Best Generator for Apartments (No Gas) — 2026 Guid</div><div class="related-cat">Buying Guide</div></a><a href="/posts/best-portable-power-station-apartment-dwellers" class="related-card"><div class="related-icon">⚡</div><div class="related-title">Best Portable Power Station for Apartment Dwellers</div><div class="related-cat">Buying Guide</div></a></div></div>
 </main>
+<button id="backTop" class="back-top" onclick="window.scrollTo({top:0,behavior:&apos;smooth&apos;})">↑</button>
+<script>window.addEventListener("scroll",function(){var b=document.getElementById("backTop");if(b){if(window.scrollY>400){b.classList.add("visible")}else{b.classList.remove("visible")}}});</script>
 <footer class="footer" role="contentinfo"><div class="container">
 <div class="footer-grid">
 <div>

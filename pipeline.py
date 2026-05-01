@@ -114,6 +114,18 @@ body::before {
 }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 .product-box, .callout, .warning { animation: fadeUp 0.4s ease-out; }
+.related-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
+.related-section h2 { font-size: 1.1rem; font-weight: 700; margin-bottom: 16px; }
+.related-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+.related-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 16px; text-decoration: none; color: inherit; transition: all 0.2s; }
+.related-card:hover { background: var(--bg-card-hover); border-color: rgba(0,212,255,0.2); transform: translateY(-2px); }
+.related-icon { font-size: 1.3rem; margin-bottom: 6px; }
+.related-title { font-size: 0.82rem; font-weight: 600; line-height: 1.3; margin-bottom: 4px; }
+.related-cat { font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+.back-top { position: fixed; bottom: 30px; right: 30px; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--border); background: rgba(10,14,26,0.8); backdrop-filter: blur(8px); color: var(--text-secondary); font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: all 0.3s; z-index: 999; }
+.back-top.visible { opacity: 1; visibility: visible; }
+.back-top:hover { background: var(--glow-blue); color: #000; border-color: var(--glow-blue); transform: translateY(-2px); }
+@media (max-width: 640px) { .related-grid { grid-template-columns: 1fr; } }
 """
 
 
@@ -122,9 +134,29 @@ def cat_badge(category):
     cls = m.get(category, "guide")
     return f'<span class="cat-badge {cls}">{category}</span>'
 
-def render_post_html(post):
+def render_post_html(post, all_posts=None):
     t = post
     badge = cat_badge(t["category"])
+    
+    # Related articles
+    related_html = ""
+    if all_posts:
+        same_cat = [p for p in all_posts if p["category"] == t["category"] and p["slug"] != t["slug"]]
+        related = same_cat[:3]
+        if len(related) < 3:
+            others = [p for p in all_posts if p["slug"] != t["slug"] and p not in related]
+            related += others[:3-len(related)]
+        if related:
+            related_html = '<div class="related-section"><h2>Related Guides</h2><div class="related-grid">'
+            for r in related:
+                icon = chr(0x26A1)
+                related_html += f'<a href="/posts/{r["slug"]}" class="related-card"><div class="related-icon">{icon}</div><div class="related-title">{r["title"][:50]}</div><div class="related-cat">{r["category"]}</div></a>'
+            related_html += '</div></div>'
+    
+    # Back to top button
+    back_top = '<button id="backTop" class="back-top" onclick="window.scrollTo({top:0,behavior:&apos;smooth&apos;})">\u2191</button>'
+    
+    back_top_js = '<script>window.addEventListener("scroll",function(){var b=document.getElementById("backTop");if(b){if(window.scrollY>400){b.classList.add("visible")}else{b.classList.remove("visible")}}});</script>' 
     
     return f"""<!DOCTYPE html>
 <html lang="en-US">
@@ -158,7 +190,10 @@ def render_post_html(post):
 <main id="article-content" class="container post-content" role="main">
 <div class="breadcrumbs"><a href="/">Home</a> <span>&#x203a;</span> <span>{t['category']}</span></div>
 {t['body']}
+{related_html}
 </main>
+{back_top}
+{back_top_js}
 <footer class="footer" role="contentinfo"><div class="container">
 <div class="footer-grid">
 <div>
@@ -224,7 +259,7 @@ def generate_all():
     
     os.makedirs(f"{SITE_DIR}/posts", exist_ok=True)
     for p in posts:
-        html = render_post_html(p)
+        html = render_post_html(p, posts)
         with open(f"{SITE_DIR}/posts/{p['slug']}.html", "w") as fh:
             fh.write(html)
         print(f"✅ posts/{p['slug']}.html")

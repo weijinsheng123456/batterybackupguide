@@ -113,6 +113,34 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 .post-card:nth-child(1){animation-delay:.25s;}
 .post-card:nth-child(2){animation-delay:.3s;}
 .post-card:nth-child(3){animation-delay:.35s;}
+
+/* Filter Tabs */
+.filter-tabs { display: flex; gap: 6px; flex-wrap: wrap; }
+.filter-btn {
+  padding: 6px 16px; border-radius: 20px; border: 1px solid var(--border);
+  background: transparent; color: var(--text-secondary); font-size: 0.75rem;
+  font-weight: 500; cursor: pointer; transition: all 0.2s; font-family: inherit;
+}
+.filter-btn:hover { border-color: var(--glow-blue); color: var(--glow-blue); }
+.filter-btn.active { background: var(--glow-blue); color: #000; border-color: var(--glow-blue); font-weight: 600; }
+.post-card[data-cat] { display: flex; }
+@media (max-width: 640px) {
+  .section-title { flex-direction: column; align-items: flex-start; gap: 10px; }
+}
+
+/* Back to Top */
+.back-top {
+  position: fixed; bottom: 30px; right: 30px; width: 44px; height: 44px;
+  border-radius: 50%; border: 1px solid var(--border);
+  background: rgba(10,14,26,0.8); backdrop-filter: blur(8px);
+  color: var(--text-secondary); font-size: 1.2rem; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; visibility: hidden; transition: all 0.3s;
+  z-index: 999; font-family: inherit;
+}
+.back-top.visible { opacity: 1; visibility: visible; }
+.back-top:hover { background: var(--glow-blue); color: #000; border-color: var(--glow-blue); transform: translateY(-2px); }
+
 </style>
 </head>
 <body>
@@ -218,8 +246,16 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 <div class="top-title">Apartment Power Outage Survival Guide (N...</div>
 <div class="top-cat">Guide</div>
 </a></div></div>
-<div class="section-title">All Guides</div>
-<div class="posts-grid"><article class="post-card card-comparison">
+<div class="section-title">
+  <span>All Guides</span>
+  <div class="filter-tabs">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="buying">Buying Guides</button>
+    <button class="filter-btn" data-filter="guide">Guides</button>
+    <button class="filter-btn" data-filter="comparison">Comparisons</button>
+  </div>
+</div>
+<div class="posts-grid"><article class="post-card card-comparison" data-cat="comparison">
 <div class="card-icon">⚔️</div>
 <div class="card-body">
 <div class="card-cat cat-comparison">Comparison</div>
@@ -229,7 +265,7 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 <a href="/posts/jackery-vs-ecoflow-vs-bluetti-home-backup" class="read-more">Read Review &rarr;</a>
 </div>
 </article>
-<article class="post-card card-guide">
+<article class="post-card card-guide" data-cat="guide">
 <div class="card-icon">📋</div>
 <div class="card-body">
 <div class="card-cat cat-guide">Guide</div>
@@ -239,7 +275,7 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 <a href="/posts/how-to-prepare-for-power-outages-home" class="read-more">Read Review &rarr;</a>
 </div>
 </article>
-<article class="post-card card-buying">
+<article class="post-card card-buying" data-cat="buying">
 <div class="card-icon">🔋</div>
 <div class="card-body">
 <div class="card-cat cat-buying">Buying Guide</div>
@@ -249,7 +285,7 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 <a href="/posts/best-portable-power-station-apartment-dwellers" class="read-more">Read Review &rarr;</a>
 </div>
 </article>
-<article class="post-card card-guide">
+<article class="post-card card-guide" data-cat="guide">
 <div class="card-icon">🏥</div>
 <div class="card-body">
 <div class="card-cat cat-guide">Guide</div>
@@ -259,7 +295,7 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 <a href="/posts/battery-backup-cpap-apartment" class="read-more">Read Review &rarr;</a>
 </div>
 </article>
-<article class="post-card card-guide">
+<article class="post-card card-guide" data-cat="guide">
 <div class="card-icon">🤔</div>
 <div class="card-body">
 <div class="card-cat cat-guide">Guide</div>
@@ -269,7 +305,7 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 <a href="/posts/can-portable-power-station-power-whole-apartment" class="read-more">Read Review &rarr;</a>
 </div>
 </article>
-<article class="post-card card-comparison">
+<article class="post-card card-comparison" data-cat="comparison">
 <div class="card-icon">🔇</div>
 <div class="card-body">
 <div class="card-cat cat-comparison">Comparison</div>
@@ -279,7 +315,7 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 <a href="/posts/best-quiet-backup-power-solutions-apartments" class="read-more">Read Review &rarr;</a>
 </div>
 </article>
-<article class="post-card card-guide">
+<article class="post-card card-guide" data-cat="guide">
 <div class="card-icon">🧊</div>
 <div class="card-body">
 <div class="card-cat cat-guide">Guide</div>
@@ -289,7 +325,7 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 <a href="/posts/how-to-keep-food-cold-during-power-outage-apartment" class="read-more">Read Review &rarr;</a>
 </div>
 </article>
-<article class="post-card card-buying">
+<article class="post-card card-buying" data-cat="buying">
 <div class="card-icon">💰</div>
 <div class="card-body">
 <div class="card-cat cat-buying">Buying Guide</div>
@@ -299,7 +335,7 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 <a href="/posts/best-power-station-under-500-apartment" class="read-more">Read Review &rarr;</a>
 </div>
 </article>
-<article class="post-card card-guide">
+<article class="post-card card-guide" data-cat="guide">
 <div class="card-icon">🎯</div>
 <div class="card-body">
 <div class="card-cat cat-guide">Guide</div>
@@ -309,7 +345,7 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 <a href="/posts/how-to-choose-portable-power-station-apartment" class="read-more">Read Review &rarr;</a>
 </div>
 </article>
-<article class="post-card card-guide">
+<article class="post-card card-guide" data-cat="guide">
 <div class="card-icon">☀️</div>
 <div class="card-body">
 <div class="card-cat cat-guide">Guide</div>
@@ -319,7 +355,7 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 <a href="/posts/balcony-solar-setup-apartment" class="read-more">Read Review &rarr;</a>
 </div>
 </article>
-<article class="post-card card-comparison">
+<article class="post-card card-comparison" data-cat="comparison">
 <div class="card-icon">⚖️</div>
 <div class="card-body">
 <div class="card-cat cat-comparison">Comparison</div>
@@ -329,7 +365,7 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 <a href="/posts/power-station-vs-ups-vs-generator-apartment" class="read-more">Read Review &rarr;</a>
 </div>
 </article>
-<article class="post-card card-buying">
+<article class="post-card card-buying" data-cat="buying">
 <div class="card-icon">💻</div>
 <div class="card-body">
 <div class="card-cat cat-buying">Buying Guide</div>
@@ -339,7 +375,7 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 <a href="/posts/best-power-station-home-office-backup" class="read-more">Read Review &rarr;</a>
 </div>
 </article>
-<article class="post-card card-buying">
+<article class="post-card card-buying" data-cat="buying">
 <div class="card-icon">📦</div>
 <div class="card-body">
 <div class="card-cat cat-buying">Buying Guide</div>
@@ -349,7 +385,7 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 <a href="/posts/best-power-station-refrigerator-backup" class="read-more">Read Review &rarr;</a>
 </div>
 </article>
-<article class="post-card card-guide">
+<article class="post-card card-guide" data-cat="guide">
 <div class="card-icon">✅</div>
 <div class="card-body">
 <div class="card-cat cat-guide">Guide</div>
@@ -359,7 +395,7 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 <a href="/posts/apartment-power-outage-safety-checklist" class="read-more">Read Review &rarr;</a>
 </div>
 </article>
-<article class="post-card card-guide">
+<article class="post-card card-guide" data-cat="guide">
 <div class="card-icon">⏱️</div>
 <div class="card-body">
 <div class="card-cat cat-guide">Guide</div>
@@ -369,7 +405,7 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 <a href="/posts/how-long-power-station-run-appliances" class="read-more">Read Review &rarr;</a>
 </div>
 </article>
-<article class="post-card card-comparison">
+<article class="post-card card-comparison" data-cat="comparison">
 <div class="card-icon">🥊</div>
 <div class="card-body">
 <div class="card-cat cat-comparison">Comparison</div>
@@ -379,7 +415,7 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 <a href="/posts/anker-vs-ecoflow-vs-goal-zero-comparison" class="read-more">Read Review &rarr;</a>
 </div>
 </article>
-<article class="post-card card-guide">
+<article class="post-card card-guide" data-cat="guide">
 <div class="card-icon">❄️</div>
 <div class="card-body">
 <div class="card-cat cat-guide">Guide</div>
@@ -409,5 +445,34 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 </div>
 </div>
 </footer>
+
+<script>
+// Category filter
+document.querySelectorAll('.filter-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    var cat = btn.getAttribute('data-filter');
+    document.querySelectorAll('.post-card').forEach(function(card) {
+      if (cat === 'all' || card.getAttribute('data-cat') === cat) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  });
+});
+
+// Back to top
+window.addEventListener('scroll', function() {
+  var btn = document.getElementById('backTop');
+  if (btn) {
+    if (window.scrollY > 400) { btn.classList.add('visible'); }
+    else { btn.classList.remove('visible'); }
+  }
+});
+</script>
+
+<button id="backTop" class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#x2191;</button>
 </body>
 </html>
