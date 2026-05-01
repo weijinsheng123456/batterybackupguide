@@ -31,6 +31,8 @@ body { font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Ro
 .post-content table { width: 100%; border-collapse: collapse; margin: 20px 0; }
 .post-content th, .post-content td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
 .post-content th { background: #f1f5f9; font-weight: 600; }
+.skip-link { position: absolute; top: -40px; left: 0; background: var(--primary); color: #fff; padding: 8px 16px; z-index: 999; }
+.skip-link:focus { top: 0; }
 .footer { background: #1e293b; color: #94a3b8; padding: 30px 0; text-align: center; font-size: 0.85rem; }
 .footer .aff-disclosure { margin-top: 10px; font-size: 0.8rem; }
 @media (max-width: 640px) { .post-content .pros-cons { grid-template-columns: 1fr; } }
@@ -38,32 +40,38 @@ body { font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Ro
 
 def render_post_html(post):
     t = post
+    # Build Article JSON-LD
+    json_ld_article = f'''{{"@context":"https://schema.org","@type":"Article","headline":"{t['title'].replace(chr(34),'')}","description":"{t['description'][:200].replace(chr(34),'')}","url":"https://batterybackupguide.com/posts/{t['slug']}","dateModified":"2026-05-02","author":{{"@type":"Organization","name":"Battery Backup Guide"}}}}'''
+    
     return f"""<!DOCTYPE html>
-<html lang="en">
+<html lang="en-US">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{t['title']} — Battery Backup Guide</title>
 <meta name="description" content="{t['description']}">
+<link rel="canonical" href="https://batterybackupguide.com/posts/{t['slug']}">
 <meta property="og:title" content="{t['title']}">
 <meta property="og:description" content="{t['description']}">
 <meta property="og:url" content="https://batterybackupguide.com/posts/{t['slug']}">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Battery Backup Guide">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="canonical" href="https://batterybackupguide.com/posts/{t['slug']}">
+<meta name="twitter:title" content="{t['title']}">
+<meta name="twitter:description" content="{t['description']}">
+<script type="application/ld+json">{json_ld_article}</script>
 <style>
 {CSS}</style>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>⚡</text></svg>">
 </head>
 <body>
-<nav class="nav"><div class="container"><span class="logo">⚡ BatteryBackupGuide</span>
+<a href="#article-content" class="skip-link">Skip to content</a>
+<nav class="nav" role="navigation" aria-label="Main navigation"><div class="container"><span class="logo">&#x26a1; BatteryBackupGuide</span>
 <a href="/">Home</a><a href="/about">About</a></div></nav>
-<main class="container post-content">
-<h1>{t['title']}</h1>
-<div class="post-meta">Updated {t['date']} &bull; {t['read_time']} min read &bull; Category: {t['category']}</div>
+<main id="article-content" class="container post-content" role="main">
 {t['body']}
 </main>
-<footer class="footer"><div class="container">
+<footer class="footer" role="contentinfo"><div class="container">
 <p>BatteryBackupGuide.com &mdash; Independent reviews and guides for home battery backup solutions.</p>
 <p class="aff-disclosure">We participate in the Amazon Services LLC Associates Program. As an Amazon Associate we earn from qualifying purchases.</p>
 <p>&copy; 2026 Battery Backup Guide. All rights reserved.</p>
