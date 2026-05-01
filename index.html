@@ -3,297 +3,520 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Battery Backup Guide — Expert Home Power Solutions & Reviews</title>
+<title>Battery Backup Guide — Expert Reviews & Buying Guides</title>
 <meta name="description" content="20 expert guides on portable power stations, solar generators, and battery backup systems for apartments. No gas, no noise — just reliable backup power.">
 <link rel="canonical" href="https://batterybackupguide.com">
-<meta property="og:title" content="Battery Backup Guide — Home Power Solutions">
+<meta property="og:title" content="Battery Backup Guide — Expert Reviews & Buying Guides">
 <meta property="og:description" content="Expert guides, reviews, and comparisons for home battery backup systems, portable power stations, and solar generators for apartments.">
-<meta property="og:url" content="https://batterybackupguide.com">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Battery Backup Guide">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","name":"Battery Backup Guide","url":"https://batterybackupguide.com","description":"Expert guides, reviews, and comparisons for home battery backup systems."}
+{"@context":"https://schema.org","@type":"WebSite","name":"Battery Backup Guide","url":"https://batterybackupguide.com"}
 </script>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>&#x26a1;</text></svg>">
 <style>
 :root {
-  --primary: #1e3a5f; --primary-light: #2563eb; --primary-lighter: #dbeafe;
-  --accent: #f59e0b; --accent-light: #fef3c7;
-  --success: #10b981; --success-light: #d1fae5;
-  --purple: #8b5cf6; --purple-light: #ede9fe;
-  --bg: #f1f5f9; --card: #ffffff;
-  --text: #0f172a; --text-secondary: #475569; --text-muted: #94a3b8;
-  --border: #e2e8f0; --shadow: 0 1px 3px rgba(0,0,0,0.06);
-  --shadow-hover: 0 8px 24px rgba(0,0,0,0.1);
+  --bg-base: #0a0e1a;
+  --bg-card: rgba(255,255,255,0.04);
+  --bg-card-hover: rgba(255,255,255,0.08);
+  --glow-blue: #00d4ff;
+  --glow-purple: #7c3aed;
+  --glow-amber: #f59e0b;
+  --glow-green: #10b981;
+  --glow-pink: #ec4899;
+  --text: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --border: rgba(255,255,255,0.08);
+  --shadow-card: 0 4px 20px rgba(0,0,0,0.3);
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
-.container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
-.skip-link { position: absolute; top: -40px; left: 0; background: var(--primary-light); color: #fff; padding: 8px 16px; z-index: 999; border-radius: 0 0 4px 0; transition: top 0.2s; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--bg-base);
+  color: var(--text);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(0,212,255,0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(124,58,237,0.05) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, rgba(245,158,11,0.04) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+.container { max-width: 900px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+
+/* Skip link */
+.skip-link {
+  position: absolute; top: -40px; left: 0;
+  background: var(--glow-blue); color: #000;
+  padding: 8px 16px; z-index: 999;
+  border-radius: 0 0 4px 0; font-weight: 600; font-size: 0.85rem;
+  transition: top 0.2s;
+}
 .skip-link:focus { top: 0; }
-.header { background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #1e40af 100%); color: #fff; padding: 64px 0 56px; text-align: center; position: relative; overflow: hidden; }
-.header::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle at 30% 50%, rgba(37,99,235,0.15) 0%, transparent 60%); }
-.header h1 { font-size: 2.6rem; font-weight: 800; margin-bottom: 12px; position: relative; letter-spacing: -0.5px; }
-.header h1 span { color: var(--accent); }
-.header p { font-size: 1.1rem; opacity: 0.85; max-width: 600px; margin: 0 auto; position: relative; line-height: 1.6; }
-.nav { background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); padding: 0; position: sticky; top: 0; z-index: 100; height: 56px; }
+
+/* Nav */
+.nav {
+  background: rgba(10,14,26,0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 0; position: sticky; top: 0; z-index: 100;
+  height: 56px;
+}
 .nav .container { display: flex; gap: 28px; align-items: center; height: 100%; }
-.nav .logo { font-weight: 800; color: var(--primary); font-size: 1.05rem; margin-right: auto; letter-spacing: -0.3px; }
-.nav a { color: var(--text-secondary); text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: color 0.2s; position: relative; }
-.nav a:hover, .nav a:focus { color: var(--primary-light); }
-.nav a::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; background: var(--primary-light); transition: width 0.2s; border-radius: 1px; }
-.nav a:hover::after { width: 100%; }
-.cat-badge { display: inline-block; padding: 3px 12px; border-radius: 4px; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
-.cat-badge.guide { background: var(--success-light); color: #065f46; }
-.cat-badge.buying-guide { background: var(--primary-lighter); color: #1e40af; }
-.cat-badge.comparison { background: var(--purple-light); color: #5b21b6; }
-.btn { display: inline-block; background: linear-gradient(135deg, var(--primary-light), #1d4ed8); color: #fff; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.9rem; box-shadow: 0 2px 8px rgba(37,99,235,0.25); transition: all 0.2s; }
-.btn:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(37,99,235,0.35); }
-.posts-section { padding: 40px 0; }
-.posts-section h2 { font-size: 1.3rem; font-weight: 700; color: var(--text); margin-bottom: 24px; }
-.featured { background: linear-gradient(135deg, #fef9e7, #fef3c7); border: 1px solid #fde68a; border-radius: 14px; padding: 32px; margin-bottom: 32px; box-shadow: var(--shadow); position: relative; }
-.featured-badge { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: #92400e; font-weight: 700; margin-bottom: 12px; }
-.featured h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 10px; line-height: 1.3; }
-.featured h2 a { color: inherit; text-decoration: none; }
-.featured h2 a:hover { color: var(--primary-light); }
-.featured p { font-size: 0.95rem; color: #78716c; margin-bottom: 16px; line-height: 1.6; }
-.post-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 28px; margin-bottom: 20px; box-shadow: var(--shadow); transition: all 0.25s ease; }
-.post-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-2px); border-color: #cbd5e1; }
-.post-card .card-header { margin-bottom: 10px; }
-.post-card h2 { font-size: 1.2rem; font-weight: 600; margin-bottom: 8px; line-height: 1.35; }
-.post-card h2 a { color: var(--text); text-decoration: none; }
-.post-card h2 a:hover { color: var(--primary-light); }
-.post-card .meta { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 10px; }
-.post-card p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; }
-.post-card .read-more { display: inline-block; margin-top: 12px; color: var(--primary-light); font-weight: 600; font-size: 0.85rem; text-decoration: none; }
+.nav .logo { font-weight: 800; color: #fff; font-size: 1.05rem; margin-right: auto; letter-spacing: -0.3px; }
+.nav .logo span { color: var(--glow-blue); }
+.nav a { color: var(--text-secondary); text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: color 0.2s; }
+.nav a:hover, .nav a:focus { color: var(--glow-blue); }
+
+/* Hero */
+.hero {
+  padding: 80px 0 60px;
+  text-align: center;
+  position: relative;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  top: -100px; left: 50%;
+  transform: translateX(-50%);
+  width: 600px; height: 400px;
+  background: radial-gradient(ellipse, rgba(0,212,255,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-icon { font-size: 3rem; margin-bottom: 16px; display: block; }
+.hero h1 { font-size: 3rem; font-weight: 900; letter-spacing: -1px; line-height: 1.1; margin-bottom: 16px; background: linear-gradient(135deg, #fff 0%, #00d4ff 50%, #7c3aed 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero p { font-size: 1.1rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto 32px; line-height: 1.6; }
+.hero .stats {
+  display: flex; gap: 40px; justify-content: center;
+  flex-wrap: wrap;
+}
+.hero .stat-item { text-align: center; }
+.hero .stat-num { font-size: 1.8rem; font-weight: 800; color: var(--glow-blue); }
+.hero .stat-label { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+
+/* Top Picks Widget */
+.top-picks {
+  margin-bottom: 48px;
+}
+.section-label {
+  font-size: 0.8rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1.5px; color: var(--text-muted);
+  margin-bottom: 20px; text-align: center;
+}
+.top-grid {
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+}
+.top-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px; padding: 28px 20px;
+  text-decoration: none; color: inherit;
+  text-align: center;
+  transition: all 0.3s ease;
+  position: relative; overflow: hidden;
+}
+.top-card:hover {
+  background: var(--bg-card-hover);
+  border-color: rgba(0,212,255,0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0,212,255,0.1);
+}
+.top-rank { font-size: 2.2rem; margin-bottom: 8px; }
+.top-icon { font-size: 2rem; margin-bottom: 12px; }
+.top-title { font-weight: 600; font-size: 0.9rem; margin-bottom: 8px; line-height: 1.3; }
+.top-cat { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: var(--glow-blue); margin-bottom: 4px; }
+.top-meta { font-size: 0.75rem; color: var(--text-muted); }
+
+/* Section Title */
+.section-title {
+  font-size: 1.1rem; font-weight: 700;
+  margin-bottom: 24px; color: var(--text);
+  display: flex; align-items: center; gap: 10px;
+}
+.section-title::after {
+  content: '';
+  flex: 1; height: 1px;
+  background: linear-gradient(90deg, var(--border), transparent);
+}
+
+/* Post Cards */
+.posts-grid { display: flex; flex-direction: column; gap: 16px; margin-bottom: 48px; }
+.post-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px; padding: 24px;
+  display: flex; gap: 20px; align-items: flex-start;
+  transition: all 0.3s ease;
+  position: relative;
+  backdrop-filter: blur(4px);
+}
+.post-card:hover {
+  background: var(--bg-card-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card);
+}
+.post-card.card-buying { border-left: 3px solid var(--glow-blue); }
+.post-card.card-guide { border-left: 3px solid var(--glow-green); }
+.post-card.card-comparison { border-left: 3px solid var(--glow-purple); }
+.post-card.card-buying:hover { border-color: var(--glow-blue); box-shadow: 0 8px 30px rgba(0,212,255,0.08); }
+.post-card.card-guide:hover { border-color: var(--glow-green); box-shadow: 0 8px 30px rgba(16,185,129,0.08); }
+.post-card.card-comparison:hover { border-color: var(--glow-purple); box-shadow: 0 8px 30px rgba(124,58,237,0.08); }
+
+.card-rank {
+  font-size: 1.8rem; font-weight: 800;
+  color: rgba(255,255,255,0.06);
+  line-height: 1; min-width: 40px;
+}
+.card-icon { font-size: 1.6rem; min-width: 32px; margin-top: 2px; }
+.card-body { flex: 1; }
+.card-cat {
+  font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1px; margin-bottom: 6px;
+}
+.cat-buying { color: var(--glow-blue); }
+.cat-guide { color: var(--glow-green); }
+.cat-comparison { color: var(--glow-purple); }
+.post-card h2 { font-size: 1.05rem; font-weight: 600; margin-bottom: 6px; line-height: 1.35; }
+.post-card h2 a { color: var(--text); text-decoration: none; transition: color 0.2s; }
+.post-card h2 a:hover { color: var(--glow-blue); }
+.card-meta { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 8px; }
+.post-card p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; }
+.post-card .read-more {
+  display: inline-block; margin-top: 10px;
+  color: var(--glow-blue); font-weight: 600;
+  font-size: 0.8rem; text-decoration: none;
+  transition: gap 0.2s;
+}
 .post-card .read-more:hover { text-decoration: underline; }
-.footer { background: var(--primary); color: #cbd5e1; padding: 40px 0; margin-top: 48px; }
+
+/* CTA Section */
+.cta-section {
+  text-align: center; padding: 48px 0; margin-bottom: 32px;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.cta-section h2 { font-size: 1.3rem; font-weight: 700; margin-bottom: 8px; }
+.cta-section p { color: var(--text-secondary); margin-bottom: 20px; font-size: 0.9rem; }
+.btn {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--glow-blue), #0284c7);
+  color: #000; padding: 14px 32px; border-radius: 10px;
+  text-decoration: none; font-weight: 700; font-size: 0.9rem;
+  transition: all 0.3s; position: relative;
+}
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0,212,255,0.3);
+}
+
+/* Footer */
+.footer {
+  background: rgba(255,255,255,0.02);
+  border-top: 1px solid var(--border);
+  color: var(--text-secondary);
+  padding: 48px 0 32px;
+}
 .footer .container { max-width: 900px; }
 .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 32px; margin-bottom: 28px; }
-.footer h3 { color: #fff; font-size: 0.95rem; margin-bottom: 12px; }
-.footer p { font-size: 0.85rem; line-height: 1.7; }
-.footer a { color: #93c5fd; text-decoration: none; }
+.footer h3 { color: #fff; font-size: 0.9rem; margin-bottom: 12px; }
+.footer p { font-size: 0.82rem; line-height: 1.7; }
+.footer a { color: var(--glow-blue); text-decoration: none; }
 .footer a:hover { text-decoration: underline; }
 .footer ul { list-style: none; }
-.footer li { margin-bottom: 6px; font-size: 0.85rem; }
-.footer .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; text-align: center; font-size: 0.8rem; color: #94a3b8; }
-.footer .disclosure { font-size: 0.78rem; margin-top: 8px; color: #94a3b8; }
-.footer .stats { margin-top: 8px; font-size: 0.78rem; color: #64748b; }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
-.post-card { animation: fadeIn 0.4s ease-out; }
-.featured { animation: fadeIn 0.5s ease-out; }
-@media (max-width: 640px) {
-  .container { padding: 0 16px; }
-  .header h1 { font-size: 1.8rem; }
-  .header { padding: 48px 0 40px; }
-  .featured { padding: 24px; }
-  .featured h2 { font-size: 1.2rem; }
-  .post-card { padding: 20px; }
+.footer li { margin-bottom: 6px; font-size: 0.82rem; }
+.footer li a { color: var(--text-secondary); }
+.footer li a:hover { color: var(--glow-blue); }
+.footer .footer-bottom {
+  border-top: 1px solid var(--border);
+  padding-top: 20px; text-align: center;
+  font-size: 0.78rem; color: var(--text-muted);
+}
+.footer .disclosure { margin-top: 8px; font-size: 0.75rem; }
+
+/* Animations */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+.hero h1 { animation: fadeUp 0.8s ease-out; }
+.hero p { animation: fadeUp 0.8s ease-out 0.1s both; }
+.hero .stats { animation: fadeUp 0.8s ease-out 0.2s both; }
+.top-picks { animation: fadeUp 0.6s ease-out 0.3s both; }
+.post-card { animation: fadeUp 0.5s ease-out both; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero h1 { font-size: 2rem; }
+  .hero { padding: 48px 0 40px; }
+  .top-grid { grid-template-columns: 1fr; }
+  .post-card { flex-direction: column; gap: 12px; padding: 20px; }
+  .card-rank { display: none; }
   .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+  .hero .stats { gap: 24px; }
+  .hero .stat-num { font-size: 1.4rem; }
+}
+@media (max-width: 480px) {
+  .container { padding: 0 16px; }
+  .hero h1 { font-size: 1.6rem; }
+  .post-card h2 { font-size: 0.95rem; }
 }
 </style>
 </head>
 <body>
 <a href="#main-content" class="skip-link">Skip to content</a>
 
-<header class="header" role="banner">
-<div class="container">
-<h1>&#x1f50b; Battery <span>Backup</span> Guide</h1>
-<p>No gas. No noise. Just reliable battery power for your home.<br>Expert reviews, comparisons, and guides for apartment dwellers.</p>
-</div>
-</header>
-
 <nav class="nav" role="navigation" aria-label="Main navigation">
 <div class="container">
-<span class="logo">&#x26a1; BatteryBackupGuide</span>
+<span class="logo">&#x26a1; Battery<span>Backup</span>Guide</span>
 <a href="/">Home</a>
 <a href="/about">About</a>
 </div>
 </nav>
 
-<main id="main-content" class="container posts-section" role="main">
-<h2>Latest Guides &amp; Reviews</h2>
-<div class="featured">
-<div class="featured-badge">🔥 Featured Guide</div>
-<h2><a href="/posts/best-home-battery-backup-2026">Best Home Battery Backup Systems 2026 — Top 7 Picks Reviewed</a></h2>
-<p>Power outages are becoming more frequent across the United States. Whether it's extreme weather, aging infrastructure, or rolling blackouts, every...</p>
-<a href="/posts/best-home-battery-backup-2026" class="btn">Read Full Guide &rarr;</a>
+<header class="hero" role="banner">
+<div class="container">
+<span class="hero-icon">&#x26a1;</span>
+<h1>Battery Backup Guide</h1>
+<p>Independent reviews of portable power stations, solar generators &amp; home battery systems. No gas, no noise &mdash; just honest advice for apartment dwellers.</p>
+<div class="stats">
+<div class="stat-item"><div class="stat-num">20</div><div class="stat-label">Expert Guides</div></div>
+<div class="stat-item"><div class="stat-num">237</div><div class="stat-label">Min of Research</div></div>
+<div class="stat-item"><div class="stat-num">6</div><div class="stat-label">Categories</div></div>
 </div>
-<article class="post-card">
-<div class="card-header">
-<span class="cat-badge buying-guide">Buying Guide</span>
 </div>
-<h2><a href="/posts/best-generator-for-apartment-2026">Best Generator for Apartments (No Gas) — 2026 Guide</a></h2>
-<div class="meta">Updated May 2026 &bull; 14 min read</div>
-<p>Traditional gas generators create carbon monoxide (CO) — a silent, odorless killer. The CDC reports that over 400 Americans die...</p>
-<a href="/posts/best-generator-for-apartment-2026" class="read-more">Read More &rarr;</a>
-</article>
-<article class="post-card">
-<div class="card-header">
-<span class="cat-badge guide">Guide</span>
-</div>
-<h2><a href="/posts/apartment-power-outage-survival-guide">Apartment Power Outage Survival Guide (No Generator Needed)</a></h2>
-<div class="meta">Updated May 2026 &bull; 12 min read</div>
-<p>Before an outage hits, know what you need to power. Walk through your apartment and make a list:...</p>
-<a href="/posts/apartment-power-outage-survival-guide" class="read-more">Read More &rarr;</a>
-</article>
-<article class="post-card">
-<div class="card-header">
-<span class="cat-badge comparison">Comparison</span>
-</div>
+</header>
+
+<main id="main-content" class="container" role="main">
+<div class="top-picks"><div class="section-label">⚡ Top 3 at a Glance</div><div class="top-grid"><a href="/posts/best-home-battery-backup-2026" class="top-card">
+<div class="top-rank">🥇</div>
+<div class="top-icon">🏆</div>
+<div class="top-title">Best Home Battery Backup Systems 2026 — ...</div>
+<div class="top-cat">Buying Guide</div>
+<div class="top-meta">18 min read</div>
+</a><a href="/posts/best-generator-for-apartment-2026" class="top-card">
+<div class="top-rank">🥈</div>
+<div class="top-icon">⚡</div>
+<div class="top-title">Best Generator for Apartments (No Gas) —...</div>
+<div class="top-cat">Buying Guide</div>
+<div class="top-meta">14 min read</div>
+</a><a href="/posts/apartment-power-outage-survival-guide" class="top-card">
+<div class="top-rank">🥉</div>
+<div class="top-icon">🆘</div>
+<div class="top-title">Apartment Power Outage Survival Guide (N...</div>
+<div class="top-cat">Guide</div>
+<div class="top-meta">12 min read</div>
+</a></div></div>
+
+<div class="section-title">All Reviews &amp; Guides</div>
+<div class="posts-grid">
+<article class="post-card card-comparison">
+<div class="card-rank">4</div>
+<div class="card-icon">⚔️</div>
+<div class="card-body">
+<div class="card-cat cat-comparison">Comparison</div>
 <h2><a href="/posts/jackery-vs-ecoflow-vs-bluetti-home-backup">Jackery vs EcoFlow vs Bluetti: Home Backup Comparison 2026</a></h2>
-<div class="meta">Updated May 2026 &bull; 15 min read</div>
-<p>At $999 with 1,070 Wh capacity, Jackery offers the best price-per-capacity ratio among the top three. The 22 lbs weight is a...</p>
-<a href="/posts/jackery-vs-ecoflow-vs-bluetti-home-backup" class="read-more">Read More &rarr;</a>
-</article>
-<article class="post-card">
-<div class="card-header">
-<span class="cat-badge guide">Guide</span>
+<div class="card-meta">Updated May 2026 &bull; 15 min read</div>
+<p>At $999 with 1,070 Wh capacity, Jackery offers the best price-per-capacity ratio among the top three. The 22 lbs weight...</p>
+<a href="/posts/jackery-vs-ecoflow-vs-bluetti-home-backup" class="read-more">Read Review &rarr;</a>
 </div>
+</article>
+<article class="post-card card-guide">
+<div class="card-rank">5</div>
+<div class="card-icon">📋</div>
+<div class="card-body">
+<div class="card-cat cat-guide">Guide</div>
 <h2><a href="/posts/how-to-prepare-for-power-outages-home">How to Prepare for Power Outages at Home: Complete Guide 2026</a></h2>
-<div class="meta">Updated May 2026 &bull; 12 min read</div>
-<p>Power outages are increasing across the United States. According to the U.S. Energy Information Administration, the average...</p>
-<a href="/posts/how-to-prepare-for-power-outages-home" class="read-more">Read More &rarr;</a>
-</article>
-<article class="post-card">
-<div class="card-header">
-<span class="cat-badge buying-guide">Buying Guide</span>
+<div class="card-meta">Updated May 2026 &bull; 12 min read</div>
+<p>Power outages are increasing across the United States. According to the U.S. Energy Information Administration, the...</p>
+<a href="/posts/how-to-prepare-for-power-outages-home" class="read-more">Read Review &rarr;</a>
 </div>
+</article>
+<article class="post-card card-buying">
+<div class="card-rank">6</div>
+<div class="card-icon">🔋</div>
+<div class="card-body">
+<div class="card-cat cat-buying">Buying Guide</div>
 <h2><a href="/posts/best-portable-power-station-apartment-dwellers">Best Portable Power Station for Apartment Dwellers 2026 — Top 6 Picks</a></h2>
-<div class="meta">Updated May 2026 &bull; 15 min read</div>
-<p>We tested 12 portable power stations designed for apartment living — compact, quiet, and powerful enough to keep your essentials...</p>
-<a href="/posts/best-portable-power-station-apartment-dwellers" class="read-more">Read More &rarr;</a>
-</article>
-<article class="post-card">
-<div class="card-header">
-<span class="cat-badge guide">Guide</span>
+<div class="card-meta">Updated May 2026 &bull; 15 min read</div>
+<p>We tested 12 portable power stations designed for apartment living — compact, quiet, and powerful enough to keep your...</p>
+<a href="/posts/best-portable-power-station-apartment-dwellers" class="read-more">Read Review &rarr;</a>
 </div>
+</article>
+<article class="post-card card-guide">
+<div class="card-rank">7</div>
+<div class="card-icon">🏥</div>
+<div class="card-body">
+<div class="card-cat cat-guide">Guide</div>
 <h2><a href="/posts/battery-backup-cpap-apartment">Battery Backup for CPAP in Apartment — 2026 Life-Saving Guide</a></h2>
-<div class="meta">Updated May 2026 &bull; 12 min read</div>
-<p>If you depend on CPAP therapy, a power outage isn't just an inconvenience — it's a health risk. Here's how to keep your machine...</p>
-<a href="/posts/battery-backup-cpap-apartment" class="read-more">Read More &rarr;</a>
-</article>
-<article class="post-card">
-<div class="card-header">
-<span class="cat-badge guide">Guide</span>
+<div class="card-meta">Updated May 2026 &bull; 12 min read</div>
+<p>If you depend on CPAP therapy, a power outage isn't just an inconvenience — it's a health risk. Here's how to keep your...</p>
+<a href="/posts/battery-backup-cpap-apartment" class="read-more">Read Review &rarr;</a>
 </div>
+</article>
+<article class="post-card card-guide">
+<div class="card-rank">8</div>
+<div class="card-icon">🤔</div>
+<div class="card-body">
+<div class="card-cat cat-guide">Guide</div>
 <h2><a href="/posts/can-portable-power-station-power-whole-apartment">Can a Portable Power Station Power a Whole Apartment? What's Realistic in 2026</a></h2>
-<div class="meta">Updated May 2026 &bull; 10 min read</div>
-<p>The short answer: no single portable power station can power your whole apartment like grid power. But with the right setup, you...</p>
-<a href="/posts/can-portable-power-station-power-whole-apartment" class="read-more">Read More &rarr;</a>
-</article>
-<article class="post-card">
-<div class="card-header">
-<span class="cat-badge comparison">Comparison</span>
+<div class="card-meta">Updated May 2026 &bull; 10 min read</div>
+<p>The short answer: no single portable power station can power your whole apartment like grid power. But with the right...</p>
+<a href="/posts/can-portable-power-station-power-whole-apartment" class="read-more">Read Review &rarr;</a>
 </div>
+</article>
+<article class="post-card card-comparison">
+<div class="card-rank">9</div>
+<div class="card-icon">🔇</div>
+<div class="card-body">
+<div class="card-cat cat-comparison">Comparison</div>
 <h2><a href="/posts/best-quiet-backup-power-solutions-apartments">Best Quiet Backup Power Solutions for Apartments — 2026 Noise Comparison</a></h2>
-<div class="meta">Updated May 2026 &bull; 11 min read</div>
-<p>Worried about disturbing your neighbors during an outage? We measured the noise levels of 8 battery power stations to find the...</p>
-<a href="/posts/best-quiet-backup-power-solutions-apartments" class="read-more">Read More &rarr;</a>
-</article>
-<article class="post-card">
-<div class="card-header">
-<span class="cat-badge guide">Guide</span>
+<div class="card-meta">Updated May 2026 &bull; 11 min read</div>
+<p>Worried about disturbing your neighbors during an outage? We measured the noise levels of 8 battery power stations to...</p>
+<a href="/posts/best-quiet-backup-power-solutions-apartments" class="read-more">Read Review &rarr;</a>
 </div>
+</article>
+<article class="post-card card-guide">
+<div class="card-rank">10</div>
+<div class="card-icon">🧊</div>
+<div class="card-body">
+<div class="card-cat cat-guide">Guide</div>
 <h2><a href="/posts/how-to-keep-food-cold-during-power-outage-apartment">How to Keep Food Cold During a Power Outage in Your Apartment</a></h2>
-<div class="meta">Updated May 2026 &bull; 10 min read</div>
-<p>A fridge full of food costs hundreds to replace. Here's how to keep it cold during a power outage in your apartment — with or...</p>
-<a href="/posts/how-to-keep-food-cold-during-power-outage-apartment" class="read-more">Read More &rarr;</a>
-</article>
-<article class="post-card">
-<div class="card-header">
-<span class="cat-badge buying-guide">Buying Guide</span>
+<div class="card-meta">Updated May 2026 &bull; 10 min read</div>
+<p>A fridge full of food costs hundreds to replace. Here's how to keep it cold during a power outage in your apartment —...</p>
+<a href="/posts/how-to-keep-food-cold-during-power-outage-apartment" class="read-more">Read Review &rarr;</a>
 </div>
+</article>
+<article class="post-card card-buying">
+<div class="card-rank">11</div>
+<div class="card-icon">💰</div>
+<div class="card-body">
+<div class="card-cat cat-buying">Buying Guide</div>
 <h2><a href="/posts/best-power-station-under-500-apartment">Best Portable Power Station Under $500 for Apartments — 2026 Budget Guide</a></h2>
-<div class="meta">Updated May 2026 &bull; 12 min read</div>
-<p>You don't need to spend a thousand dollars to keep your apartment essentials running during a blackout. We tested 8 portable...</p>
-<a href="/posts/best-power-station-under-500-apartment" class="read-more">Read More &rarr;</a>
-</article>
-<article class="post-card">
-<div class="card-header">
-<span class="cat-badge guide">Guide</span>
+<div class="card-meta">Updated May 2026 &bull; 12 min read</div>
+<p>You don't need to spend a thousand dollars to keep your apartment essentials running during a blackout. We tested 8...</p>
+<a href="/posts/best-power-station-under-500-apartment" class="read-more">Read Review &rarr;</a>
 </div>
+</article>
+<article class="post-card card-guide">
+<div class="card-rank">12</div>
+<div class="card-icon">🎯</div>
+<div class="card-body">
+<div class="card-cat cat-guide">Guide</div>
 <h2><a href="/posts/how-to-choose-portable-power-station-apartment">How to Choose a Portable Power Station for Your Apartment — 2026 Buyer's Guide</a></h2>
-<div class="meta">Updated May 2026 &bull; 10 min read</div>
-<p>Buying your first portable power station for apartment backup? This beginner-friendly guide covers everything — watt-hours...</p>
-<a href="/posts/how-to-choose-portable-power-station-apartment" class="read-more">Read More &rarr;</a>
-</article>
-<article class="post-card">
-<div class="card-header">
-<span class="cat-badge guide">Guide</span>
+<div class="card-meta">Updated May 2026 &bull; 10 min read</div>
+<p>Buying your first portable power station for apartment backup? This beginner-friendly guide covers everything —...</p>
+<a href="/posts/how-to-choose-portable-power-station-apartment" class="read-more">Read Review &rarr;</a>
 </div>
+</article>
+<article class="post-card card-guide">
+<div class="card-rank">13</div>
+<div class="card-icon">☀️</div>
+<div class="card-body">
+<div class="card-cat cat-guide">Guide</div>
 <h2><a href="/posts/balcony-solar-setup-apartment">Balcony Solar Generator Setup for Apartments — Complete 2026 Guide</a></h2>
-<div class="meta">Updated May 2026 &bull; 11 min read</div>
-<p>Living in an apartment doesn't mean you can't harness the sun. This guide covers how to choose portable solar panels (100W–200W)...</p>
-<a href="/posts/balcony-solar-setup-apartment" class="read-more">Read More &rarr;</a>
-</article>
-<article class="post-card">
-<div class="card-header">
-<span class="cat-badge comparison">Comparison</span>
+<div class="card-meta">Updated May 2026 &bull; 11 min read</div>
+<p>Living in an apartment doesn't mean you can't harness the sun. This guide covers how to choose portable solar panels...</p>
+<a href="/posts/balcony-solar-setup-apartment" class="read-more">Read Review &rarr;</a>
 </div>
+</article>
+<article class="post-card card-comparison">
+<div class="card-rank">14</div>
+<div class="card-icon">⚖️</div>
+<div class="card-body">
+<div class="card-cat cat-comparison">Comparison</div>
 <h2><a href="/posts/power-station-vs-ups-vs-generator-apartment">Power Station vs UPS vs Generator for Apartments — Which Do You Need?</a></h2>
-<div class="meta">Updated May 2026 &bull; 13 min read</div>
-<p>Choosing between a portable power station, UPS, and gas generator for your apartment can be confusing — but the wrong choice can...</p>
-<a href="/posts/power-station-vs-ups-vs-generator-apartment" class="read-more">Read More &rarr;</a>
-</article>
-<article class="post-card">
-<div class="card-header">
-<span class="cat-badge buying-guide">Buying Guide</span>
+<div class="card-meta">Updated May 2026 &bull; 13 min read</div>
+<p>Choosing between a portable power station, UPS, and gas generator for your apartment can be confusing — but the wrong...</p>
+<a href="/posts/power-station-vs-ups-vs-generator-apartment" class="read-more">Read Review &rarr;</a>
 </div>
+</article>
+<article class="post-card card-buying">
+<div class="card-rank">15</div>
+<div class="card-icon">💻</div>
+<div class="card-body">
+<div class="card-cat cat-buying">Buying Guide</div>
 <h2><a href="/posts/best-power-station-home-office-backup">Best Power Station for Home Office & Work From Home Backup (2026)</a></h2>
-<div class="meta">Updated May 2026 &bull; 11 min read</div>
-<p>Keep working during power outages. We tested 4 power stations for home offices — Jackery Explorer 500, EcoFlow River 2 Pro...</p>
-<a href="/posts/best-power-station-home-office-backup" class="read-more">Read More &rarr;</a>
-</article>
-<article class="post-card">
-<div class="card-header">
-<span class="cat-badge buying-guide">Buying Guide</span>
+<div class="card-meta">Updated May 2026 &bull; 11 min read</div>
+<p>Keep working during power outages. We tested 4 power stations for home offices — Jackery Explorer 500, EcoFlow River 2...</p>
+<a href="/posts/best-power-station-home-office-backup" class="read-more">Read Review &rarr;</a>
 </div>
+</article>
+<article class="post-card card-buying">
+<div class="card-rank">16</div>
+<div class="card-icon">📦</div>
+<div class="card-body">
+<div class="card-cat cat-buying">Buying Guide</div>
 <h2><a href="/posts/best-power-station-refrigerator-backup">Best Portable Power Station for Refrigerator Backup (2026)</a></h2>
-<div class="meta">Updated May 2026 &bull; 10 min read</div>
-<p>A power outage doesn't have to mean spoiled food and expensive waste. The right portable power station can keep your refrigerator...</p>
-<a href="/posts/best-power-station-refrigerator-backup" class="read-more">Read More &rarr;</a>
-</article>
-<article class="post-card">
-<div class="card-header">
-<span class="cat-badge guide">Guide</span>
+<div class="card-meta">Updated May 2026 &bull; 10 min read</div>
+<p>A power outage doesn't have to mean spoiled food and expensive waste. The right portable power station can keep your...</p>
+<a href="/posts/best-power-station-refrigerator-backup" class="read-more">Read Review &rarr;</a>
 </div>
+</article>
+<article class="post-card card-guide">
+<div class="card-rank">17</div>
+<div class="card-icon">✅</div>
+<div class="card-body">
+<div class="card-cat cat-guide">Guide</div>
 <h2><a href="/posts/apartment-power-outage-safety-checklist">Apartment Power Outage Safety Checklist — What Every Renter Needs</a></h2>
-<div class="meta">Updated May 2026 &bull; 8 min read</div>
-<p>Power outages in apartments carry unique risks: no ventilation for generators, shared walls, elevator entrapment, and silent CO...</p>
-<a href="/posts/apartment-power-outage-safety-checklist" class="read-more">Read More &rarr;</a>
-</article>
-<article class="post-card">
-<div class="card-header">
-<span class="cat-badge guide">Guide</span>
+<div class="card-meta">Updated May 2026 &bull; 8 min read</div>
+<p>Power outages in apartments carry unique risks: no ventilation for generators, shared walls, elevator entrapment, and...</p>
+<a href="/posts/apartment-power-outage-safety-checklist" class="read-more">Read Review &rarr;</a>
 </div>
+</article>
+<article class="post-card card-guide">
+<div class="card-rank">18</div>
+<div class="card-icon">⏱️</div>
+<div class="card-body">
+<div class="card-cat cat-guide">Guide</div>
 <h2><a href="/posts/how-long-power-station-run-appliances">How Long Will a Power Station Run My Appliances? — Runtime Guide</a></h2>
-<div class="meta">Updated May 2026 &bull; 10 min read</div>
-<p>How long will a portable power station run your fridge, TV, laptop, or CPAP? Use our runtime formula, real-world estimates across...</p>
-<a href="/posts/how-long-power-station-run-appliances" class="read-more">Read More &rarr;</a>
-</article>
-<article class="post-card">
-<div class="card-header">
-<span class="cat-badge comparison">Comparison</span>
+<div class="card-meta">Updated May 2026 &bull; 10 min read</div>
+<p>How long will a portable power station run your fridge, TV, laptop, or CPAP? Use our runtime formula, real-world...</p>
+<a href="/posts/how-long-power-station-run-appliances" class="read-more">Read Review &rarr;</a>
 </div>
+</article>
+<article class="post-card card-comparison">
+<div class="card-rank">19</div>
+<div class="card-icon">🥊</div>
+<div class="card-body">
+<div class="card-cat cat-comparison">Comparison</div>
 <h2><a href="/posts/anker-vs-ecoflow-vs-goal-zero-comparison">Anker Solix vs EcoFlow Delta vs Goal Zero Yeti — Which Brand Is Best?</a></h2>
-<div class="meta">Updated May 2026 &bull; 12 min read</div>
-<p>Stuck choosing between Anker Solix, EcoFlow Delta, and Goal Zero Yeti for your apartment backup power? This head-to-head...</p>
-<a href="/posts/anker-vs-ecoflow-vs-goal-zero-comparison" class="read-more">Read More &rarr;</a>
-</article>
-<article class="post-card">
-<div class="card-header">
-<span class="cat-badge guide">Guide</span>
+<div class="card-meta">Updated May 2026 &bull; 12 min read</div>
+<p>Stuck choosing between Anker Solix, EcoFlow Delta, and Goal Zero Yeti for your apartment backup power? This...</p>
+<a href="/posts/anker-vs-ecoflow-vs-goal-zero-comparison" class="read-more">Read Review &rarr;</a>
 </div>
-<h2><a href="/posts/winter-power-outage-survival-apartment">Winter Power Outage Survival Guide for Apartments (2026)</a></h2>
-<div class="meta">Updated May 2026 &bull; 11 min read</div>
-<p>Winter storms cause the longest power outages — often lasting 3-7 days or more. For apartment dwellers, the challenge is acute...</p>
-<a href="/posts/winter-power-outage-survival-apartment" class="read-more">Read More &rarr;</a>
 </article>
+<article class="post-card card-guide">
+<div class="card-rank">20</div>
+<div class="card-icon">❄️</div>
+<div class="card-body">
+<div class="card-cat cat-guide">Guide</div>
+<h2><a href="/posts/winter-power-outage-survival-apartment">Winter Power Outage Survival Guide for Apartments (2026)</a></h2>
+<div class="card-meta">Updated May 2026 &bull; 11 min read</div>
+<p>Winter storms cause the longest power outages — often lasting 3-7 days or more. For apartment dwellers, the challenge...</p>
+<a href="/posts/winter-power-outage-survival-apartment" class="read-more">Read Review &rarr;</a>
+</div>
+</article>
+</div>
+
+<div class="cta-section">
+<h2>Not sure where to start?</h2>
+<p>Check out our complete guide to choosing the perfect power station for your apartment.</p>
+<a href="/posts/how-to-choose-portable-power-station-apartment" class="btn">&#x1f4a1; Start Here &rarr;</a>
+</div>
 </main>
 
 <footer class="footer" role="contentinfo">
@@ -302,7 +525,6 @@ body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Robo
 <div>
 <h3>&#x26a1; BatteryBackupGuide</h3>
 <p>Independent reviews and guides for home battery backup solutions. We research, test, and compare portable power stations, solar generators, and battery systems so you can make an informed decision.</p>
-<p class="stats">20 expert guides &bull; Updated May 2026</p>
 </div>
 <div>
 <h3>Categories</h3>
