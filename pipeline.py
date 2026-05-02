@@ -136,6 +136,11 @@ html { scroll-behavior: smooth; }
 .share-facebook:hover { background: #1877f2; color: #fff; }
 .share-reddit:hover { background: #ff4500; color: #fff; }
 .share-email:hover { background: var(--glow-blue); color: #000; }
+.link-list { list-style: none; padding: 0; margin: 8px 0 0; }
+.link-list li { margin-bottom: 6px; padding-left: 16px; position: relative; font-size: 0.9rem; }
+.link-list li::before { content: '›'; position: absolute; left: 0; color: var(--glow-blue); font-weight: 700; }
+.internal-link { color: var(--glow-blue); text-decoration: none; }
+.internal-link:hover { text-decoration: underline; }
 @media print { .nav, .footer, .toc-sidebar, .share-section, .related-section, .back-top, .progress-bar { display: none !important; } body { background: #fff !important; color: #000 !important; } .container { max-width: 100%; } .post-content h1 { -webkit-text-fill-color: #000 !important; color: #000 !important; } }
 
 .related-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
