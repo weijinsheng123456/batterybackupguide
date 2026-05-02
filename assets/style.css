@@ -151,6 +151,13 @@ body::before {
   text-decoration: none; transition: all 0.2s; white-space: nowrap;
 }
 .comp-btn:hover { transform: scale(1.05); box-shadow: 0 4px 15px rgba(0,212,255,0.25); }
+.comp-deal {
+  display: inline-block; padding: 5px 10px; border-radius: 20px;
+  font-size: 0.65rem; font-weight: 700;
+  color: #000; background: linear-gradient(135deg, var(--glow-amber), #d97706);
+  text-decoration: none; transition: all 0.2s; white-space: nowrap;
+}
+.comp-deal:hover { transform: scale(1.05); box-shadow: 0 4px 15px rgba(245,158,11,0.3); }
 
 /* Collapsible Table */
 .comp-row-extra { display: table-row; }

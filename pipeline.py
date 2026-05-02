@@ -46,12 +46,33 @@ def render_post_html(post, all_posts=None):
         items = ''.join(f'<li><a href="#{h_id}" class="toc-link">{label}</a></li>' for h_id, label in toc_items)
         toc_html = '<nav class="toc-sidebar" id="tocSidebar"><div class="toc-header" onclick="toggleTOC()">☰ On this page <span class="toc-toggle">▼</span></div><div class="toc-body" id="tocBody"><ol>' + items + '</ol></div></nav>'
 
-    # Add id attributes to h2 tags
+    # Add h2 IDs and inject Amazon affiliate CTA
+    TAG = "batteryback08-20"
     def add_h2_ids(m):
         txt = m.group(1)
         hid = txt.strip().lower().replace(' ', '-').replace('?', '').replace(',', '').replace('—', '-')[:40]
         return f'<h2 id="{hid}">{txt}</h2>'
     body_with_ids = re.sub(r'<h2>(.*?)</h2>', add_h2_ids, body)
+
+    # Add article-level Amazon affiliate CTA
+    # Extract product names from h2 headings (only those containing product emojis/numbers)
+    prod_names = [m.group(1).strip() for m in re.finditer(r'<h2[^>]*>([🥇🥈🥉\d][^<]*)</h2>', body)]
+    clean_names = []
+    for name in prod_names:
+        clean = re.sub(r'^[^a-zA-Z]+', '', name)  # Remove emoji/number prefixes
+        clean = re.split(r'\s*[—–:]\s*', clean)[0].strip()  # Take before dash
+        if clean and len(clean) > 3:
+            clean_names.append(clean)
+    
+    amz_links = []
+    for pname in clean_names[:5]:
+        search = re.sub(r'[^a-z0-9+]', '', pname.lower().replace(' ', '+'))
+        url = f"https://www.amazon.com/s?k={search}+power+station&tag={TAG}"
+        amz_links.append(f'<a href="{url}" class="btn" target="_blank" rel="noopener sponsored" style="margin:4px">{pname}</a>')
+    
+    if amz_links:
+        cta = '\n<div class="callout"><p><strong>Ready to buy?</strong> Check the latest prices on Amazon:</p><p style="margin-top:10px">' + ' '.join(amz_links) + '</p></div>'
+        body_with_ids = body_with_ids + cta
 
     # Determine category link for breadcrumbs
     cat_links = {"Buying Guide": "/posts/best-home-battery-backup-2026",
