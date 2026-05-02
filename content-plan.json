@@ -16,7 +16,7 @@
       "category": "Guide",
       "description": "Lost power and your station is dying? Learn how to recharge using solar panels, your car, or a backup generator.",
       "read_time": 8,
-      "status": "pending"
+      "status": "published"
     },
     {
       "order": 23,
@@ -25,7 +25,7 @@
       "category": "Guide",
       "description": "Everything you need in your apartment emergency kit: power, water, food, light, first aid, and communication.",
       "read_time": 9,
-      "status": "pending"
+      "status": "published"
     },
     {
       "order": 24,
