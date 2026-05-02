@@ -169,6 +169,11 @@ html { scroll-behavior: smooth; }
 .back-top.visible { opacity: 1; visibility: visible; }
 .back-top:hover { background: var(--glow-blue); color: #000; border-color: var(--glow-blue); transform: translateY(-2px); }
 @media (max-width: 640px) { .related-grid { grid-template-columns: 1fr; } }
+
+.post-content .product-img { width: 100%; max-width: 300px; height: auto; border-radius: 10px; display: block; margin: 16px auto; box-shadow: 0 4px 20px rgba(0,0,0,0.3); transition: transform 0.3s; }
+.post-content .product-img:hover { transform: scale(1.02); }
+.post-content .product-img-hero { width: 100%; max-width: 600px; height: auto; border-radius: 14px; display: block; margin: 24px auto; box-shadow: 0 8px 30px rgba(0,0,0,0.4); }
+
 </style>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>&#x26a1;</text></svg>">
 </head>
@@ -204,6 +209,7 @@ html { scroll-behavior: smooth; }
 </div>
 
 <div class="product-box">
+  <img class="product-img" src="/assets/images/jackery-explorer-1000-v2.jpg" alt="🌟 Runner-Up: Jackery Explorer 1000" loading="lazy" width="800" height="800">
   <h3>🌟 Runner-Up: Jackery Explorer 1000</h3>
   <p><strong>Best value for medium-duty backup.</strong> Jackery's Explorer 1000 uses an NMC battery (1002 Wh) with a 1000W pure sine wave inverter. While its inverter is weaker than the Delta 2, it still handles most refrigerator startups thanks to its 2000W surge capability. The Explorer 1000 is lighter and more portable, making it a solid choice for apartment dwellers who might need to move the unit around.</p>
   <ul>
@@ -217,6 +223,7 @@ html { scroll-behavior: smooth; }
 </div>
 
 <div class="product-box">
+  <img class="product-img" src="/assets/images/bluetti-ac180.jpg" alt="🔋 Best Capacity: Bluetti AC180" loading="lazy" width="800" height="800">
   <h3>🔋 Best Capacity: Bluetti AC180</h3>
   <p><strong>Best for extended outages and larger fridges.</strong> The Bluetti AC180 delivers 1152 Wh of LFP battery capacity with a 1800W inverter and a 2700W surge rating. Its massive capacity keeps a full-size fridge running for 14+ hours, and the LFP chemistry guarantees over 3500 charge cycles — nearly 10 years of daily use. It also supports 500W solar input, perfect for off-grid recharging during multi-day outages.</p>
   <ul>
@@ -230,6 +237,7 @@ html { scroll-behavior: smooth; }
 </div>
 
 <div class="product-box">
+  <img class="product-img" src="/assets/images/anker-solix-f2000.jpg" alt="📱 Best Smart Features: Anker Solix F2000" loading="lazy" width="800" height="800">
   <h3>📱 Best Smart Features: Anker Solix F2000</h3>
   <p><strong>Best for tech-savvy users who want app control.</strong> The Anker Solix F2000 (formerly PowerHouse 767) boasts a 2048 Wh LFP battery — the largest in this roundup. Its 2400W inverter handles even a large refrigerator + a small freezer simultaneously. The Solix app provides real-time monitoring, scheduled charging, and battery health insights. At 60 lbs, it's the heaviest, but the capacity-to-weight ratio is excellent.</p>
   <ul>

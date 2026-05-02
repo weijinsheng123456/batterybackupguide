@@ -169,6 +169,11 @@ html { scroll-behavior: smooth; }
 .back-top.visible { opacity: 1; visibility: visible; }
 .back-top:hover { background: var(--glow-blue); color: #000; border-color: var(--glow-blue); transform: translateY(-2px); }
 @media (max-width: 640px) { .related-grid { grid-template-columns: 1fr; } }
+
+.post-content .product-img { width: 100%; max-width: 300px; height: auto; border-radius: 10px; display: block; margin: 16px auto; box-shadow: 0 4px 20px rgba(0,0,0,0.3); transition: transform 0.3s; }
+.post-content .product-img:hover { transform: scale(1.02); }
+.post-content .product-img-hero { width: 100%; max-width: 600px; height: auto; border-radius: 14px; display: block; margin: 24px auto; box-shadow: 0 8px 30px rgba(0,0,0,0.4); }
+
 </style>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>&#x26a1;</text></svg>">
 </head>

@@ -169,6 +169,11 @@ html { scroll-behavior: smooth; }
 .back-top.visible { opacity: 1; visibility: visible; }
 .back-top:hover { background: var(--glow-blue); color: #000; border-color: var(--glow-blue); transform: translateY(-2px); }
 @media (max-width: 640px) { .related-grid { grid-template-columns: 1fr; } }
+
+.post-content .product-img { width: 100%; max-width: 300px; height: auto; border-radius: 10px; display: block; margin: 16px auto; box-shadow: 0 4px 20px rgba(0,0,0,0.3); transition: transform 0.3s; }
+.post-content .product-img:hover { transform: scale(1.02); }
+.post-content .product-img-hero { width: 100%; max-width: 600px; height: auto; border-radius: 14px; display: block; margin: 24px auto; box-shadow: 0 8px 30px rgba(0,0,0,0.4); }
+
 </style>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>&#x26a1;</text></svg>">
 </head>
@@ -224,7 +229,8 @@ html { scroll-behavior: smooth; }
 <div class="pros-cons"><div class="pros"><h4>✅ Pros</h4><ul><li>512 Wh capacity — great value per dollar</li><li>3 AC outlets — rare at this price point</li><li>Premium build quality from Anker</li><li>LiFePO₄ with 3,000+ cycle lifespan</li></ul></div><div class="cons"><h4>❌ Cons</h4><ul><li>Heavier than competitors (14.1 lbs)</li><li>No app control or Wi-Fi connectivity</li><li>Solar charging is slow (120W max input)</li><li>No fast-charge mode (6-hour AC recharge)</li></ul></div></div>
 
 <div class="product-box">
-<h3>4. Bluetti EB55 — Best Capacity Under $500</h3>
+  <img class="product-img" src="/assets/images/bluetti-eb55.jpg" alt="4. Bluetti EB55 — Best Capacity Under $500" loading="lazy" width="800" height="800">
+  <h3>4. Bluetti EB55 — Best Capacity Under $500</h3>
 <p><strong>Price:</strong> $499 · <strong>Capacity:</strong> 537 Wh · <strong>Output:</strong> 700 W (1,400 W surge) · <strong>Weight:</strong> 16.5 lbs · <strong>Battery:</strong> LiFePO₄ (2,500+ cycles)</p>
 <p><strong>Best for:</strong> Apartment dwellers who want maximum capacity and output without exceeding $500.</p>
 </div>
@@ -235,7 +241,8 @@ html { scroll-behavior: smooth; }
 <div class="pros-cons"><div class="pros"><h4>✅ Pros</h4><ul><li>537 Wh — highest capacity under $500</li><li>700W inverter — handles more appliances</li><li>4 AC outlets + wireless charging pad</li><li>200W MPPT solar input support</li></ul></div><div class="cons"><h4>❌ Cons</h4><ul><li>Heaviest on this list (16.5 lbs)</li><li>Fan is audible under high load</li><li>At $499, it’s right at the budget limit</li><li>No app connectivity</li></ul></div></div>
 
 <div class="product-box">
-<h3>5. Goal Zero Yeti 200X — Best for Device Charging</h3>
+  <img class="product-img" src="/assets/images/goal-zero-yeti-1500x.jpg" alt="5. Goal Zero Yeti 200X — Best for Device Charging" loading="lazy" width="800" height="800">
+  <h3>5. Goal Zero Yeti 200X — Best for Device Charging</h3>
 <p><strong>Price:</strong> $349 · <strong>Capacity:</strong> 187 Wh · <strong>Output:</strong> 300 W (600 W surge) · <strong>Weight:</strong> 5.3 lbs · <strong>Battery:</strong> Li-ion NMC</p>
 <p><strong>Best for:</strong> Apartment dwellers who primarily need device charging — phones, laptops, tablets — in the smallest possible package.</p>
 </div>
