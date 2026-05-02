@@ -35,16 +35,38 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 .hero .stat-num{font-size:1.6rem;font-weight:800;color:var(--glow-blue);}
 .hero .stat-label{font-size:.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-top:2px;}
 .section-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-muted);margin-bottom:20px;text-align:center;}
-.top-picks{margin-bottom:40px;}
-.top-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;}
-.top-card{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:24px 16px;text-decoration:none;color:inherit;text-align:center;transition:all .3s;}
-.top-card:hover{background:var(--bg-card-hover);border-color:rgba(0,212,255,0.25);transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,212,255,0.08);}
-.top-rank{font-size:2rem;margin-bottom:6px;}
-.top-icon{font-size:2rem;margin-bottom:10px;}
-.top-title{font-weight:600;font-size:.85rem;margin-bottom:6px;line-height:1.3;}
-.top-cat{font-size:.65rem;text-transform:uppercase;letter-spacing:1px;color:var(--glow-blue);}
 .section-title{font-size:1rem;font-weight:700;margin-bottom:20px;color:var(--text);display:flex;align-items:center;gap:10px;}
 .section-title::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent);}
+
+/* Product Showcase Cards */
+.showcase-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin-bottom:40px;}
+.showcase-card{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:20px;text-decoration:none;color:inherit;transition:all .3s;display:flex;flex-direction:column;}
+.showcase-card:hover{background:var(--bg-card-hover);border-color:rgba(0,212,255,0.25);transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,212,255,0.08);}
+.showcase-rank{font-size:1.8rem;margin-bottom:4px;line-height:1;}
+.showcase-img{width:100%;height:160px;object-fit:contain;border-radius:8px;margin:10px 0;background:rgba(0,0,0,0.2);transition:transform .3s;}
+.showcase-card:hover .showcase-img{transform:scale(1.03);}
+.showcase-name{font-weight:700;font-size:.95rem;margin-bottom:4px;color:var(--text);}
+.showcase-specs{font-size:.75rem;color:var(--text-secondary);margin-bottom:6px;line-height:1.4;}
+.showcase-tag{display:inline-block;padding:2px 10px;border-radius:20px;font-size:.65rem;font-weight:600;background:rgba(0,212,255,0.1);color:var(--glow-blue);border:1px solid rgba(0,212,255,0.2);align-self:flex-start;margin-top:auto;}
+
+/* Comparison table with images */
+.comp-table-wrap{overflow-x:auto;border-radius:12px;border:1px solid var(--border);margin-bottom:40px;}
+.comp-table{width:100%;border-collapse:collapse;font-size:.82rem;}
+.comp-table th{padding:12px 10px;text-align:left;background:linear-gradient(135deg,rgba(0,212,255,0.1),rgba(124,58,237,0.1));color:var(--text);font-weight:600;font-size:.7rem;text-transform:uppercase;letter-spacing:.5px;}
+.comp-table td{padding:10px 8px;border-bottom:1px solid var(--border);vertical-align:middle;}
+.comp-table tbody tr:hover{background:rgba(255,255,255,0.02);}
+.comp-table tbody tr:last-child td{border-bottom:none;}
+.comp-rank{font-size:1.2rem;text-align:center;width:36px;}
+.comp-thumb{width:56px;padding:4px !important;}
+.comp-thumb img{width:56px;height:56px;object-fit:contain;border-radius:6px;display:block;}
+.comp-name{font-weight:600;color:var(--text);font-size:.82rem;}
+.comp-price{font-weight:700;color:var(--text);}
+.comp-cap{color:var(--text-secondary);font-size:.75rem;}
+.best-tag{display:inline-block;padding:2px 8px;border-radius:20px;font-size:.6rem;font-weight:600;background:rgba(0,212,255,0.1);color:var(--glow-blue);border:1px solid rgba(0,212,255,0.2);white-space:nowrap;}
+.comp-btn{display:inline-block;padding:5px 14px;border-radius:20px;font-size:.7rem;font-weight:600;color:#000;background:linear-gradient(135deg,var(--glow-blue),#0284c7);text-decoration:none;transition:all .2s;white-space:nowrap;}
+.comp-btn:hover{transform:scale(1.05);box-shadow:0 4px 15px rgba(0,212,255,0.25);}
+
+/* Post Cards */
 .posts-grid{display:flex;flex-direction:column;gap:14px;margin-bottom:40px;}
 .post-card{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:20px;display:flex;gap:16px;align-items:flex-start;transition:all .3s;}
 .post-card:hover{background:var(--bg-card-hover);transform:translateY(-2px);box-shadow:var(--shadow);}
@@ -62,27 +84,13 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 .post-card h2 a:hover{color:var(--glow-blue);}
 .card-meta{font-size:.75rem;color:var(--text-muted);margin-bottom:6px;}
 .post-card p{font-size:.82rem;color:var(--text-secondary);line-height:1.5;}
-.post-card .read-more{display:inline-block;margin-top:8px;color:var(--glow-blue);font-weight:600;font-size:.78rem;text-decoration:none;transition:gap .2s;}
+.post-card .read-more{display:inline-block;margin-top:8px;color:var(--glow-blue);font-weight:600;font-size:.78rem;text-decoration:none;}
 .post-card .read-more:hover{text-decoration:underline;}
 .cta-section{text-align:center;padding:40px 0;margin-bottom:24px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
 .cta-section h2{font-size:1.2rem;font-weight:700;margin-bottom:6px;}
 .cta-section p{color:var(--text-secondary);margin-bottom:16px;font-size:.85rem;}
 .btn{display:inline-block;background:linear-gradient(135deg,var(--glow-blue),#0284c7);color:#000;padding:12px 28px;border-radius:10px;text-decoration:none;font-weight:700;font-size:.85rem;transition:all .3s;}
 .btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,212,255,0.3);}
-.pick-section{margin-bottom:40px;}
-.comp-table-wrap{overflow-x:auto;border-radius:12px;border:1px solid var(--border);}
-.comp-table{width:100%;border-collapse:collapse;font-size:.82rem;}
-.comp-table th{padding:12px 10px;text-align:left;background:linear-gradient(135deg,rgba(0,212,255,0.1),rgba(124,58,237,0.1));color:var(--text);font-weight:600;font-size:.7rem;text-transform:uppercase;letter-spacing:.5px;}
-.comp-table td{padding:12px 10px;border-bottom:1px solid var(--border);vertical-align:middle;}
-.comp-table tbody tr:hover{background:rgba(255,255,255,0.02);}
-.comp-table tbody tr:last-child td{border-bottom:none;}
-.comp-rank{font-size:1.2rem;text-align:center;width:40px;}
-.comp-name{font-weight:600;color:var(--text);font-size:.85rem;}
-.comp-price{font-weight:700;color:var(--text);}
-.comp-cap{color:var(--text-secondary);font-size:.78rem;}
-.best-tag{display:inline-block;padding:2px 10px;border-radius:20px;font-size:.65rem;font-weight:600;background:rgba(0,212,255,0.1);color:var(--glow-blue);border:1px solid rgba(0,212,255,0.2);white-space:nowrap;}
-.comp-btn{display:inline-block;padding:5px 14px;border-radius:20px;font-size:.72rem;font-weight:600;color:#000;background:linear-gradient(135deg,var(--glow-blue),#0284c7);text-decoration:none;transition:all .2s;white-space:nowrap;}
-.comp-btn:hover{transform:scale(1.05);box-shadow:0 4px 15px rgba(0,212,255,0.25);}
 .trust-section{margin-bottom:40px;text-align:center;}
 .trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
 .trust-item{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:24px 12px;text-align:center;transition:all .3s;}
@@ -103,16 +111,6 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 .footer li a:hover{color:var(--glow-blue);}
 .footer .footer-bottom{border-top:1px solid var(--border);padding-top:16px;text-align:center;font-size:.75rem;color:var(--text-muted);}
 .footer .disclosure{font-size:.72rem;margin-top:6px;}
-@media(max-width:768px){.hero h1{font-size:2rem;}.hero{padding:48px 0 36px;}.top-grid{grid-template-columns:1fr;}.post-card{flex-direction:column;gap:10px;padding:16px;}.footer-grid{grid-template-columns:1fr;gap:20px;}.trust-grid{grid-template-columns:repeat(2,1fr);}.hero .stats{gap:20px;}}
-@media(max-width:480px){.container{padding:0 16px;}.hero h1{font-size:1.5rem;}}
-@keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
-.hero h1,.hero p,.hero .stats,.top-picks,.post-card{animation:fadeUp .5s ease-out both;}
-.hero p{animation-delay:.1s;}
-.hero .stats{animation-delay:.15s;}
-.top-picks{animation-delay:.2s;}
-.post-card:nth-child(1){animation-delay:.25s;}
-.post-card:nth-child(2){animation-delay:.3s;}
-.post-card:nth-child(3){animation-delay:.35s;}
 
 /* Filter Tabs */
 .filter-tabs { display: flex; gap: 6px; flex-wrap: wrap; }
@@ -124,9 +122,6 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 .filter-btn:hover { border-color: var(--glow-blue); color: var(--glow-blue); }
 .filter-btn.active { background: var(--glow-blue); color: #000; border-color: var(--glow-blue); font-weight: 600; }
 .post-card[data-cat] { display: flex; }
-@media (max-width: 640px) {
-  .section-title { flex-direction: column; align-items: flex-start; gap: 10px; }
-}
 
 /* Back to Top */
 .back-top {
@@ -141,6 +136,32 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 .back-top.visible { opacity: 1; visibility: visible; }
 .back-top:hover { background: var(--glow-blue); color: #000; border-color: var(--glow-blue); transform: translateY(-2px); }
 
+@media(max-width:768px){
+  .hero h1{font-size:2rem;}.hero{padding:48px 0 36px;}
+  .post-card{flex-direction:column;gap:10px;padding:16px;}
+  .footer-grid{grid-template-columns:1fr;gap:20px;}
+  .trust-grid{grid-template-columns:repeat(2,1fr);}
+  .hero .stats{gap:20px;}
+  .showcase-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:480px){
+  .container{padding:0 16px;}
+  .hero h1{font-size:1.5rem;}
+  .showcase-grid{grid-template-columns:1fr;}
+  .section-title{flex-direction:column;align-items:flex-start;gap:10px;}
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+.hero h1,.hero p,.hero .stats,.showcase-card,.post-card{animation:fadeUp .5s ease-out both;}
+.hero p{animation-delay:.1s;}
+.hero .stats{animation-delay:.15s;}
+.showcase-card:nth-child(1){animation-delay:.18s;}
+.showcase-card:nth-child(2){animation-delay:.22s;}
+.showcase-card:nth-child(3){animation-delay:.26s;}
+.showcase-card:nth-child(4){animation-delay:.30s;}
+.showcase-card:nth-child(5){animation-delay:.34s;}
+.post-card:nth-child(1){animation-delay:.25s;}
+.post-card:nth-child(2){animation-delay:.3s;}
+.post-card:nth-child(3){animation-delay:.35s;}
 </style>
 </head>
 <body>
@@ -155,142 +176,109 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 <div class="stats">
 <div class="stat-item"><div class="stat-num">20</div><div class="stat-label">In-Depth Guides</div></div>
 <div class="stat-item"><div class="stat-num">3</div><div class="stat-label">Categories</div></div>
-<div class="stat-item"><div class="stat-num">20+</div><div class="stat-label">Products Covered</div></div>
+<div class="stat-item"><div class="stat-num">40+</div><div class="stat-label">Hours of Research</div></div>
 </div>
 </div>
 </header>
 <main id="main-content" class="container" role="main">
+
 <div class="trust-section">
 <div class="section-label">&#x1f4aa; About This Site</div>
 <div class="trust-grid">
-<div class="trust-item">
-<div class="trust-icon">&#x1f4d6;</div>
-<div class="trust-num">20</div>
-<div class="trust-label">In-Depth Guides</div>
-</div>
-<div class="trust-item">
-<div class="trust-icon">&#x2705;</div>
-<div class="trust-num">Independent</div>
-<div class="trust-label">No Paid Reviews</div>
-</div>
-<div class="trust-item">
-<div class="trust-icon">&#x1f4c5;</div>
-<div class="trust-num">May 2026</div>
-<div class="trust-label">Last Updated</div>
-</div>
-<div class="trust-item">
-<div class="trust-icon">&#x1f4b3;</div>
-<div class="trust-num">Transparent</div>
-<div class="trust-label">Affiliate Disclosure</div>
+<div class="trust-item"><div class="trust-icon">&#x1f4d6;</div><div class="trust-num">20</div><div class="trust-label">In-Depth Guides</div></div>
+<div class="trust-item"><div class="trust-icon">&#x2705;</div><div class="trust-num">Independent</div><div class="trust-label">No Paid Reviews</div></div>
+<div class="trust-item"><div class="trust-icon">&#x1f4c5;</div><div class="trust-num">May 2026</div><div class="trust-label">Last Updated</div></div>
+<div class="trust-item"><div class="trust-icon">&#x1f4b3;</div><div class="trust-num">Transparent</div><div class="trust-label">Affiliate Disclosure</div></div>
 </div>
 </div>
+
+<div class="section-label">&#x1f3af; Our Top Picks</div>
+<div class="showcase-grid">
+<a href="/posts/best-home-battery-backup-2026" class="showcase-card">
+<div class="showcase-rank">🥇</div>
+<img class="showcase-img" src="/assets/images/ecoflow-delta-2.jpg" alt="EcoFlow Delta 2" loading="lazy" width="260" height="160">
+<div class="showcase-name">EcoFlow Delta 2</div>
+<div class="showcase-specs">1,024 Wh &bull; 1,800W &bull; 50 min fast charge</div>
+<span class="showcase-tag">Best Overall</span>
+</a>
+<a href="/posts/best-home-battery-backup-2026" class="showcase-card">
+<div class="showcase-rank">🥈</div>
+<img class="showcase-img" src="/assets/images/jackery-explorer-1000-v2.jpg" alt="Jackery Explorer 1000 v2" loading="lazy" width="260" height="160">
+<div class="showcase-name">Jackery Explorer 1000 v2</div>
+<div class="showcase-specs">1,070 Wh &bull; 1,500W &bull; 22 lbs lightest</div>
+<span class="showcase-tag">Best Value</span>
+</a>
+<a href="/posts/best-home-battery-backup-2026" class="showcase-card">
+<div class="showcase-rank">🥉</div>
+<img class="showcase-img" src="/assets/images/bluetti-ac180.jpg" alt="Bluetti AC180" loading="lazy" width="260" height="160">
+<div class="showcase-name">Bluetti AC180</div>
+<div class="showcase-specs">1,152 Wh &bull; 1,800W &bull; Best $/Wh</div>
+<span class="showcase-tag">Best Capacity</span>
+</a>
+<a href="/posts/anker-vs-ecoflow-vs-goal-zero-comparison" class="showcase-card">
+<div class="showcase-rank">4</div>
+<img class="showcase-img" src="/assets/images/anker-solix-f2000.jpg" alt="Anker Solix F2000" loading="lazy" width="260" height="160">
+<div class="showcase-name">Anker Solix F2000</div>
+<div class="showcase-specs">2,048 Wh &bull; 2,400W &bull; Expandable</div>
+<span class="showcase-tag">Expandable</span>
+</a>
+<a href="/posts/best-power-station-home-office-backup" class="showcase-card">
+<div class="showcase-rank">5</div>
+<img class="showcase-img" src="/assets/images/ecoflow-river-2-pro.jpg" alt="EcoFlow River 2 Pro" loading="lazy" width="260" height="160">
+<div class="showcase-name">EcoFlow River 2 Pro</div>
+<div class="showcase-specs">768 Wh &bull; 800W &bull; UPS mode</div>
+<span class="showcase-tag">Work From Home</span>
+</a>
 </div>
-<div class="pick-section">
-<div class="section-label">&#x1f3af; Top Picks at a Glance</div>
-<p style="color:var(--text-muted);font-size:0.8rem;margin-bottom:16px;text-align:center;">Products featured in our guides. Prices are approximate at time of writing.</p>
+
+<div class="section-label">&#x1f4ca; Full Comparison</div>
 <div class="comp-table-wrap">
 <table class="comp-table">
-<thead><tr><th></th><th>Product</th><th>Price</th><th>Capacity</th><th>Best For</th><th></th></tr></thead>
+<thead><tr><th></th><th></th><th>Product</th><th>Price</th><th>Capacity</th><th>Best For</th><th></th></tr></thead>
 <tbody><tr>
 <td class="comp-rank">🥇</td>
+<td class="comp-thumb"><img src="/assets/images/ecoflow-delta-2.jpg" alt="EcoFlow Delta 2" loading="lazy"></td>
 <td class="comp-name">EcoFlow Delta 2</td>
 <td class="comp-price">$999</td>
 <td class="comp-cap">1,024Wh</td>
 <td class="comp-badge"><span class="best-tag">Best Overall</span></td>
-<td class="comp-link"><a href="/posts/best-home-battery-backup-2026" class="comp-btn">Read Review</a></td>
+<td class="comp-link"><a href="/posts/best-home-battery-backup-2026" class="comp-btn">Review</a></td>
 </tr><tr>
 <td class="comp-rank">🥈</td>
+<td class="comp-thumb"><img src="/assets/images/jackery-explorer-1000-v2.jpg" alt="Jackery Explorer 1000 v2" loading="lazy"></td>
 <td class="comp-name">Jackery Explorer 1000 v2</td>
 <td class="comp-price">$799</td>
 <td class="comp-cap">1,070Wh</td>
 <td class="comp-badge"><span class="best-tag">Best Value</span></td>
-<td class="comp-link"><a href="/posts/best-home-battery-backup-2026" class="comp-btn">Read Review</a></td>
+<td class="comp-link"><a href="/posts/best-home-battery-backup-2026" class="comp-btn">Review</a></td>
 </tr><tr>
 <td class="comp-rank">🥉</td>
+<td class="comp-thumb"><img src="/assets/images/bluetti-ac180.jpg" alt="Bluetti AC180" loading="lazy"></td>
 <td class="comp-name">Bluetti AC180</td>
 <td class="comp-price">$899</td>
 <td class="comp-cap">1,152Wh</td>
 <td class="comp-badge"><span class="best-tag">Best Capacity</span></td>
-<td class="comp-link"><a href="/posts/best-home-battery-backup-2026" class="comp-btn">Read Review</a></td>
+<td class="comp-link"><a href="/posts/best-home-battery-backup-2026" class="comp-btn">Review</a></td>
 </tr><tr>
 <td class="comp-rank">4</td>
+<td class="comp-thumb"><img src="/assets/images/ecoflow-river-2-pro.jpg" alt="EcoFlow River 2 Pro" loading="lazy"></td>
 <td class="comp-name">EcoFlow River 2 Pro</td>
 <td class="comp-price">$699</td>
 <td class="comp-cap">768Wh</td>
-<td class="comp-badge"><span class="best-tag">Works Well For WFH</span></td>
-<td class="comp-link"><a href="/posts/best-power-station-home-office-backup" class="comp-btn">Read Review</a></td>
+<td class="comp-badge"><span class="best-tag">Work From Home</span></td>
+<td class="comp-link"><a href="/posts/best-power-station-home-office-backup" class="comp-btn">Review</a></td>
 </tr><tr>
 <td class="comp-rank">5</td>
+<td class="comp-thumb"><img src="/assets/images/anker-solix-f2000.jpg" alt="Anker Solix F2000" loading="lazy"></td>
 <td class="comp-name">Anker Solix F2000</td>
 <td class="comp-price">$1,599</td>
 <td class="comp-cap">2,048Wh</td>
 <td class="comp-badge"><span class="best-tag">Expandable</span></td>
-<td class="comp-link"><a href="/posts/anker-vs-ecoflow-vs-goal-zero-comparison" class="comp-btn">Read Review</a></td>
+<td class="comp-link"><a href="/posts/anker-vs-ecoflow-vs-goal-zero-comparison" class="comp-btn">Review</a></td>
 </tr></tbody>
 </table>
 </div>
-</div>
-<div class="top-picks"><div class="section-label">⚡ Top Picks at a Glance</div><div class="top-grid"><a href="/posts/best-home-battery-backup-2026" class="top-card">
-<div class="top-rank">🥇</div>
-<div class="top-icon">🏆</div>
-<div class="top-title">Best Home Battery Backup Systems 2026 — ...</div>
-<div class="top-cat">Buying Guide · 15 min</div>
-</a><a href="/posts/best-generator-for-apartment-2026" class="top-card">
-<div class="top-rank">🥈</div>
-<div class="top-icon">⚡</div>
-<div class="top-title">Best Generator for Apartments (No Gas) —...</div>
-<div class="top-cat">Buying Guide · 16 min</div>
-</a><a href="/posts/apartment-power-outage-survival-guide" class="top-card">
-<div class="top-rank">🥉</div>
-<div class="top-icon">🆘</div>
-<div class="top-title">Apartment Power Outage Survival Guide (N...</div>
-<div class="top-cat">Guide · 15 min</div>
-</a></div></div><div class="top-grid"><a href="/posts/best-home-battery-backup-2026" class="top-card">
-<div class="top-rank">🥇</div>
-<div class="top-icon">🏆</div>
-<div class="top-title">Best Home Battery Backup Systems 2026 — ...</div>
-<div class="top-cat">Buying Guide · 15 min</div>
-</a><a href="/posts/best-generator-for-apartment-2026" class="top-card">
-<div class="top-rank">🥈</div>
-<div class="top-icon">⚡</div>
-<div class="top-title">Best Generator for Apartments (No Gas) —...</div>
-<div class="top-cat">Buying Guide · 16 min</div>
-</a><a href="/posts/apartment-power-outage-survival-guide" class="top-card">
-<div class="top-rank">🥉</div>
-<div class="top-icon">🆘</div>
-<div class="top-title">Apartment Power Outage Survival Guide (N...</div>
-<div class="top-cat">Guide · 15 min</div>
-</a></div></div><div class="top-grid"><a href="/posts/best-home-battery-backup-2026" class="top-card">
-<div class="top-rank">🥇</div>
-<div class="top-icon">🏆</div>
-<div class="top-title">Best Home Battery Backup Systems 2026 — ...</div>
-<div class="top-cat">Buying Guide · 15 min</div>
-</a><a href="/posts/best-generator-for-apartment-2026" class="top-card">
-<div class="top-rank">🥈</div>
-<div class="top-icon">⚡</div>
-<div class="top-title">Best Generator for Apartments (No Gas) —...</div>
-<div class="top-cat">Buying Guide · 16 min</div>
-</a><a href="/posts/apartment-power-outage-survival-guide" class="top-card">
-<div class="top-rank">🥉</div>
-<div class="top-icon">🆘</div>
-<div class="top-title">Apartment Power Outage Survival Guide (N...</div>
-<div class="top-cat">Guide · 15 min</div>
-</a></div></div><div class="top-grid"><a href="/posts/best-home-battery-backup-2026" class="top-card">
-<div class="top-rank">🥇</div>
-<div class="top-icon">🏆</div>
-<div class="top-title">Best Home Battery Backup Systems 2026 — ...</div>
-<div class="top-cat">Buying Guide</div>
-</a><a href="/posts/best-generator-for-apartment-2026" class="top-card">
-<div class="top-rank">🥈</div>
-<div class="top-icon">⚡</div>
-<div class="top-title">Best Generator for Apartments (No Gas) —...</div>
-<div class="top-cat">Buying Guide</div>
-</a><a href="/posts/apartment-power-outage-survival-guide" class="top-card">
-<div class="top-rank">🥉</div>
-<div class="top-icon">🆘</div>
-<div class="top-title">Apartment Power Outage Survival Guide (N...</div>
-<div class="top-cat">Guide</div>
-</a></div></div>
+
 <div class="section-title">
   <span>All Guides</span>
   <div class="filter-tabs">
@@ -494,32 +482,27 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 </footer>
 
 <script>
-// Category filter
 document.querySelectorAll('.filter-btn').forEach(function(btn) {
   btn.addEventListener('click', function() {
     document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
-    btn.classList.add('active');
-    var cat = btn.getAttribute('data-filter');
+    this.classList.add('active');
+    var filter = this.getAttribute('data-filter');
     document.querySelectorAll('.post-card').forEach(function(card) {
-      if (cat === 'all' || card.getAttribute('data-cat') === cat) {
-        card.style.display = 'flex';
-      } else {
-        card.style.display = 'none';
-      }
+      if (filter === 'all') { card.style.display = 'flex'; }
+      else { card.style.display = card.getAttribute('data-cat') === filter ? 'flex' : 'none'; }
     });
   });
 });
-
-// Back to top
+var bt = document.createElement('button');
+bt.className = 'back-top'; bt.innerHTML = '&#x2191;';
+bt.setAttribute('aria-label', 'Back to top');
+document.body.appendChild(bt);
 window.addEventListener('scroll', function() {
-  var btn = document.getElementById('backTop');
-  if (btn) {
-    if (window.scrollY > 400) { btn.classList.add('visible'); }
-    else { btn.classList.remove('visible'); }
-  }
+  bt.classList.toggle('visible', window.scrollY > 400);
+});
+bt.addEventListener('click', function() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 </script>
-
-<button id="backTop" class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#x2191;</button>
 </body>
 </html>
