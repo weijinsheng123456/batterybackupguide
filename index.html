@@ -45,6 +45,8 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 .showcase-rank{font-size:1.8rem;margin-bottom:4px;line-height:1;}
 .showcase-img{width:100%;height:160px;object-fit:contain;border-radius:8px;margin:10px 0;background:rgba(0,0,0,0.2);transition:transform .3s;}
 .showcase-card:hover .showcase-img{transform:scale(1.03);}
+.showcase-img-wrap{background:linear-gradient(135deg,rgba(0,212,255,0.06),rgba(124,58,237,0.06));border-radius:10px;padding:12px;margin:10px 0;border:1px solid rgba(255,255,255,0.06);}
+.showcase-img{border-radius:8px;width:100%;height:160px;object-fit:contain;display:block;filter:drop-shadow(0 2px 8px rgba(0,212,255,0.08));transition:all .3s;background:transparent;}
 .showcase-name{font-weight:700;font-size:.95rem;margin-bottom:4px;color:var(--text);}
 .showcase-specs{font-size:.75rem;color:var(--text-secondary);margin-bottom:6px;line-height:1.4;}
 .showcase-tag{display:inline-block;padding:2px 10px;border-radius:20px;font-size:.65rem;font-weight:600;background:rgba(0,212,255,0.1);color:var(--glow-blue);border:1px solid rgba(0,212,255,0.2);align-self:flex-start;margin-top:auto;}
@@ -203,28 +205,28 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 </a>
 <a href="/posts/best-home-battery-backup-2026" class="showcase-card">
 <div class="showcase-rank">🥈</div>
-<img class="showcase-img" src="/assets/images/jackery-explorer-1000-v2-thumb.webp" alt="Jackery Explorer 1000 v2" loading="eager" width="200" height="200">
+<div class="showcase-img-wrap"><img class="showcase-img" src="/assets/images/jackery-explorer-1000-v2.webp" alt="Jackery Explorer 1000 v2" loading="eager"></div>
 <div class="showcase-name">Jackery Explorer 1000 v2</div>
 <div class="showcase-specs">1,070 Wh &bull; 1,500W &bull; 22 lbs lightest</div>
 <span class="showcase-tag">Best Value</span>
 </a>
 <a href="/posts/best-home-battery-backup-2026" class="showcase-card">
 <div class="showcase-rank">🥉</div>
-<img class="showcase-img" src="/assets/images/bluetti-ac180-thumb.webp" alt="Bluetti AC180" loading="eager" width="200" height="200">
+<div class="showcase-img-wrap"><img class="showcase-img" src="/assets/images/bluetti-ac180.webp" alt="Bluetti AC180" loading="eager"></div>
 <div class="showcase-name">Bluetti AC180</div>
 <div class="showcase-specs">1,152 Wh &bull; 1,800W &bull; Best $/Wh</div>
 <span class="showcase-tag">Best Capacity</span>
 </a>
 <a href="/posts/anker-vs-ecoflow-vs-goal-zero-comparison" class="showcase-card">
 <div class="showcase-rank">4</div>
-<img class="showcase-img" src="/assets/images/anker-solix-f2000-thumb.webp" alt="Anker Solix F2000" loading="eager" width="200" height="200">
+<div class="showcase-img-wrap"><img class="showcase-img" src="/assets/images/anker-solix-f2000.webp" alt="Anker Solix F2000" loading="lazy"></div>
 <div class="showcase-name">Anker Solix F2000</div>
 <div class="showcase-specs">2,048 Wh &bull; 2,400W &bull; Expandable</div>
 <span class="showcase-tag">Expandable</span>
 </a>
 <a href="/posts/best-power-station-home-office-backup" class="showcase-card">
 <div class="showcase-rank">5</div>
-<img class="showcase-img" src="/assets/images/ecoflow-river-2-pro-thumb.webp" alt="EcoFlow River 2 Pro" loading="eager" width="200" height="200">
+<div class="showcase-img-wrap"><img class="showcase-img" src="/assets/images/ecoflow-river-2-pro.webp" alt="EcoFlow River 2 Pro" loading="lazy"></div>
 <div class="showcase-name">EcoFlow River 2 Pro</div>
 <div class="showcase-specs">768 Wh &bull; 800W &bull; UPS mode</div>
 <span class="showcase-tag">Work From Home</span>
@@ -245,7 +247,7 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 <td class="comp-link"><a href="/posts/best-home-battery-backup-2026" class="comp-btn">Review</a></td>
 </tr><tr>
 <td class="comp-rank">🥈</td>
-<td class="comp-thumb"><img src="/assets/images/jackery-explorer-1000-v2-thumb.webp" alt="Jackery Explorer 1000 v2" loading="lazy"></td>
+src="/assets/images/jackery-explorer-1000-v2-thumb.webp" alt="Jackery Explorer 1000 v2" loading="lazy"
 <td class="comp-name">Jackery Explorer 1000 v2</td>
 <td class="comp-price">$799</td>
 <td class="comp-cap">1,070Wh</td>
