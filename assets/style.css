@@ -152,6 +152,18 @@ body::before {
 }
 .comp-btn:hover { transform: scale(1.05); box-shadow: 0 4px 15px rgba(0,212,255,0.25); }
 
+/* Collapsible Table */
+.comp-row-extra { display: table-row; }
+.comp-table.collapsed .comp-row-extra { display: none; }
+.comp-toggle-wrap { text-align: center; padding: 12px 0 4px; }
+.comp-toggle {
+  display: inline-block; padding: 8px 24px; border-radius: 20px;
+  border: 1px solid var(--border); background: transparent;
+  color: var(--glow-blue); font-size: 0.8rem; font-weight: 600;
+  cursor: pointer; transition: all 0.2s; font-family: inherit;
+}
+.comp-toggle:hover { background: rgba(0,212,255,0.1); border-color: var(--glow-blue); }
+
 /* Post Cards (Homepage) */
 .posts-grid { display: flex; flex-direction: column; gap: 14px; margin-bottom: 40px; }
 .post-card {

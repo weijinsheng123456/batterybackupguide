@@ -53,6 +53,12 @@ def render_post_html(post, all_posts=None):
         return f'<h2 id="{hid}">{txt}</h2>'
     body_with_ids = re.sub(r'<h2>(.*?)</h2>', add_h2_ids, body)
 
+    # Determine category link for breadcrumbs
+    cat_links = {"Buying Guide": "/posts/best-home-battery-backup-2026",
+                 "Guide": "/posts/how-to-prepare-for-power-outages-home",
+                 "Comparison": "/posts/jackery-vs-ecoflow-vs-bluetti-home-backup"}
+    cat_link = cat_links.get(t["category"], "/")
+
     # Social sharing
     surl = f'https://batterybackupguide.com/posts/{t["slug"]}'
     stitle = t['title'].replace('"', '')
@@ -91,6 +97,8 @@ def render_post_html(post, all_posts=None):
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/style.css">
+<link rel="preload" href="/assets/style.css" as="style">
+<link rel="preload" href="{og_image}" as="image">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>&#x26a1;</text></svg>">
 </head>
 <body>
@@ -99,7 +107,7 @@ def render_post_html(post, all_posts=None):
 <nav class="nav" role="navigation" aria-label="Main navigation"><div class="container"><span class="logo">⚡ Battery<span>Backup</span>Guide</span>
 <a href="/">Home</a><a href="/about">About</a></div></nav>
 <main id="article-content" class="container post-content" role="main">
-<div class="breadcrumbs"><a href="/">Home</a> <span>›</span> <span>{t['category']}</span></div>
+<div class="breadcrumbs"><a href="/">Home</a> <span>›</span> <a href="{cat_link}">{t['category']}</a></div>
 {toc_html}
 {body_with_ids}
 {related_html}
