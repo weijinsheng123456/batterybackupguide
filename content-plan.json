@@ -43,7 +43,7 @@
       "category": "Guide",
       "description": "Oxygen concentrators, nebulizers, insulin pumps \u2014 how to keep medical devices running during power outages.",
       "read_time": 11,
-      "status": "pending"
+      "status": "published"
     },
     {
       "order": 26,
@@ -70,7 +70,7 @@
       "category": "Guide",
       "description": "Essential safety rules for portable power stations. Avoid these common mistakes to protect yourself and your equipment.",
       "read_time": 7,
-      "status": "pending"
+      "status": "published"
     },
     {
       "order": 29,
@@ -79,7 +79,7 @@
       "category": "Guide",
       "description": "Stay cool, safe, and powered during hot-weather blackouts. Fan runtime, fridge management, hydration tips.",
       "read_time": 10,
-      "status": "pending"
+      "status": "published"
     },
     {
       "order": 30,
