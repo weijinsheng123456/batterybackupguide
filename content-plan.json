@@ -1,0 +1,94 @@
+{
+  "plan": [
+    {
+      "order": 21,
+      "slug": "power-station-vs-gas-generator-comprehensive",
+      "title": "Power Station vs Gas Generator — Which Is Right for Your Apartment?",
+      "category": "Comparison",
+      "description": "Battery power stations vs gas generators: cost, noise, maintenance, safety, and runtime compared for apartment dwellers.",
+      "read_time": 10,
+      "status": "pending"
+    },
+    {
+      "order": 22,
+      "slug": "how-to-recharge-power-station-without-grid",
+      "title": "How to Recharge Your Power Station Without Grid Power (Solar, Car, Generator)",
+      "category": "Guide",
+      "description": "Lost power and your station is dying? Learn how to recharge using solar panels, your car, or a backup generator.",
+      "read_time": 8,
+      "status": "pending"
+    },
+    {
+      "order": 23,
+      "slug": "apartment-emergency-kit-power-outage",
+      "title": "The Complete Apartment Emergency Kit for Power Outages (2026 Checklist)",
+      "category": "Guide",
+      "description": "Everything you need in your apartment emergency kit: power, water, food, light, first aid, and communication.",
+      "read_time": 9,
+      "status": "pending"
+    },
+    {
+      "order": 24,
+      "slug": "best-power-station-for-seniors-easy-to-use",
+      "title": "Best Portable Power Station for Seniors — Easy-to-Use Options (2026)",
+      "category": "Buying Guide",
+      "description": "Power stations with simple controls, clear displays, and lightweight designs for older adults.",
+      "read_time": 10,
+      "status": "pending"
+    },
+    {
+      "order": 25,
+      "slug": "battery-backup-medical-devices-apartment",
+      "title": "Battery Backup for Medical Devices in Apartments (Beyond CPAP)",
+      "category": "Guide",
+      "description": "Oxygen concentrators, nebulizers, insulin pumps — how to keep medical devices running during power outages.",
+      "read_time": 11,
+      "status": "pending"
+    },
+    {
+      "order": 26,
+      "slug": "understanding-power-station-specs",
+      "title": "Understanding Power Station Specs: Wh, Watts, Inverters, and Battery Types Explained",
+      "category": "Guide",
+      "description": "Beginner-friendly guide to all those specs and how to use them to choose the right power station.",
+      "read_time": 12,
+      "status": "pending"
+    },
+    {
+      "order": 27,
+      "slug": "best-power-station-gaming-setup",
+      "title": "Best Power Station for Gaming Setup — Keep Playing During Outages",
+      "category": "Buying Guide",
+      "description": "Keep your PC, console, monitor, and peripherals running during power outages with the right power station.",
+      "read_time": 9,
+      "status": "pending"
+    },
+    {
+      "order": 28,
+      "slug": "power-station-safety-what-not-to-do",
+      "title": "Power Station Safety — 10 Things You Should Never Do",
+      "category": "Guide",
+      "description": "Essential safety rules for portable power stations. Avoid these common mistakes to protect yourself and your equipment.",
+      "read_time": 7,
+      "status": "pending"
+    },
+    {
+      "order": 29,
+      "slug": "summer-power-outage-survival-apartment",
+      "title": "Summer Power Outage Survival Guide for Apartments (2026)",
+      "category": "Guide",
+      "description": "Stay cool, safe, and powered during hot-weather blackouts. Fan runtime, fridge management, hydration tips.",
+      "read_time": 10,
+      "status": "pending"
+    },
+    {
+      "order": 30,
+      "slug": "best-power-station-dual-use-camping-home",
+      "title": "Best Power Station for Camping and Home — Dual-Use Picks (2026)",
+      "category": "Buying Guide",
+      "description": "One power station for weekend camping AND emergency home backup. The best models that do both well.",
+      "read_time": 10,
+      "status": "pending"
+    }
+  ]
+}
