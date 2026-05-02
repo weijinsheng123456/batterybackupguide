@@ -6,9 +6,10 @@
 set -e
 
 SITE_DIR=~/batterybackupguide
-CONTENT_DIR=~/.hermes/content-toolkit/niche-site
+PIPELINE_DIR=~/.hermes/content-toolkit/niche-site
+CONTENT_DIR=$PIPELINE_DIR
 LOG_FILE=~/.hermes/logs/batterybackup-deploy.log
-PIPELINE=$SITE_DIR/pipeline.py
+PIPELINE=$PIPELINE_DIR/pipeline.py
 NOW=$(date '+%Y-%m-%d %H:%M:%S')
 
 log() { echo "[$NOW] $1" | tee -a "$LOG_FILE"; }
@@ -20,6 +21,15 @@ if [ "$1" = "--generate" ] || [ "$1" = "" ]; then
     log "🚀 Running content pipeline..."
     python3 "$PIPELINE" 2>&1 | tee -a "$LOG_FILE"
     log "✅ Pipeline done"
+    
+    # 同步生成的文件到Git仓库目录
+    log "📋 Syncing pipeline output to site directory..."
+    cp -f "$PIPELINE_DIR"/posts/*.html "$SITE_DIR/posts/" 2>/dev/null
+    cp -f "$PIPELINE_DIR"/sitemap.xml "$SITE_DIR/" 2>/dev/null
+    cp -f "$PIPELINE_DIR"/index.html "$SITE_DIR/" 2>/dev/null
+    cp -f "$PIPELINE_DIR"/about.html "$SITE_DIR/" 2>/dev/null
+    cp -f "$PIPELINE_DIR"/CNAME "$SITE_DIR/" 2>/dev/null
+    log "✅ Sync complete"
 fi
 
 # 2️⃣ 检查是否有变更
