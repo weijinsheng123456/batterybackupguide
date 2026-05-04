@@ -1,10 +1,77 @@
 #!/usr/bin/env python3
 """Niche Site Content Pipeline — Battery Backup Guide"""
-import json, os, glob, datetime
+import json, os, glob, datetime, re
+from deep_content import enrich_buying_guide
 
 CONTENT_DIR = os.path.expanduser("~/.hermes/content-toolkit/niche-site/content")
 SITE_DIR = os.path.expanduser("~/.hermes/content-toolkit/niche-site")
 TODAY = datetime.date.today().isoformat()
+
+# Product → image mapping (name_prefix: image_file)
+PRODUCT_IMAGE_MAP = {
+    "ecoflow delta 2": "ecoflow-delta-2",
+    "ecoflow delta 2 max": "ecoflow-delta-2-max",
+    "ecoflow delta pro": "ecoflow-delta-pro",
+    "ecoflow river 2 pro": "ecoflow-river-2-pro",
+    "ecoflow river 2": "ecoflow-river-2",
+    "jackery explorer 500": "jackery-explorer-500",
+    "jackery explorer 1000 v2": "jackery-explorer-1000-v2",
+    "jackery explorer 300": "jackery-explorer-300-plus",
+    "jackery explorer 2000 plus": "jackery-explorer-2000-plus",
+    "bluetti ac70": "bluetti-ac70",
+    "bluetti ac180": "bluetti-ac180",
+    "bluetti ac200l": "bluetti-ac200l",
+    "bluetti eb55": "bluetti-eb55",
+    "anker solix f2000": "anker-solix-f2000",
+    "anker solix c800 plus": "anker-solix-c800-plus",
+    "anker solix c300 dc": "anker-solix-c300-dc",
+    "anker c800": "anker-solix-c800-plus",
+    "goal zero yeti 1500x": "goal-zero-yeti-1500x",
+    "goal zero yeti 1500 x": "goal-zero-yeti-1500x",
+}
+
+
+def normalize_product_name(name):
+    """Clean emoji/prefix/dash from product heading, return lowercase name."""
+    clean = re.sub(r'^[^a-zA-Z]+', '', name)
+    clean = re.split(r'\s*[—–:]\s*', clean)[0].strip()
+    return clean.lower()
+
+
+def find_product_image(prod_name_lower):
+    """Find matching image for a product name. Returns (image_file, display_name) or None."""
+    for prefix, img_file in PRODUCT_IMAGE_MAP.items():
+        if prod_name_lower.startswith(prefix) or prefix.startswith(prod_name_lower):
+            return img_file, prod_name_lower.title()
+    return None, None
+
+
+def inject_product_images(body):
+    """Insert product images after each product recommendation heading + specs."""
+    # Normalize literal \n to actual newlines (content generation artifact)
+    body = body.replace('\\n', '\n')
+
+    def replace_section(match):
+        h2_content = match.group(1)
+        specs_p = match.group(2)
+        prod_name = normalize_product_name(h2_content)
+        img_file, display = find_product_image(prod_name)
+        if img_file:
+            alt_text = f"{display} portable power station"
+            img_html = (f'<div class="product-image-wrap">'
+                        f'<img src="/assets/images/{img_file}-thumb.webp" '
+                        f'alt="{alt_text}" '
+                        f'loading="lazy" width="200" height="200">'
+                        f'</div>')
+            return f'<h2>{h2_content}</h2>\n{img_html}\n<p>{specs_p}</p>'
+        return match.group(0)
+
+    return re.sub(
+        r'<h2[^>]*>([🥇🥈🥉\d.][^<]*)</h2>\s*<p>(.*?)</p>',
+        replace_section,
+        body,
+        flags=re.DOTALL
+    )
 
 
 def cat_badge(category):
@@ -17,13 +84,57 @@ def render_post_html(post, all_posts=None):
     t = post
     badge = cat_badge(t["category"])
 
-    # Determine og:image — use first product image if available
-    og_image = "https://batterybackupguide.com/assets/images/ecoflow-delta-2.webp"
+    # Determine og:image — smart product-aware fallback
     body = t.get("body", "")
-    import re
     img_match = re.search(r'<img[^>]+src="/assets/images/([^"]+)"', body)
     if img_match:
         og_image = f"https://batterybackupguide.com/assets/images/{img_match.group(1)}"
+    else:
+        KEYWORD_MAP = {
+            "jackery": "jackery-explorer-500",
+            "explorer": "jackery-explorer-500",
+            "ecoflow": "ecoflow-delta-2",
+            "bluetti": "bluetti-ac70",
+            "anker": "anker-solix-f2000",
+            "goal-zero": "goal-zero-yeti-1500x",
+            "goal zero": "goal-zero-yeti-1500x",
+            "yet": "goal-zero-yeti-1500x",
+        }
+        SLUG_MAP = {
+            "apartment": "ecoflow-delta-2",
+            "camping": "ecoflow-river-2-pro",
+            "gaming": "ecoflow-river-2-pro",
+            "senior": "jackery-explorer-300-plus",
+            "comparison": "ecoflow-delta-2",
+            "safety": "bluetti-ac70",
+            "medical": "bluetti-ac70",
+            "summer": "ecoflow-delta-2",
+            "winter": "ecoflow-delta-2-max",
+            "specs": "ecoflow-delta-2",
+            "dual": "ecoflow-river-2-pro",
+            "ups": "ecoflow-delta-2",
+            "generator": "ecoflow-delta-2",
+            "guide": "ecoflow-delta-2",
+            "checklist": "bluetti-ac180",
+            "survival": "ecoflow-delta-2-max",
+            "prepared": "ecoflow-delta-2",
+            "recharg": "ecoflow-delta-2",
+        }
+        slug = t.get("slug", "")
+        body_lower = body.lower()
+        img_key = None
+        for kw, img in SLUG_MAP.items():
+            if kw in slug:
+                img_key = img
+                break
+        if not img_key:
+            for kw, img in KEYWORD_MAP.items():
+                if kw in body_lower:
+                    img_key = img
+                    break
+        if not img_key:
+            img_key = "ecoflow-delta-2"
+        og_image = f"https://batterybackupguide.com/assets/images/{img_key}.webp"
 
     # Related articles
     related_html = ""
@@ -46,8 +157,13 @@ def render_post_html(post, all_posts=None):
         items = ''.join(f'<li><a href="#{h_id}" class="toc-link">{label}</a></li>' for h_id, label in toc_items)
         toc_html = '<nav class="toc-sidebar" id="tocSidebar"><div class="toc-header" onclick="toggleTOC()">☰ On this page <span class="toc-toggle">▼</span></div><div class="toc-body" id="tocBody"><ol>' + items + '</ol></div></nav>'
 
-    # Add h2 IDs and inject Amazon affiliate CTA
-    TAG = "batteryback08-20"
+    # Enrich content depth for Buying Guide / Comparison articles
+    body = enrich_buying_guide(body, t.get("category", ""))
+
+    # Inject product images into body
+    body = inject_product_images(body)
+
+    # Add h2 IDs
     def add_h2_ids(m):
         txt = m.group(1)
         hid = txt.strip().lower().replace(' ', '-').replace('?', '').replace(',', '').replace('—', '-')[:40]
@@ -55,21 +171,21 @@ def render_post_html(post, all_posts=None):
     body_with_ids = re.sub(r'<h2>(.*?)</h2>', add_h2_ids, body)
 
     # Add article-level Amazon affiliate CTA
-    # Extract product names from h2 headings (only those containing product emojis/numbers)
+    TAG = "batteryback08-20"
     prod_names = [m.group(1).strip() for m in re.finditer(r'<h2[^>]*>([🥇🥈🥉\d][^<]*)</h2>', body)]
     clean_names = []
     for name in prod_names:
-        clean = re.sub(r'^[^a-zA-Z]+', '', name)  # Remove emoji/number prefixes
-        clean = re.split(r'\s*[—–:]\s*', clean)[0].strip()  # Take before dash
+        clean = re.sub(r'^[^a-zA-Z]+', '', name)
+        clean = re.split(r'\s*[—–:]\s*', clean)[0].strip()
         if clean and len(clean) > 3:
             clean_names.append(clean)
-    
+
     amz_links = []
     for pname in clean_names[:5]:
         search = re.sub(r'[^a-z0-9+]', '', pname.lower().replace(' ', '+'))
         url = f"https://www.amazon.com/s?k={search}+power+station&tag={TAG}"
         amz_links.append(f'<a href="{url}" class="btn" target="_blank" rel="noopener sponsored" style="margin:4px">{pname}</a>')
-    
+
     if amz_links:
         cta = '\n<div class="callout"><p><strong>Ready to buy?</strong> Check the latest prices on Amazon:</p><p style="margin-top:10px">' + ' '.join(amz_links) + '</p></div>'
         body_with_ids = body_with_ids + cta
@@ -170,23 +286,6 @@ def render_post_html(post, all_posts=None):
 </html>"""
 
 
-def update_sitemap(posts):
-    urls = []
-    urls.append(f"  <url>\n    <loc>https://batterybackupguide.com/</loc>\n    <lastmod>{TODAY}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>1.0</priority>\n  </url>")
-    for p in posts:
-        pri = "0.9" if p.get("order", 9) <= 2 else "0.8" if p.get("order", 9) <= 5 else "0.7"
-        urls.append(f"  <url>\n    <loc>https://batterybackupguide.com/posts/{p['slug']}</loc>\n    <lastmod>{TODAY}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>{pri}</priority>\n  </url>")
-    urls.append(f"  <url>\n    <loc>https://batterybackupguide.com/about</loc>\n    <lastmod>{TODAY}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.3</priority>\n  </url>")
-
-    sitemap = f"""<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-{chr(10).join(urls)}
-</urlset>"""
-    with open(f"{SITE_DIR}/sitemap.xml", "w") as fh:
-        fh.write(sitemap)
-    print(f"📄 sitemap.xml updated ({len(posts) + 2} URLs)")
-
-
 def sync_plan_status():
     """Sync content-plan.json: mark any existing content JSONs as published."""
     plan_path = f"{SITE_DIR}/content-plan.json"
@@ -204,6 +303,23 @@ def sync_plan_status():
         with open(plan_path, "w") as fh:
             json.dump(plan, fh, indent=2)
         print(f"📋 content-plan.json: {changed} pending → published")
+
+
+def update_sitemap(posts):
+    urls = []
+    urls.append(f"  <url>\n    <loc>https://batterybackupguide.com/</loc>\n    <lastmod>{TODAY}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>1.0</priority>\n  </url>")
+    for p in posts:
+        pri = "0.9" if p.get("order", 9) <= 2 else "0.8" if p.get("order", 9) <= 5 else "0.7"
+        urls.append(f"  <url>\n    <loc>https://batterybackupguide.com/posts/{p['slug']}</loc>\n    <lastmod>{TODAY}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>{pri}</priority>\n  </url>")
+    urls.append(f"  <url>\n    <loc>https://batterybackupguide.com/about</loc>\n    <lastmod>{TODAY}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.3</priority>\n  </url>")
+
+    sitemap = f"""<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{chr(10).join(urls)}
+</urlset>"""
+    with open(f"{SITE_DIR}/sitemap.xml", "w") as fh:
+        fh.write(sitemap)
+    print(f"📄 sitemap.xml updated ({len(posts) + 2} URLs)")
 
 
 def generate_all():
