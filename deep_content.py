@@ -178,16 +178,22 @@ def enrich_buying_guide(body, category):
     # Find product mentions to build advanced sections
     import re
     prod_sections = re.findall(
-        r'<h2[^>]*>([🥇🥈🥉\d.][^<]*)</h2>\s*<p><strong>Specs:</strong>(.*?)</p>',
-        body.replace('\\n', '\n'),
-        re.DOTALL
+        r'<(?:h[23])[^>]*>([⚡🌟🔋📱🥇🥈🥉\d.][^<]*)</(?:h[23])>',
+        body.replace('\\n', '\n')
     )
 
     advanced_sections = []
-    for heading, specs in prod_sections:
-        # Extract model name from heading
+    product_names_seen = set()
+    for heading in prod_sections:
         clean = re.sub(r'^[^a-zA-Z]+', '', heading)
-        model_name = re.split(r'\s*[—–:]\s*', clean)[0].strip()
+        parts = re.split(r'\s*[—–:]\s*', clean, maxsplit=1)
+        model_name = parts[0].strip()
+        # If first part isn't a known product, try the part after colon/dash
+        if len(parts) > 1 and not any(model_name.lower().startswith(k) for k in ["ecoflow", "jackery", "bluetti", "anker", "goal"]):
+            model_name = parts[1].strip()
+        if model_name.lower() in product_names_seen:
+            continue
+        product_names_seen.add(model_name.lower())
         section = get_deep_section(model_name)
         if section:
             advanced_sections.append(section)

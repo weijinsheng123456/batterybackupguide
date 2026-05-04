@@ -32,10 +32,18 @@ PRODUCT_IMAGE_MAP = {
 
 
 def normalize_product_name(name):
-    """Clean emoji/prefix/dash from product heading, return lowercase name."""
-    clean = re.sub(r'^[^a-zA-Z]+', '', name)
-    clean = re.split(r'\s*[—–:]\s*', clean)[0].strip()
-    return clean.lower()
+    """Clean emoji/prefix/dash from product heading, return lowercase name.
+    Handles formats: '🥇 Product Name — desc', '⚡ Our Pick: Product Name', '1. Name'"""
+    clean = re.sub(r'^[^a-zA-Z]+', '', name)  # Remove emoji/number prefixes
+    parts = re.split(r'\s*[—–:]\s*', clean, maxsplit=1)
+    candidate = parts[0].strip().lower()
+    # If first part isn't a known product, try the second part
+    if len(parts) > 1:
+        known_products = {"ecoflow", "jackery", "bluetti", "anker", "goal zero", "goal"}
+        is_product = any(candidate.startswith(k) for k in known_products)
+        if not is_product:
+            candidate = parts[1].strip().lower()
+    return candidate
 
 
 def find_product_image(prod_name_lower):
@@ -47,28 +55,37 @@ def find_product_image(prod_name_lower):
 
 
 def inject_product_images(body):
-    """Insert product images after each product recommendation heading + specs."""
-    # Normalize literal \n to actual newlines (content generation artifact)
+    """Insert product images after each product recommendation heading.
+    Handles multiple formats: h2/h3, with/without Specs prefix, medals/numbers."""
+    # Normalize literal \n to actual newlines
     body = body.replace('\\n', '\n')
 
-    def replace_section(match):
-        h2_content = match.group(1)
-        specs_p = match.group(2)
-        prod_name = normalize_product_name(h2_content)
+    def insert_after_tag(match):
+        tag = match.group(1)  # h2 or h3
+        content = match.group(2)  # heading text
+        after = match.group(3)  # content after > before next heading
+        prod_name = normalize_product_name(content)
         img_file, display = find_product_image(prod_name)
-        if img_file:
-            alt_text = f"{display} portable power station"
-            img_html = (f'<div class="product-image-wrap">'
-                        f'<img src="/assets/images/{img_file}-thumb.webp" '
-                        f'alt="{alt_text}" '
-                        f'loading="lazy" width="200" height="200">'
-                        f'</div>')
-            return f'<h2>{h2_content}</h2>\n<p><strong>Specs:</strong>{specs_p}</p>\n{img_html}'
-        return match.group(0)
+        if not img_file:
+            return match.group(0)
+        alt_text = f"{display} portable power station"
+        img_html = (f'<div class="product-image-wrap">'
+                    f'<img src="/assets/images/{img_file}-thumb.webp" '
+                    f'alt="{alt_text}" '
+                    f'loading="lazy" width="200" height="200">'
+                    f'</div>')
+        # Insert image after the first <p> after the heading
+        p_match = re.search(r'(<p>.*?</p>)', after, re.DOTALL)
+        if p_match:
+            p_end = p_match.end()
+            return f'<{tag}>{content}</{tag}>{after[:p_end]}\n{img_html}{after[p_end:]}'
+        # Fallback: insert right after heading
+        return f'<{tag}>{content}</{tag}>\n{img_html}{after}'
 
+    # Match h2 or h3 containing medal/number/emoji + product name
     return re.sub(
-        r'<h2[^>]*>([🥇🥈🥉\d.][^<]*)</h2>\s*<p><strong>Specs:</strong>(.*?)</p>',
-        replace_section,
+        r'<(h[23])[^>]*>([⚡🌟🔋📱🥇🥈🥉\d.][^<]*)</\1>(.*?)(?=<(?:h[23])|\Z)',
+        insert_after_tag,
         body,
         flags=re.DOTALL
     )
