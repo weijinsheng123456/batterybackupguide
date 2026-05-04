@@ -47,6 +47,18 @@ def check():
     has_links = out.strip()
     report["checks"]["affiliate_links"] = {"status": "✅" if has_links.isdigit() and int(has_links) > 0 else "❌", "count": has_links}
 
+    # 7. Bing index check (runs bing_index_check.py sub-task)
+    try:
+        import sys
+        sys.path.insert(0, os.path.expanduser("~/.hermes/scripts"))
+        from bing_index_check import check_bing_indexed, check_indexnow_status
+        idx = check_indexnow_status()
+        bing = check_bing_indexed()
+        report["checks"]["indexnow"] = {"status": "✅" if idx.get("status") == 200 else "❌", "detail": idx}
+        report["checks"]["bing_index"] = {"status": "✅" if bing.get("indexed_count_visible", 0) > 0 else "⚠️", "visible": bing.get("indexed_count_visible", 0)}
+    except Exception as e:
+        report["checks"]["bing_index"] = {"status": "⚠️", "error": str(e)}
+
     # Save
     with open(LOG, "w") as f:
         json.dump(report, f, indent=2)
