@@ -18,6 +18,37 @@
   --shadow: 0 4px 20px rgba(0,0,0,0.3);
 }
 
+/* Product images in articles */
+.product-image-wrap {
+  float: right;
+  margin: 0 0 16px 20px;
+  max-width: 200px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--bg-card);
+  padding: 8px;
+}
+.product-image-wrap img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+/* Advanced section styling */
+.advanced-section {
+  margin-top: 40px;
+  padding: 24px;
+  background: var(--bg-card);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+.advanced-section h3 {
+  color: var(--glow-blue);
+  margin-top: 24px;
+  font-size: 1.1em;
+}
+
 /* --- Reset --- */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 

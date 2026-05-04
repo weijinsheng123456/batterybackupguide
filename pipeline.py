@@ -63,11 +63,11 @@ def inject_product_images(body):
                         f'alt="{alt_text}" '
                         f'loading="lazy" width="200" height="200">'
                         f'</div>')
-            return f'<h2>{h2_content}</h2>\n{img_html}\n<p>{specs_p}</p>'
+            return f'<h2>{h2_content}</h2>\n<p><strong>Specs:</strong>{specs_p}</p>\n{img_html}'
         return match.group(0)
 
     return re.sub(
-        r'<h2[^>]*>([🥇🥈🥉\d.][^<]*)</h2>\s*<p>(.*?)</p>',
+        r'<h2[^>]*>([🥇🥈🥉\d.][^<]*)</h2>\s*<p><strong>Specs:</strong>(.*?)</p>',
         replace_section,
         body,
         flags=re.DOTALL
