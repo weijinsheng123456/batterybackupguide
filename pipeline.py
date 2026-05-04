@@ -339,23 +339,53 @@ def update_sitemap(posts):
     print(f"📄 sitemap.xml updated ({len(posts) + 2} URLs)")
 
 
-def generate_all():
+def generate_all(force_all=False):
+    """Generate all articles. If force_all=False, only regenerates changed ones."""
     sync_plan_status()
     posts = []
-    for f in sorted(glob.glob(f"{CONTENT_DIR}/*.json")):
+    json_files = sorted(glob.glob(f"{CONTENT_DIR}/*.json"))
+    for f in json_files:
         with open(f) as fh:
             posts.append(json.load(fh))
     posts.sort(key=lambda x: x.get("order", 999))
 
     os.makedirs(f"{SITE_DIR}/posts", exist_ok=True)
+    
+    changed_count = 0
     for p in posts:
-        html = render_post_html(p, posts)
-        with open(f"{SITE_DIR}/posts/{p['slug']}.html", "w") as fh:
-            fh.write(html)
-        print(f"✅ posts/{p['slug']}.html")
+        slug = p["slug"]
+        json_path = os.path.join(CONTENT_DIR, f"{slug}.json")
+        html_path = f"{SITE_DIR}/posts/{slug}.html"
+        
+        # Determine if this article needs regeneration
+        needs_regenerate = force_all
+        if not needs_regenerate and os.path.exists(html_path):
+            json_mtime = os.path.getmtime(json_path)
+            html_mtime = os.path.getmtime(html_path)
+            if json_mtime > html_mtime:
+                needs_regenerate = True
+        if not needs_regenerate and not os.path.exists(html_path):
+            needs_regenerate = True
+        
+        if needs_regenerate:
+            html = render_post_html(p, posts)
+            with open(html_path, "w") as fh:
+                fh.write(html)
+            print(f"✅ posts/{slug}.html")
+            changed_count += 1
+        else:
+            print(f"⏭️  posts/{slug}.html (unchanged)")
+    
+    if changed_count > 0 or force_all:
+        update_sitemap(posts)
+        print(f"📋 Generated {changed_count} changed article(s)")
+    else:
+        print("📋 No changes detected — sitemap unchanged")
 
-    update_sitemap(posts)
+    return changed_count
 
 
 if __name__ == "__main__":
-    generate_all()
+    import sys
+    force = "--all" in sys.argv or "-a" in sys.argv
+    generate_all(force_all=force)

@@ -1,6 +1,8 @@
 #!/bin/bash
 # Battery Backup Guide — Automatic Deploy Pipeline
-# 用 法: ./auto_deploy.sh [--generate] [--push-only]
+# 用 法: ./auto_deploy.sh [--all|--push-only]
+#   --all      : 全量重建所有文章（默认：增量，只生成有变动的）
+#   --push-only: 跳过生成，只做git推送
 # 依 赖: 需要在 batterybackupguide 目录下运行
 
 set -e
@@ -16,10 +18,17 @@ log() { echo "[$NOW] $1" | tee -a "$LOG_FILE"; }
 
 cd "$SITE_DIR"
 
-# 1️⃣ 生成文章
-if [ "$1" = "--generate" ] || [ "$1" = "" ]; then
-    log "🚀 Running content pipeline..."
-    python3 "$PIPELINE" 2>&1 | tee -a "$LOG_FILE"
+# 1️⃣ 生成文章（增量模式，除非指定 --all）
+MODE="--all"
+if [ "$1" = "--push-only" ]; then
+    MODE="skip"
+elif [ "$1" != "--all" ]; then
+    MODE=""  # 默认增量
+fi
+
+if [ "$MODE" != "skip" ]; then
+    log "🚀 Running content pipeline (mode: ${MODE:-incremental})..."
+    python3 "$PIPELINE" $MODE 2>&1 | tee -a "$LOG_FILE"
     log "✅ Pipeline done"
     
     # 同步生成的文件到Git仓库目录
