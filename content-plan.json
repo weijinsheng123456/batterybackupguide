@@ -34,7 +34,7 @@
       "category": "Buying Guide",
       "description": "Power stations with simple controls, clear displays, and lightweight designs for older adults.",
       "read_time": 10,
-      "status": "pending"
+      "status": "published"
     },
     {
       "order": 25,
@@ -61,7 +61,7 @@
       "category": "Buying Guide",
       "description": "Keep your PC, console, monitor, and peripherals running during power outages with the right power station.",
       "read_time": 9,
-      "status": "pending"
+      "status": "published"
     },
     {
       "order": 28,
@@ -88,7 +88,7 @@
       "category": "Buying Guide",
       "description": "One power station for weekend camping AND emergency home backup. The best models that do both well.",
       "read_time": 10,
-      "status": "pending"
+      "status": "published"
     }
   ]
 }

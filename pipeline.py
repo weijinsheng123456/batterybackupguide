@@ -187,7 +187,27 @@ def update_sitemap(posts):
     print(f"📄 sitemap.xml updated ({len(posts) + 2} URLs)")
 
 
+def sync_plan_status():
+    """Sync content-plan.json: mark any existing content JSONs as published."""
+    plan_path = f"{SITE_DIR}/content-plan.json"
+    if not os.path.exists(plan_path):
+        return
+    with open(plan_path) as fh:
+        plan = json.load(fh)
+    existing_slugs = {os.path.splitext(os.path.basename(f))[0] for f in glob.glob(f"{CONTENT_DIR}/*.json")}
+    changed = 0
+    for p in plan["plan"]:
+        if p["slug"] in existing_slugs and p["status"] == "pending":
+            p["status"] = "published"
+            changed += 1
+    if changed:
+        with open(plan_path, "w") as fh:
+            json.dump(plan, fh, indent=2)
+        print(f"📋 content-plan.json: {changed} pending → published")
+
+
 def generate_all():
+    sync_plan_status()
     posts = []
     for f in sorted(glob.glob(f"{CONTENT_DIR}/*.json")):
         with open(f) as fh:
