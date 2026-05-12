@@ -5,7 +5,7 @@ import subprocess, json, os, datetime
 SITE = "https://batterybackupguide.com"
 LOG = os.path.expanduser("~/.hermes/logs/batterybackup-health.json")
 
-def run(cmd, timeout=10):
+def run(cmd, timeout=20):
     try:
         r = subprocess.run(cmd, shell=True, capture_output=True, text=True, timeout=timeout)
         return r.stdout.strip(), r.returncode
