@@ -1,5 +1,10 @@
 # Battery Backup Guide 🪫🔋
 
+[![GitHub Pages](https://img.shields.io/github/deployments/weijinsheng123456/batterybackupguide/github-pages?label=Pages&logo=github)](https://batterybackupguide.com)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Last Commit](https://img.shields.io/github/last-commit/weijinsheng123456/batterybackupguide)](https://github.com/weijinsheng123456/batterybackupguide/commits/main)
+[![Repo Size](https://img.shields.io/github/repo-size/weijinsheng123456/batterybackupguide)](https://github.com/weijinsheng123456/batterybackupguide)
+
 **Honest, research-backed reviews of portable power stations and home battery backup solutions.**
 
 A static affiliate site built with plain HTML/CSS — no frameworks, no bloat. Content generated via automated pipeline and deployed to GitHub Pages.
@@ -18,7 +23,7 @@ A static affiliate site built with plain HTML/CSS — no frameworks, no bloat. C
 |-------|-----------|
 | **Static Site** | Pure HTML + CSS (no frameworks) |
 | **Content Pipeline** | Python (pipeline.py + deep_content.py) |
-| **Deployment** | GitHub Pages + auto-deploy via cron |
+| **Deployment** | GitHub Pages + auto-deploy via cron + CI |
 | **Images** | WebP with lazy loading, product thumbnails |
 | **SEO** | IndexNow, sitemap.xml, semantic HTML5 |
 
@@ -51,9 +56,10 @@ batterybackupguide/
 ├── content-plan.json     # Article roadmap
 ├── sitemap.xml           # Auto-generated
 ├── style.css             # Site styles
+├── .github/workflows/    # CI/CD (auto-deploy on push)
 └── auto_deploy.sh        # Deployment script
 ```
 
 ## License
 
-© 2026 Battery Backup Guide. All rights reserved.
+MIT © 2026 Battery Backup Guide
