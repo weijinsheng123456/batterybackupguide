@@ -1,6 +1,11 @@
 #!/usr/bin/env python3
 """Niche Site Content Pipeline — Battery Backup Guide"""
-import json, os, glob, datetime, re
+import datetime
+import glob
+import json
+import os
+import re
+
 from deep_content import enrich_buying_guide
 
 CONTENT_DIR = os.path.expanduser("~/.hermes/content-toolkit/niche-site/content")
@@ -313,7 +318,7 @@ def sync_plan_status():
     existing_slugs = {os.path.splitext(os.path.basename(f))[0] for f in glob.glob(f"{CONTENT_DIR}/*.json")}
     changed = 0
     for p in plan["plan"]:
-        if p["slug"] in existing_slugs and p["status"] == "pending":
+        if p["slug"] in existing_slugs and p["status"] in ("pending", "planned"):
             p["status"] = "published"
             changed += 1
     if changed:
@@ -350,13 +355,13 @@ def generate_all(force_all=False):
     posts.sort(key=lambda x: x.get("order", 999))
 
     os.makedirs(f"{SITE_DIR}/posts", exist_ok=True)
-    
+
     changed_count = 0
     for p in posts:
         slug = p["slug"]
         json_path = os.path.join(CONTENT_DIR, f"{slug}.json")
         html_path = f"{SITE_DIR}/posts/{slug}.html"
-        
+
         # Determine if this article needs regeneration
         needs_regenerate = force_all
         if not needs_regenerate and os.path.exists(html_path):
@@ -366,7 +371,7 @@ def generate_all(force_all=False):
                 needs_regenerate = True
         if not needs_regenerate and not os.path.exists(html_path):
             needs_regenerate = True
-        
+
         if needs_regenerate:
             html = render_post_html(p, posts)
             with open(html_path, "w") as fh:
@@ -375,7 +380,7 @@ def generate_all(force_all=False):
             changed_count += 1
         else:
             print(f"⏭️  posts/{slug}.html (unchanged)")
-    
+
     if changed_count > 0 or force_all:
         update_sitemap(posts)
         print(f"📋 Generated {changed_count} changed article(s)")
