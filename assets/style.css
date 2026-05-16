@@ -522,6 +522,53 @@ html { scroll-behavior: smooth; }
 .hub-card ul li a { color: #444; text-decoration: none; }
 .hub-card ul li a:hover { color: #2E7D32; text-decoration: underline; }
 
+/* === Product Image Uniform Styling === */
+.showcase-img-wrap {
+  background: #f5f5f5;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 160px;
+}
+.showcase-img-wrap img {
+  max-height: 140px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.08));
+}
+.product-image-wrap {
+  background: #f8f8f8;
+  border-radius: 10px;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 120px;
+}
+.product-image-wrap img {
+  max-height: 120px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 3px 10px rgba(0,0,0,0.06));
+  transition: transform 0.2s;
+}
+.product-image-wrap img:hover {
+  transform: scale(1.03);
+}
+.comp-thumb {
+  background: #f8f8f8;
+  border-radius: 8px;
+  padding: 8px;
+  text-align: center;
+}
+.comp-thumb img {
+  max-height: 60px;
+  width: auto;
+  object-fit: contain;
+}
+
 /* === Quick Compare Table === */
 .quick-picks { margin: 32px 0; overflow-x: auto; }
 .quick-picks h2 { font-size: 1.3rem; margin-bottom: 16px; }
