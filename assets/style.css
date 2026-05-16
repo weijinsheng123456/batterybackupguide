@@ -521,3 +521,12 @@ html { scroll-behavior: smooth; }
 .hub-card ul li { margin-bottom: 6px; font-size: 0.9rem; }
 .hub-card ul li a { color: #444; text-decoration: none; }
 .hub-card ul li a:hover { color: #2E7D32; text-decoration: underline; }
+
+/* === Quick Compare Table === */
+.quick-picks { margin: 32px 0; overflow-x: auto; }
+.quick-picks h2 { font-size: 1.3rem; margin-bottom: 16px; }
+.quick-compare { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+.quick-compare th { background: #2E7D32; color: #fff; padding: 10px 12px; text-align: left; }
+.quick-compare td { padding: 10px 12px; border-bottom: 1px solid #e8e4dc; }
+.quick-compare tr:nth-child(even) { background: #f8f6f0; }
+.quick-compare tr:hover { background: #eef7ee; }
