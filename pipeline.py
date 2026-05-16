@@ -1,5 +1,14 @@
 #!/usr/bin/env python3
-"""Niche Site Content Pipeline — Battery Backup Guide"""
+"""Niche Site Content Pipeline — Battery Backup Guide
+
+用法:
+    python3 pipeline.py [--all] [--content-dir DIR] [--site-dir DIR]
+
+路径优先级:
+    1. --content-dir / --site-dir 命令行参数
+    2. NICHE_CONTENT_DIR / NICHE_SITE_DIR 环境变量
+    3. ~/.hermes/content-toolkit/niche-site（默认）"""
+import argparse
 import datetime
 import glob
 import json
@@ -8,8 +17,12 @@ import re
 
 from deep_content import enrich_buying_guide
 
-CONTENT_DIR = os.path.expanduser("~/.hermes/content-toolkit/niche-site/content")
-SITE_DIR = os.path.expanduser("~/.hermes/content-toolkit/niche-site")
+DEFAULT_NICHE_HOME = os.path.expanduser("~/.hermes/content-toolkit/niche-site")
+
+# 从环境变量读取，支持覆盖
+CONTENT_DIR = os.environ.get("NICHE_CONTENT_DIR",
+                             os.path.join(DEFAULT_NICHE_HOME, "content"))
+SITE_DIR = os.environ.get("NICHE_SITE_DIR", DEFAULT_NICHE_HOME)
 TODAY = datetime.date.today().isoformat()
 
 # Product → image mapping (name_prefix: image_file)
@@ -344,23 +357,32 @@ def update_sitemap(posts):
     print(f"📄 sitemap.xml updated ({len(posts) + 2} URLs)")
 
 
-def generate_all(force_all=False):
-    """Generate all articles. If force_all=False, only regenerates changed ones."""
+def generate_all(force_all=False, content_dir=None, site_dir=None):
+    """Generate all articles. If force_all=False, only regenerates changed ones.
+    
+    Args:
+        force_all: If True, regenerate all articles regardless of modification time
+        content_dir: Content JSON directory (default: CONTENT_DIR module var)
+        site_dir: Site output directory (default: SITE_DIR module var)
+    """
+    _content_dir = content_dir or CONTENT_DIR
+    _site_dir = site_dir or SITE_DIR
+
     sync_plan_status()
     posts = []
-    json_files = sorted(glob.glob(f"{CONTENT_DIR}/*.json"))
+    json_files = sorted(glob.glob(os.path.join(_content_dir, "*.json")))
     for f in json_files:
         with open(f) as fh:
             posts.append(json.load(fh))
     posts.sort(key=lambda x: x.get("order", 999))
 
-    os.makedirs(f"{SITE_DIR}/posts", exist_ok=True)
+    os.makedirs(f"{_site_dir}/posts", exist_ok=True)
 
     changed_count = 0
     for p in posts:
         slug = p["slug"]
         json_path = os.path.join(CONTENT_DIR, f"{slug}.json")
-        html_path = f"{SITE_DIR}/posts/{slug}.html"
+        html_path = f"{_site_dir}/posts/{slug}.html"
 
         # Determine if this article needs regeneration
         needs_regenerate = force_all
@@ -391,6 +413,10 @@ def generate_all(force_all=False):
 
 
 if __name__ == "__main__":
-    import sys
-    force = "--all" in sys.argv or "-a" in sys.argv
-    generate_all(force_all=force)
+    parser = argparse.ArgumentParser(description="Battery Backup Guide Content Pipeline")
+    parser.add_argument("--all", "-a", action="store_true", help="强制全量重建所有文章")
+    parser.add_argument("--content-dir", help="内容 JSON 目录（覆盖环境变量 NICHE_CONTENT_DIR）")
+    parser.add_argument("--site-dir", help="站点输出目录（覆盖环境变量 NICHE_SITE_DIR）")
+    args = parser.parse_args()
+
+    generate_all(force_all=args.all, content_dir=args.content_dir, site_dir=args.site_dir)
