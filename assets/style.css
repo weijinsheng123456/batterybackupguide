@@ -508,3 +508,16 @@ html { scroll-behavior: smooth; }
   .showcase-grid { grid-template-columns: 1fr; }
   .section-title { flex-direction: column; align-items: flex-start; gap: 10px; }
 }
+
+/* === Category Hub === */
+.category-hub { margin: 48px 0; }
+.hub-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 20px; }
+.hub-card { background: #f8f6f0; border-radius: 12px; padding: 20px; border: 1px solid #e8e4dc; }
+.hub-card h3 { margin: 0 0 8px 0; font-size: 1.05rem; }
+.hub-card h3 a { color: #222; text-decoration: none; }
+.hub-card h3 a:hover { color: #2E7D32; }
+.hub-card p { font-size: 0.85rem; color: #666; margin: 0 0 12px 0; }
+.hub-card ul { list-style: none; padding: 0; margin: 0; }
+.hub-card ul li { margin-bottom: 6px; font-size: 0.9rem; }
+.hub-card ul li a { color: #444; text-decoration: none; }
+.hub-card ul li a:hover { color: #2E7D32; text-decoration: underline; }
