@@ -22,3 +22,5 @@ Thumbs.db
 
 # Content pipeline temp files
 content-raw/
+scan_audit.py
+audit_report.json
