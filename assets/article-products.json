@@ -166,5 +166,19 @@
     "ecoflow-delta-2",
     "jackery-1000-v2",
     "bluetti-ac180"
+  ],
+  "best-solar-panels-for-power-stations-2026": [
+    "ecoflow-delta-2",
+    "jackery-1000-v2",
+    "bluetti-ac180",
+    "anker-solix-f2000",
+    "ecoflow-river-2-pro"
+  ],
+  "pet-safety-power-outage-apartment": [
+    "ecoflow-delta-2",
+    "jackery-1000-v2",
+    "ecoflow-river-2-pro",
+    "bluetti-ac180",
+    "anker-solix-f2000"
   ]
 }
