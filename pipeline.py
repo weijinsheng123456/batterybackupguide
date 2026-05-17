@@ -264,7 +264,8 @@ def render_post_html(post, all_posts=None):
 <meta name="twitter:title" content="{t['title']}">
 <meta name="twitter:description" content="{t['description']}">
 <meta name="twitter:image" content="{og_image}">
-<script type="application/ld+json">{{"@context":"https://schema.org","@type":"Article","headline":"{t['title'].replace(chr(34), '')}","description":"{t['description'][:200].replace(chr(34), '')}","url":"https://batterybackupguide.com/posts/{t['slug']}"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"{t['title'].replace(chr(34), '')}","description":"{t['description'][:200].replace(chr(34), '')}","url":"https://batterybackupguide.com/posts/{t['slug']}","datePublished":"{t.get('date', TODAY)}","dateModified":"{TODAY}","author":{"@type":"Organization","name":"Battery Backup Guide"},"publisher":{"@type":"Organization","name":"Battery Backup Guide"},"image":"{og_image}","mainEntityOfPage":"https://batterybackupguide.com/posts/{t['slug']}"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://batterybackupguide.com/"},{"@type":"ListItem","position":2,"name":"{t['category'].replace('-', ' ').title()}","item":"https://batterybackupguide.com{cat_link}"}]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -277,7 +278,7 @@ def render_post_html(post, all_posts=None):
 <div class="progress-bar" id="progressBar"></div>
 <a href="#article-content" class="skip-link">Skip to content</a>
 <nav class="nav" role="navigation" aria-label="Main navigation"><div class="container"><span class="logo">⚡ Battery<span>Backup</span>Guide</span>
-<a href="/">Home</a><a href="/about">About</a></div></nav>
+<a href="/">Home</a><a href="/about">About</a><a href="/compare">Compare</a><a href="/search">Search</a></div></nav>
 <main id="article-content" class="container post-content" role="main">
 <div class="breadcrumbs"><a href="/">Home</a> <span>›</span> <a href="{cat_link}">{t['category']}</a></div>
 {toc_html}
@@ -317,6 +318,8 @@ def render_post_html(post, all_posts=None):
 <p>&copy; 2026 Battery Backup Guide. All rights reserved.</p>
 </div>
 </div></footer>
+<script defer src="/assets/search-overlay.js"></script>
+<script defer src="/assets/related.js"></script>
 </body>
 </html>"""
 
@@ -347,6 +350,8 @@ def update_sitemap(posts):
         pri = "0.9" if p.get("order", 9) <= 2 else "0.8" if p.get("order", 9) <= 5 else "0.7"
         urls.append(f"  <url>\n    <loc>https://batterybackupguide.com/posts/{p['slug']}</loc>\n    <lastmod>{TODAY}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>{pri}</priority>\n  </url>")
     urls.append(f"  <url>\n    <loc>https://batterybackupguide.com/about</loc>\n    <lastmod>{TODAY}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.3</priority>\n  </url>")
+    urls.append(f"  <url>\n    <loc>https://batterybackupguide.com/compare</loc>\n    <lastmod>{TODAY}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.5</priority>\n  </url>")
+    urls.append(f"  <url>\n    <loc>https://batterybackupguide.com/search</loc>\n    <lastmod>{TODAY}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.4</priority>\n  </url>")
 
     sitemap = f"""<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -354,7 +359,7 @@ def update_sitemap(posts):
 </urlset>"""
     with open(f"{SITE_DIR}/sitemap.xml", "w") as fh:
         fh.write(sitemap)
-    print(f"📄 sitemap.xml updated ({len(posts) + 2} URLs)")
+    print(f"📄 sitemap.xml updated ({len(posts) + 4} URLs)")
 
 
 def generate_all(force_all=False, content_dir=None, site_dir=None):
