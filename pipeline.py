@@ -1,14 +1,5 @@
 #!/usr/bin/env python3
-"""Niche Site Content Pipeline — Battery Backup Guide
-
-用法:
-    python3 pipeline.py [--all] [--content-dir DIR] [--site-dir DIR]
-
-路径优先级:
-    1. --content-dir / --site-dir 命令行参数
-    2. NICHE_CONTENT_DIR / NICHE_SITE_DIR 环境变量
-    3. ~/.hermes/content-toolkit/niche-site（默认）"""
-import argparse
+"""Niche Site Content Pipeline — Battery Backup Guide"""
 import datetime
 import glob
 import json
@@ -17,12 +8,8 @@ import re
 
 from deep_content import enrich_buying_guide
 
-DEFAULT_NICHE_HOME = os.path.expanduser("~/.hermes/content-toolkit/niche-site")
-
-# 从环境变量读取，支持覆盖
-CONTENT_DIR = os.environ.get("NICHE_CONTENT_DIR",
-                             os.path.join(DEFAULT_NICHE_HOME, "content"))
-SITE_DIR = os.environ.get("NICHE_SITE_DIR", DEFAULT_NICHE_HOME)
+CONTENT_DIR = os.path.expanduser("~/.hermes/content-toolkit/niche-site/content")
+SITE_DIR = os.path.expanduser("~/.hermes/content-toolkit/niche-site")
 TODAY = datetime.date.today().isoformat()
 
 # Product → image mapping (name_prefix: image_file)
@@ -190,7 +177,7 @@ def render_post_html(post, all_posts=None):
     toc_html = ''
     if len(toc_items) >= 3:
         items = ''.join(f'<li><a href="#{h_id}" class="toc-link">{label}</a></li>' for h_id, label in toc_items)
-        toc_html = '<nav class="toc-sidebar" id="tocSidebar"><div class="toc-header" onclick="toggleTOC()">☰ On this page <span class="toc-toggle">▼</span></div><div class="toc-body" id="tocBody" style="display:block"><ol>' + items + '</ol></div></nav>'
+        toc_html = '<nav class="toc-sidebar" id="tocSidebar"><div class="toc-header" onclick="toggleTOC()">☰ On this page <span class="toc-toggle">▼</span></div><div class="toc-body" id="tocBody"><ol>' + items + '</ol></div></nav>'
 
     # Enrich content depth for Buying Guide / Comparison articles
     body = enrich_buying_guide(body, t.get("category", ""))
@@ -210,10 +197,18 @@ def render_post_html(post, all_posts=None):
     prod_names = [m.group(1).strip() for m in re.finditer(r'<h2[^>]*>([🥇🥈🥉\d][^<]*)</h2>', body)]
     clean_names = []
     for name in prod_names:
-        clean = re.sub(r'^[^a-zA-Z]+', '', name)
-        clean = re.split(r'\s*[—–:]\s*', clean)[0].strip()
-        if clean and len(clean) > 3:
-            clean_names.append(clean)
+        normalized = normalize_product_name(name)
+        # Find display name from PRODUCT_IMAGE_MAP
+        display_name = None
+        for prefix, _ in PRODUCT_IMAGE_MAP.items():
+            if normalized.startswith(prefix) or prefix.startswith(normalized):
+                display_name = prefix.title()
+                break
+        if not display_name:
+            # Use normalized as fallback
+            display_name = normalized.title()
+        if display_name and len(display_name) > 3:
+            clean_names.append(display_name)
 
     amz_links = []
     for pname in clean_names[:5]:
@@ -243,23 +238,8 @@ def render_post_html(post, all_posts=None):
 
     # Back to top
     back_top = '<button id="backTop" class="back-top" onclick=\'window.scrollTo({top:0,behavior:"smooth"})\' aria-label="Back to top">↑</button>'
-    # Single consolidated scroll handler: define toggleTOC, rAF throttle, cache DOM, div-by-zero guard
-    scroll_scripts = (
-        '<script>'
-        '(function(){'
-        'var pb=document.getElementById("progressBar"),bt=document.getElementById("backTop"),ticking=false;'
-        'window.toggleTOC=function(){var b=document.getElementById("tocBody");if(b)b.style.display=b.style.display==="none"?"block":"none";};'
-        'function onScroll(){'
-        'var s=document.body.scrollTop||document.documentElement.scrollTop;'
-        'var h=document.documentElement.scrollHeight-document.documentElement.clientHeight;'
-        'if(pb){pb.style.width=(h>0?(s/h*100):0)+"%";}'
-        'if(bt){bt.classList.toggle("visible",s>400);}'
-        'ticking=false;'
-        '}'
-        'window.addEventListener("scroll",function(){if(!ticking){ticking=true;requestAnimationFrame(onScroll);}});'
-        '})();'
-        '</script>'
-    )
+    back_top_js = '<script>window.addEventListener("scroll",function(){var b=document.getElementById("backTop");if(b){if(window.scrollY>400){b.classList.add("visible")}else{b.classList.remove("visible")}}});</script>'
+    progress_js = '<script>window.addEventListener("scroll",function(){var s=document.body.scrollTop||document.documentElement.scrollTop;var h=document.documentElement.scrollHeight-document.documentElement.clientHeight;document.getElementById("progressBar").style.width=(s/h)*100+"%"});</script>'
 
     return f"""<!DOCTYPE html>
 <html lang="en-US">
@@ -279,8 +259,7 @@ def render_post_html(post, all_posts=None):
 <meta name="twitter:title" content="{t['title']}">
 <meta name="twitter:description" content="{t['description']}">
 <meta name="twitter:image" content="{og_image}">
-<script type="application/ld+json">{{"@context":"https://schema.org","@type":"Article","headline":"{t['title'].replace(chr(34), '')}","description":"{t['description'][:200].replace(chr(34), '')}","url":"https://batterybackupguide.com/posts/{t['slug']}","datePublished":"{t.get('date', TODAY)}","dateModified":"{TODAY}","author":{{"@type":"Organization","name":"Battery Backup Guide"}},"publisher":{{"@type":"Organization","name":"Battery Backup Guide"}},"image":"{og_image}","mainEntityOfPage":"https://batterybackupguide.com/posts/{t['slug']}"}}</script>
-<script type="application/ld+json">{{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{{"@type":"ListItem","position":1,"name":"Home","item":"https://batterybackupguide.com/"}},{{"@type":"ListItem","position":2,"name":"{t['category'].replace('-', ' ').title()}","item":"https://batterybackupguide.com{cat_link}"}}]}}</script>
+<script type="application/ld+json">{{"@context":"https://schema.org","@type":"Article","headline":"{t['title'].replace(chr(34), '')}","description":"{t['description'][:200].replace(chr(34), '')}","url":"https://batterybackupguide.com/posts/{t['slug']}"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -293,7 +272,7 @@ def render_post_html(post, all_posts=None):
 <div class="progress-bar" id="progressBar"></div>
 <a href="#article-content" class="skip-link">Skip to content</a>
 <nav class="nav" role="navigation" aria-label="Main navigation"><div class="container"><span class="logo">⚡ Battery<span>Backup</span>Guide</span>
-<a href="/">Home</a><a href="/about">About</a><a href="/compare">Compare</a><a href="/search">Search</a></div></nav>
+<a href="/">Home</a><a href="/about">About</a></div></nav>
 <main id="article-content" class="container post-content" role="main">
 <div class="breadcrumbs"><a href="/">Home</a> <span>›</span> <a href="{cat_link}">{t['category']}</a></div>
 {toc_html}
@@ -302,7 +281,8 @@ def render_post_html(post, all_posts=None):
 {share_html}
 </main>
 {back_top}
-{scroll_scripts}
+{back_top_js}
+{progress_js}
 <footer class="footer" role="contentinfo"><div class="container">
 <div class="footer-grid">
 <div>
@@ -332,8 +312,6 @@ def render_post_html(post, all_posts=None):
 <p>&copy; 2026 Battery Backup Guide. All rights reserved.</p>
 </div>
 </div></footer>
-<script defer src="/assets/search-overlay.js"></script>
-<script defer src="/assets/related.js"></script>
 </body>
 </html>"""
 
@@ -364,8 +342,6 @@ def update_sitemap(posts):
         pri = "0.9" if p.get("order", 9) <= 2 else "0.8" if p.get("order", 9) <= 5 else "0.7"
         urls.append(f"  <url>\n    <loc>https://batterybackupguide.com/posts/{p['slug']}</loc>\n    <lastmod>{TODAY}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>{pri}</priority>\n  </url>")
     urls.append(f"  <url>\n    <loc>https://batterybackupguide.com/about</loc>\n    <lastmod>{TODAY}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.3</priority>\n  </url>")
-    urls.append(f"  <url>\n    <loc>https://batterybackupguide.com/compare</loc>\n    <lastmod>{TODAY}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.5</priority>\n  </url>")
-    urls.append(f"  <url>\n    <loc>https://batterybackupguide.com/search</loc>\n    <lastmod>{TODAY}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.4</priority>\n  </url>")
 
     sitemap = f"""<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -373,35 +349,26 @@ def update_sitemap(posts):
 </urlset>"""
     with open(f"{SITE_DIR}/sitemap.xml", "w") as fh:
         fh.write(sitemap)
-    print(f"📄 sitemap.xml updated ({len(posts) + 4} URLs)")
+    print(f"📄 sitemap.xml updated ({len(posts) + 2} URLs)")
 
 
-def generate_all(force_all=False, content_dir=None, site_dir=None):
-    """Generate all articles. If force_all=False, only regenerates changed ones.
-    
-    Args:
-        force_all: If True, regenerate all articles regardless of modification time
-        content_dir: Content JSON directory (default: CONTENT_DIR module var)
-        site_dir: Site output directory (default: SITE_DIR module var)
-    """
-    _content_dir = content_dir or CONTENT_DIR
-    _site_dir = site_dir or SITE_DIR
-
+def generate_all(force_all=False):
+    """Generate all articles. If force_all=False, only regenerates changed ones."""
     sync_plan_status()
     posts = []
-    json_files = sorted(glob.glob(os.path.join(_content_dir, "*.json")))
+    json_files = sorted(glob.glob(f"{CONTENT_DIR}/*.json"))
     for f in json_files:
         with open(f) as fh:
             posts.append(json.load(fh))
     posts.sort(key=lambda x: x.get("order", 999))
 
-    os.makedirs(f"{_site_dir}/posts", exist_ok=True)
+    os.makedirs(f"{SITE_DIR}/posts", exist_ok=True)
 
     changed_count = 0
     for p in posts:
         slug = p["slug"]
         json_path = os.path.join(CONTENT_DIR, f"{slug}.json")
-        html_path = f"{_site_dir}/posts/{slug}.html"
+        html_path = f"{SITE_DIR}/posts/{slug}.html"
 
         # Determine if this article needs regeneration
         needs_regenerate = force_all
@@ -432,10 +399,6 @@ def generate_all(force_all=False, content_dir=None, site_dir=None):
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Battery Backup Guide Content Pipeline")
-    parser.add_argument("--all", "-a", action="store_true", help="强制全量重建所有文章")
-    parser.add_argument("--content-dir", help="内容 JSON 目录（覆盖环境变量 NICHE_CONTENT_DIR）")
-    parser.add_argument("--site-dir", help="站点输出目录（覆盖环境变量 NICHE_SITE_DIR）")
-    args = parser.parse_args()
-
-    generate_all(force_all=args.all, content_dir=args.content_dir, site_dir=args.site_dir)
+    import sys
+    force = "--all" in sys.argv or "-a" in sys.argv
+    generate_all(force_all=force)
