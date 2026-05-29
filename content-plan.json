@@ -3,7 +3,7 @@
     {
       "order": 21,
       "slug": "power-station-vs-gas-generator-comprehensive",
-      "title": "Power Station vs Gas Generator — Which Is Right for Your Apartment?",
+      "title": "Power Station vs Gas Generator \u2014 Which Is Right for Your Apartment?",
       "category": "Comparison",
       "description": "Battery power stations vs gas generators: cost, noise, maintenance, safety, and runtime compared for apartment dwellers.",
       "read_time": 10,
@@ -30,7 +30,7 @@
     {
       "order": 24,
       "slug": "best-power-station-for-seniors-easy-to-use",
-      "title": "Best Portable Power Station for Seniors — Easy-to-Use Options (2026)",
+      "title": "Best Portable Power Station for Seniors \u2014 Easy-to-Use Options (2026)",
       "category": "Buying Guide",
       "description": "Power stations with simple controls, clear displays, and lightweight designs for older adults.",
       "read_time": 10,
@@ -41,7 +41,7 @@
       "slug": "battery-backup-medical-devices-apartment",
       "title": "Battery Backup for Medical Devices in Apartments (Beyond CPAP)",
       "category": "Guide",
-      "description": "Oxygen concentrators, nebulizers, insulin pumps — how to keep medical devices running during power outages.",
+      "description": "Oxygen concentrators, nebulizers, insulin pumps \u2014 how to keep medical devices running during power outages.",
       "read_time": 11,
       "status": "published"
     },
@@ -57,7 +57,7 @@
     {
       "order": 27,
       "slug": "best-power-station-gaming-setup",
-      "title": "Best Power Station for Gaming Setup — Keep Playing During Outages",
+      "title": "Best Power Station for Gaming Setup \u2014 Keep Playing During Outages",
       "category": "Buying Guide",
       "description": "Keep your PC, console, monitor, and peripherals running during power outages with the right power station.",
       "read_time": 9,
@@ -66,7 +66,7 @@
     {
       "order": 28,
       "slug": "power-station-safety-what-not-to-do",
-      "title": "Power Station Safety — 10 Things You Should Never Do",
+      "title": "Power Station Safety \u2014 10 Things You Should Never Do",
       "category": "Guide",
       "description": "Essential safety rules for portable power stations. Avoid these common mistakes to protect yourself and your equipment.",
       "read_time": 7,
@@ -84,7 +84,7 @@
     {
       "order": 30,
       "slug": "best-power-station-dual-use-camping-home",
-      "title": "Best Power Station for Camping and Home — Dual-Use Picks (2026)",
+      "title": "Best Power Station for Camping and Home \u2014 Dual-Use Picks (2026)",
       "category": "Buying Guide",
       "description": "One power station for weekend camping AND emergency home backup. The best models that do both well.",
       "read_time": 10,
@@ -93,7 +93,7 @@
     {
       "order": 31,
       "slug": "anker-vs-jackery-portable-power-station",
-      "title": "Anker vs Jackery Portable Power Stations — Which Brand Wins in 2026?",
+      "title": "Anker vs Jackery Portable Power Stations \u2014 Which Brand Wins in 2026?",
       "category": "Comparison",
       "description": "Head-to-head brand comparison: Anker SOLIX vs Jackery Explorer. Price, quality, warranty, customer support, and real-world performance.",
       "read_time": 12,
@@ -102,7 +102,7 @@
     {
       "order": 32,
       "slug": "bluetti-ac180-vs-ecoflow-delta-2",
-      "title": "Bluetti AC180 vs EcoFlow Delta 2 — Detailed Comparison (2026)",
+      "title": "Bluetti AC180 vs EcoFlow Delta 2 \u2014 Detailed Comparison (2026)",
       "category": "Comparison",
       "description": "Two popular mid-range power stations compared side-by-side: specs, charging speed, portability, app features, and real user feedback.",
       "read_time": 11,
@@ -111,7 +111,7 @@
     {
       "order": 33,
       "slug": "best-portable-power-station-under-300",
-      "title": "Best Portable Power Station Under $300 — Budget Picks That Don't Suck (2026)",
+      "title": "Best Portable Power Station Under $300 \u2014 Budget Picks That Don't Suck (2026)",
       "category": "Buying Guide",
       "description": "Affordable power stations that deliver real value. Tested picks under $300 for emergencies, camping, and apartment backup.",
       "read_time": 10,
@@ -120,11 +120,11 @@
     {
       "order": 34,
       "slug": "standalone-vs-expandable-power-station",
-      "title": "Standalone vs Expandable Power Stations — Which Type Should You Buy?",
+      "title": "Standalone vs Expandable Power Stations \u2014 Which Type Should You Buy?",
       "category": "Comparison",
       "description": "Decide between a fixed-capacity power station and one with expansion battery support. Pros, cons, and cost analysis for each approach.",
       "read_time": 9,
-      "status": "planned"
+      "status": "published"
     },
     {
       "order": 35,
@@ -133,16 +133,16 @@
       "category": "Buying Guide",
       "description": "Power your speakers, grills, lights, and phone chargers at outdoor gatherings. Picks with plenty of AC outlets and USB ports.",
       "read_time": 9,
-      "status": "planned"
+      "status": "published"
     },
     {
       "order": 36,
       "slug": "portable-power-station-101-beginners",
-      "title": "Portable Power Station 101 — A Beginner's Guide to Getting Started",
+      "title": "Portable Power Station 101 \u2014 A Beginner's Guide to Getting Started",
       "category": "Guide",
       "description": "New to portable power stations? This guide covers everything: what they are, how they work, key specs explained, and how to choose your first one.",
       "read_time": 10,
-      "status": "planned"
+      "status": "published"
     },
     {
       "order": 37,
@@ -156,146 +156,11 @@
     {
       "order": 38,
       "slug": "power-station-warranty-claims-guide",
-      "title": "Portable Power Station Warranty Claims — How to Actually Get Your Replacement",
+      "title": "Portable Power Station Warranty Claims \u2014 How to Actually Get Your Replacement",
       "category": "Guide",
       "description": "Step-by-step guide to filing warranty claims with Anker, Jackery, Bluetti, and EcoFlow. What to document, how to contact support, and your rights.",
       "read_time": 9,
       "status": "planned"
-    },
-    {
-      "order": 39,
-      "slug": "battery-backup-for-wfh-setup",
-      "title": "Battery Backup for Your Work-From-Home Setup — Never Lose Productivity",
-      "category": "Guide",
-      "description": "Keep your home office running during outages: power requirements, recommended stations, and setup tips for WFH.",
-      "read_time": 9,
-      "status": "pending"
-    },
-    {
-      "order": 40,
-      "slug": "solar-generator-vs-power-station",
-      "title": "Solar Generator vs Portable Power Station — What's the Real Difference?",
-      "category": "Comparison",
-      "description": "Solar generators and power stations seem similar. Learn the key differences in charging, capacity, and use cases.",
-      "read_time": 9,
-      "status": "pending"
-    },
-    {
-      "order": 41,
-      "slug": "power-station-noise-level-test",
-      "title": "How Loud Are Portable Power Stations? (Real Decibel Measurements)",
-      "category": "Review",
-      "description": "Noise comparison of 10 popular power stations: fan noise, inverter hum, and which units are truly silent.",
-      "read_time": 9,
-      "status": "pending"
-    },
-    {
-      "order": 42,
-      "slug": "best-power-station-for-refrigerator",
-      "title": "Can a Portable Power Station Run Your Refrigerator? (Real Test Results)",
-      "category": "Guide",
-      "description": "Find out which power stations can actually run a fridge, how long they last, and what size you need.",
-      "read_time": 9,
-      "status": "pending"
-    },
-    {
-      "order": 43,
-      "slug": "power-station-buying-mistakes-2026",
-      "title": "7 Common Portable Power Station Buying Mistakes (2026)",
-      "category": "Guide",
-      "description": "Don't waste money on the wrong power station. Learn the most common mistakes first-time buyers make.",
-      "read_time": 9,
-      "status": "pending"
-    },
-    {
-      "order": 44,
-      "slug": "lithium-ion-vs-lifepo4-battery",
-      "title": "Lithium-Ion vs LiFePO4 Batteries in Power Stations — Which Lasts Longer?",
-      "category": "Comparison",
-      "description": "LiFePO4 batteries last 4x longer than standard lithium-ion. Here's what that means for your power station purchase.",
-      "read_time": 9,
-      "status": "pending"
-    },
-    {
-      "order": 45,
-      "slug": "power-station-for-cpap-machine",
-      "title": "Best Portable Power Station for CPAP Machine (Overnight Test)",
-      "category": "Review",
-      "description": "Can't sleep without CPAP during an outage? We tested 6 power stations with a CPAP machine for full-night runtime.",
-      "read_time": 9,
-      "status": "pending"
-    },
-    {
-      "order": 46,
-      "slug": "power-station-vs-ups-difference",
-      "title": "Power Station vs UPS — Do You Need Both for Your Home Office?",
-      "category": "Comparison",
-      "description": "Uninterruptible power supplies and portable power stations serve different purposes. Learn which one you need.",
-      "read_time": 9,
-      "status": "pending"
-    },
-    {
-      "order": 47,
-      "slug": "apartment-solar-setup-guide",
-      "title": "Apartment Solar Setup Guide — Charge Your Power Station Without Grid Power",
-      "category": "Guide",
-      "description": "Live in an apartment but want solar? Learn balcony solar kits, window panels, and portable solar options for renters.",
-      "read_time": 9,
-      "status": "pending"
-    },
-    {
-      "order": 48,
-      "slug": "best-budget-power-station-100-200",
-      "title": "Best Budget Power Stations Under $200 That Actually Work (2026)",
-      "category": "Review",
-      "description": "You don't need to spend a fortune. These 5 power stations under $200 deliver real backup power for essentials.",
-      "read_time": 9,
-      "status": "pending"
-    },
-    {
-      "order": 49,
-      "slug": "power-station-run-time-calculator",
-      "title": "How to Calculate Power Station Run Time — Simple Formula for Any Device",
-      "category": "Guide",
-      "description": "Stop guessing. Learn the simple formula to calculate exactly how long any power station will run your devices.",
-      "read_time": 9,
-      "status": "pending"
-    },
-    {
-      "order": 50,
-      "slug": "power-station-vs-generator-cost-analysis",
-      "title": "Power Station vs Generator — 5-Year Cost Analysis (Which Is Cheaper?)",
-      "category": "Comparison",
-      "description": "Over 5 years, which costs less: a portable power station or a gas generator? We crunched the numbers.",
-      "read_time": 9,
-      "status": "pending"
-    },
-    {
-      "order": 51,
-      "slug": "winter-power-outage-survival",
-      "title": "Winter Power Outage Survival Guide — Stay Warm and Powered in Your Apartment",
-      "category": "Guide",
-      "description": "Winter outages are different. Learn how to keep your apartment warm, pipes unfrozen, and devices charged.",
-      "read_time": 9,
-      "status": "pending"
-    },
-    {
-      "order": 52,
-      "slug": "power-station-firmware-update-guide",
-      "title": "Do You Need to Update Your Power Station's Firmware? (Yes, Here's Why)",
-      "category": "Guide",
-      "description": "Like smartphones, modern power stations get firmware updates. Learn why they matter and how to update yours.",
-      "read_time": 9,
-      "status": "pending"
-    },
-    {
-      "order": 53,
-      "slug": "travel-with-power-station-tsa-rules",
-      "title": "Flying with a Portable Power Station — TSA Rules and Airline Policies (2026)",
-      "category": "Guide",
-      "description": "Can you bring a power station on a plane? We break down TSA rules, airline policies, and safe travel tips.",
-      "read_time": 9,
-      "status": "pending"
     }
   ]
 }

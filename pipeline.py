@@ -190,7 +190,7 @@ def render_post_html(post, all_posts=None):
     toc_html = ''
     if len(toc_items) >= 3:
         items = ''.join(f'<li><a href="#{h_id}" class="toc-link">{label}</a></li>' for h_id, label in toc_items)
-        toc_html = '<nav class="toc-sidebar" id="tocSidebar"><div class="toc-header" onclick="toggleTOC()">☰ On this page <span class="toc-toggle">▼</span></div><div class="toc-body" id="tocBody"><ol>' + items + '</ol></div></nav>'
+        toc_html = '<nav class="toc-sidebar" id="tocSidebar"><div class="toc-header" onclick="toggleTOC()">☰ On this page <span class="toc-toggle">▼</span></div><div class="toc-body" id="tocBody" style="display:block"><ol>' + items + '</ol></div></nav>'
 
     # Enrich content depth for Buying Guide / Comparison articles
     body = enrich_buying_guide(body, t.get("category", ""))
@@ -243,8 +243,23 @@ def render_post_html(post, all_posts=None):
 
     # Back to top
     back_top = '<button id="backTop" class="back-top" onclick=\'window.scrollTo({top:0,behavior:"smooth"})\' aria-label="Back to top">↑</button>'
-    back_top_js = '<script>window.addEventListener("scroll",function(){var b=document.getElementById("backTop");if(b){if(window.scrollY>400){b.classList.add("visible")}else{b.classList.remove("visible")}}});</script>'
-    progress_js = '<script>window.addEventListener("scroll",function(){var s=document.body.scrollTop||document.documentElement.scrollTop;var h=document.documentElement.scrollHeight-document.documentElement.clientHeight;document.getElementById("progressBar").style.width=(s/h)*100+"%"});</script>'
+    # Single consolidated scroll handler: define toggleTOC, rAF throttle, cache DOM, div-by-zero guard
+    scroll_scripts = (
+        '<script>'
+        '(function(){'
+        'var pb=document.getElementById("progressBar"),bt=document.getElementById("backTop"),ticking=false;'
+        'window.toggleTOC=function(){var b=document.getElementById("tocBody");if(b)b.style.display=b.style.display==="none"?"block":"none";};'
+        'function onScroll(){'
+        'var s=document.body.scrollTop||document.documentElement.scrollTop;'
+        'var h=document.documentElement.scrollHeight-document.documentElement.clientHeight;'
+        'if(pb){pb.style.width=(h>0?(s/h*100):0)+"%";}'
+        'if(bt){bt.classList.toggle("visible",s>400);}'
+        'ticking=false;'
+        '}'
+        'window.addEventListener("scroll",function(){if(!ticking){ticking=true;requestAnimationFrame(onScroll);}});'
+        '})();'
+        '</script>'
+    )
 
     return f"""<!DOCTYPE html>
 <html lang="en-US">
@@ -287,8 +302,7 @@ def render_post_html(post, all_posts=None):
 {share_html}
 </main>
 {back_top}
-{back_top_js}
-{progress_js}
+{scroll_scripts}
 <footer class="footer" role="contentinfo"><div class="container">
 <div class="footer-grid">
 <div>
